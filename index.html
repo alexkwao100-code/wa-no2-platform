@@ -588,7 +588,7 @@ function initMap(){
 }
 function updateMapOverlay(season){
   if(mapOverlay)leafletMap.removeLayer(mapOverlay);
-  mapOverlay=L.imageOverlay(MAP_IMAGES[season],[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],{opacity:0.7}).addTo(leafletMap);
+  mapOverlay=L.imageOverlay(MAP_IMAGES[season],[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],{opacity:0.65}).addTo(leafletMap);
 }
 function loadCountryGeoJSON(){
   fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
@@ -598,7 +598,7 @@ function loadCountryGeoJSON(){
       data.features.filter(f=>waNames.some(n=>f.properties.ADMIN===n||f.properties.NAME===n)).forEach(feature=>{
         const name=waNames.find(n=>feature.properties.ADMIN===n||feature.properties.NAME===n);
         const score=npwei[name]??0;
-        const layer=L.geoJSON(feature,{style:{fillColor:riskColor(score),fillOpacity:0.1,color:'#334155',weight:1,opacity:0.8}})
+        const layer=L.geoJSON(feature,{style:{fillColor:riskColor(score),fillOpacity:0.0,color:'#1e293b',weight:2,opacity:1}})
           .bindTooltip(`<strong>${name}</strong><br>NPWEI: ${score}/100<br>Risk: ${riskLabel(score).label}`,{sticky:true});
         layer.on('mouseover',function(){this.setStyle({fillOpacity:0.35,weight:2});});
         layer.on('mouseout',function(){this.setStyle({fillOpacity:0.1,weight:1});});
