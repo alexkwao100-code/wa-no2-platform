@@ -584,7 +584,30 @@ function initMap(){
   leafletMap=L.map('map',{center:[12,-1],zoom:5,zoomControl:true,attributionControl:true});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:10,attribution:'© CARTO | MapLibre'}).addTo(leafletMap);
   updateMapOverlay('Annual');
-  loadCountryGeoJSON();
+  function loadCountryGeoJSON(){
+  // Create a custom pane above the image overlay
+  leafletMap.createPane('bordersPane');
+  leafletMap.getPane('bordersPane').style.zIndex=450;
+  leafletMap.getPane('bordersPane').style.pointerEvents='none';
+
+  fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
+    .then(r=>r.json()).then(data=>{
+      const waNames=Object.keys(COUNTRY_PWE);
+      const npwei=getNPWEI(currentSeason);
+      data.features.filter(f=>waNames.some(n=>f.properties.ADMIN===n||f.properties.NAME===n)).forEach(feature=>{
+        const name=waNames.find(n=>feature.properties.ADMIN===n||feature.properties.NAME===n);
+        const score=npwei[name]??0;
+        const layer=L.geoJSON(feature,{
+          pane:'bordersPane',
+          style:{fillColor:'transparent',fillOpacity:0,color:'#1e293b',weight:2,opacity:1}
+        }).bindTooltip(`<strong>${name}</strong><br>NPWEI: ${score}/100<br>Risk: ${riskLabel(score).label}`,{sticky:true});
+        layer.on('mouseover',function(){this.setStyle({weight:3,color:'#0f172a'});});
+        layer.on('mouseout',function(){this.setStyle({weight:2,color:'#1e293b'});});
+        layer.addTo(leafletMap);
+        countryLayers[name]=layer;
+      });
+    }).catch(()=>console.log('GeoJSON failed'));
+}
 }
 function updateMapOverlay(season){
   if(mapOverlay)leafletMap.removeLayer(mapOverlay);
