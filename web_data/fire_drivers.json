@@ -1,0 +1,598 @@
+{
+  "monthly_by_year": {
+    "2020": {
+      "1": {
+        "mean_frp": 24.57,
+        "total_frp": 2480053.4,
+        "fire_count": 100940
+      },
+      "2": {
+        "mean_frp": 28.56,
+        "total_frp": 2498499.2,
+        "fire_count": 87468
+      },
+      "3": {
+        "mean_frp": 37.94,
+        "total_frp": 1459285.1,
+        "fire_count": 38459
+      },
+      "4": {
+        "mean_frp": 53.87,
+        "total_frp": 1224548.9,
+        "fire_count": 22732
+      },
+      "5": {
+        "mean_frp": 60.33,
+        "total_frp": 626874.5,
+        "fire_count": 10390
+      },
+      "6": {
+        "mean_frp": 28.29,
+        "total_frp": 35729.8,
+        "fire_count": 1263
+      },
+      "7": {
+        "mean_frp": 17.4,
+        "total_frp": 2801.8,
+        "fire_count": 161
+      },
+      "8": {
+        "mean_frp": 15.91,
+        "total_frp": 7477.6,
+        "fire_count": 470
+      },
+      "9": {
+        "mean_frp": 13.91,
+        "total_frp": 2503.2,
+        "fire_count": 180
+      },
+      "10": {
+        "mean_frp": 33.23,
+        "total_frp": 465168.8,
+        "fire_count": 13999
+      },
+      "11": {
+        "mean_frp": 31.2,
+        "total_frp": 1406002.7,
+        "fire_count": 45059
+      },
+      "12": {
+        "mean_frp": 30.0,
+        "total_frp": 2290473.2,
+        "fire_count": 76347
+      }
+    },
+    "2021": {
+      "1": {
+        "mean_frp": 26.71,
+        "total_frp": 2487154.8,
+        "fire_count": 93121
+      },
+      "2": {
+        "mean_frp": 30.11,
+        "total_frp": 1604645.9,
+        "fire_count": 53296
+      },
+      "3": {
+        "mean_frp": 37.07,
+        "total_frp": 1350339.4,
+        "fire_count": 36428
+      },
+      "4": {
+        "mean_frp": 54.19,
+        "total_frp": 1414614.0,
+        "fire_count": 26103
+      },
+      "5": {
+        "mean_frp": 49.64,
+        "total_frp": 404349.9,
+        "fire_count": 8145
+      },
+      "6": {
+        "mean_frp": 28.38,
+        "total_frp": 53466.6,
+        "fire_count": 1884
+      },
+      "7": {
+        "mean_frp": 21.96,
+        "total_frp": 16513.7,
+        "fire_count": 752
+      },
+      "8": {
+        "mean_frp": 15.14,
+        "total_frp": 3574.1,
+        "fire_count": 236
+      },
+      "9": {
+        "mean_frp": 33.19,
+        "total_frp": 14371.8,
+        "fire_count": 433
+      },
+      "10": {
+        "mean_frp": 38.09,
+        "total_frp": 363190.2,
+        "fire_count": 9534
+      },
+      "11": {
+        "mean_frp": 33.65,
+        "total_frp": 1009142.7,
+        "fire_count": 29985
+      },
+      "12": {
+        "mean_frp": 28.64,
+        "total_frp": 2142556.7,
+        "fire_count": 74803
+      }
+    },
+    "2022": {
+      "1": {
+        "mean_frp": 25.34,
+        "total_frp": 2601544.6,
+        "fire_count": 102657
+      },
+      "2": {
+        "mean_frp": 27.52,
+        "total_frp": 1674385.2,
+        "fire_count": 60851
+      },
+      "3": {
+        "mean_frp": 34.06,
+        "total_frp": 1256707.1,
+        "fire_count": 36900
+      },
+      "4": {
+        "mean_frp": 70.67,
+        "total_frp": 660246.7,
+        "fire_count": 9343
+      },
+      "5": {
+        "mean_frp": 72.2,
+        "total_frp": 748339.7,
+        "fire_count": 10365
+      },
+      "6": {
+        "mean_frp": 29.28,
+        "total_frp": 44159.2,
+        "fire_count": 1508
+      },
+      "7": {
+        "mean_frp": 17.67,
+        "total_frp": 6450.2,
+        "fire_count": 365
+      },
+      "8": {
+        "mean_frp": 13.59,
+        "total_frp": 3642.1,
+        "fire_count": 268
+      },
+      "9": {
+        "mean_frp": 26.56,
+        "total_frp": 4966.3,
+        "fire_count": 187
+      },
+      "10": {
+        "mean_frp": 31.98,
+        "total_frp": 282674.1,
+        "fire_count": 8839
+      },
+      "11": {
+        "mean_frp": 31.01,
+        "total_frp": 1264476.3,
+        "fire_count": 40777
+      },
+      "12": {
+        "mean_frp": 28.54,
+        "total_frp": 2175217.6,
+        "fire_count": 76222
+      }
+    },
+    "2023": {
+      "1": {
+        "mean_frp": 25.74,
+        "total_frp": 1878248.6,
+        "fire_count": 72969
+      },
+      "2": {
+        "mean_frp": 29.03,
+        "total_frp": 1937998.7,
+        "fire_count": 66757
+      },
+      "3": {
+        "mean_frp": 40.44,
+        "total_frp": 1502455.5,
+        "fire_count": 37157
+      },
+      "4": {
+        "mean_frp": 47.62,
+        "total_frp": 1419648.9,
+        "fire_count": 29815
+      },
+      "5": {
+        "mean_frp": 46.89,
+        "total_frp": 423590.7,
+        "fire_count": 9033
+      },
+      "6": {
+        "mean_frp": 29.41,
+        "total_frp": 40229.7,
+        "fire_count": 1368
+      },
+      "7": {
+        "mean_frp": 15.34,
+        "total_frp": 4801.7,
+        "fire_count": 313
+      },
+      "8": {
+        "mean_frp": 14.54,
+        "total_frp": 2167.2,
+        "fire_count": 149
+      },
+      "9": {
+        "mean_frp": 15.37,
+        "total_frp": 5011.0,
+        "fire_count": 326
+      },
+      "10": {
+        "mean_frp": 34.33,
+        "total_frp": 377938.6,
+        "fire_count": 11008
+      },
+      "11": {
+        "mean_frp": 32.23,
+        "total_frp": 1102972.6,
+        "fire_count": 34218
+      },
+      "12": {
+        "mean_frp": 28.02,
+        "total_frp": 2121436.2,
+        "fire_count": 75708
+      }
+    },
+    "2024": {
+      "1": {
+        "mean_frp": 25.26,
+        "total_frp": 2669990.7,
+        "fire_count": 105684
+      },
+      "2": {
+        "mean_frp": 27.73,
+        "total_frp": 1818758.2,
+        "fire_count": 65595
+      },
+      "3": {
+        "mean_frp": 36.18,
+        "total_frp": 1278687.4,
+        "fire_count": 35340
+      },
+      "4": {
+        "mean_frp": 46.37,
+        "total_frp": 1215061.5,
+        "fire_count": 26201
+      },
+      "5": {
+        "mean_frp": 47.24,
+        "total_frp": 608083.2,
+        "fire_count": 12871
+      },
+      "6": {
+        "mean_frp": 24.97,
+        "total_frp": 54882.2,
+        "fire_count": 2198
+      },
+      "7": {
+        "mean_frp": 14.98,
+        "total_frp": 3655.1,
+        "fire_count": 244
+      },
+      "8": {
+        "mean_frp": 11.32,
+        "total_frp": 3057.0,
+        "fire_count": 270
+      },
+      "9": {
+        "mean_frp": 15.31,
+        "total_frp": 5587.7,
+        "fire_count": 365
+      },
+      "10": {
+        "mean_frp": 31.47,
+        "total_frp": 207866.8,
+        "fire_count": 6605
+      },
+      "11": {
+        "mean_frp": 31.06,
+        "total_frp": 1454856.6,
+        "fire_count": 46844
+      },
+      "12": {
+        "mean_frp": 27.02,
+        "total_frp": 2215398.3,
+        "fire_count": 81988
+      }
+    }
+  },
+  "country_seasonal": {
+    "Senegal": {
+      "DJF": {
+        "mean_frp": 35.65,
+        "fire_count": 47686
+      },
+      "JJA": {
+        "mean_frp": 22.69,
+        "fire_count": 1175
+      },
+      "Annual": {
+        "mean_frp": 35.47,
+        "fire_count": 99125
+      }
+    },
+    "Mali": {
+      "DJF": {
+        "mean_frp": 26.77,
+        "fire_count": 72836
+      },
+      "JJA": {
+        "mean_frp": 30.14,
+        "fire_count": 2179
+      },
+      "Annual": {
+        "mean_frp": 30.29,
+        "fire_count": 174598
+      }
+    },
+    "Mauritania": {
+      "DJF": {
+        "mean_frp": 41.2,
+        "fire_count": 1707
+      },
+      "JJA": {
+        "mean_frp": 26.9,
+        "fire_count": 206
+      },
+      "Annual": {
+        "mean_frp": 47.07,
+        "fire_count": 4078
+      }
+    },
+    "Benin": {
+      "DJF": {
+        "mean_frp": 33.43,
+        "fire_count": 38769
+      },
+      "JJA": {
+        "mean_frp": 22.82,
+        "fire_count": 40
+      },
+      "Annual": {
+        "mean_frp": 35.57,
+        "fire_count": 51171
+      }
+    },
+    "Niger": {
+      "DJF": {
+        "mean_frp": 35.86,
+        "fire_count": 3367
+      },
+      "JJA": {
+        "mean_frp": 41.33,
+        "fire_count": 653
+      },
+      "Annual": {
+        "mean_frp": 43.6,
+        "fire_count": 12769
+      }
+    },
+    "Nigeria": {
+      "DJF": {
+        "mean_frp": 22.13,
+        "fire_count": 277470
+      },
+      "JJA": {
+        "mean_frp": 12.26,
+        "fire_count": 1564
+      },
+      "Annual": {
+        "mean_frp": 23.39,
+        "fire_count": 346166
+      }
+    },
+    "Togo": {
+      "DJF": {
+        "mean_frp": 23.69,
+        "fire_count": 32358
+      },
+      "JJA": {
+        "mean_frp": 13.19,
+        "fire_count": 28
+      },
+      "Annual": {
+        "mean_frp": 23.64,
+        "fire_count": 36049
+      }
+    },
+    "Ghana": {
+      "DJF": {
+        "mean_frp": 31.49,
+        "fire_count": 193814
+      },
+      "JJA": {
+        "mean_frp": 12.58,
+        "fire_count": 348
+      },
+      "Annual": {
+        "mean_frp": 31.03,
+        "fire_count": 223382
+      }
+    },
+    "C\u00f4te d'Ivoire": {
+      "DJF": {
+        "mean_frp": 27.73,
+        "fire_count": 90709
+      },
+      "JJA": {
+        "mean_frp": 11.68,
+        "fire_count": 454
+      },
+      "Annual": {
+        "mean_frp": 26.92,
+        "fire_count": 109529
+      }
+    },
+    "Guinea": {
+      "DJF": {
+        "mean_frp": 28.56,
+        "fire_count": 185095
+      },
+      "JJA": {
+        "mean_frp": 30.49,
+        "fire_count": 843
+      },
+      "Annual": {
+        "mean_frp": 39.21,
+        "fire_count": 309562
+      }
+    },
+    "Guinea-Bissau": {
+      "DJF": {
+        "mean_frp": 26.66,
+        "fire_count": 6534
+      },
+      "JJA": {
+        "mean_frp": 35.24,
+        "fire_count": 1855
+      },
+      "Annual": {
+        "mean_frp": 35.83,
+        "fire_count": 20114
+      }
+    },
+    "Liberia": {
+      "DJF": {
+        "mean_frp": 27.09,
+        "fire_count": 9564
+      },
+      "JJA": {
+        "mean_frp": 11.1,
+        "fire_count": 160
+      },
+      "Annual": {
+        "mean_frp": 31.96,
+        "fire_count": 42295
+      }
+    },
+    "Sierra Leone": {
+      "DJF": {
+        "mean_frp": 23.56,
+        "fire_count": 36413
+      },
+      "JJA": {
+        "mean_frp": 14.97,
+        "fire_count": 99
+      },
+      "Annual": {
+        "mean_frp": 41.73,
+        "fire_count": 112258
+      }
+    },
+    "Burkina Faso": {
+      "DJF": {
+        "mean_frp": 30.65,
+        "fire_count": 37469
+      },
+      "JJA": {
+        "mean_frp": 18.58,
+        "fire_count": 50
+      },
+      "Annual": {
+        "mean_frp": 33.58,
+        "fire_count": 62627
+      }
+    },
+    "Gambia": {
+      "DJF": {
+        "mean_frp": 42.53,
+        "fire_count": 3807
+      },
+      "JJA": {
+        "mean_frp": 23.96,
+        "fire_count": 255
+      },
+      "Annual": {
+        "mean_frp": 41.22,
+        "fire_count": 7770
+      }
+    }
+  },
+  "monthly_climatology": {
+    "1": {
+      "mean_frp": 25.49,
+      "fire_count": 475371
+    },
+    "2": {
+      "mean_frp": 28.55,
+      "fire_count": 333967
+    },
+    "3": {
+      "mean_frp": 37.16,
+      "fire_count": 184284
+    },
+    "4": {
+      "mean_frp": 51.97,
+      "fire_count": 114194
+    },
+    "5": {
+      "mean_frp": 55.33,
+      "fire_count": 50804
+    },
+    "6": {
+      "mean_frp": 27.79,
+      "fire_count": 8221
+    },
+    "7": {
+      "mean_frp": 18.65,
+      "fire_count": 1835
+    },
+    "8": {
+      "mean_frp": 14.3,
+      "fire_count": 1393
+    },
+    "9": {
+      "mean_frp": 21.76,
+      "fire_count": 1491
+    },
+    "10": {
+      "mean_frp": 33.95,
+      "fire_count": 49985
+    },
+    "11": {
+      "mean_frp": 31.68,
+      "fire_count": 196883
+    },
+    "12": {
+      "mean_frp": 28.42,
+      "fire_count": 385068
+    }
+  },
+  "annual_totals": {
+    "2020": {
+      "mean_frp": 31.45,
+      "fire_count": 397468
+    },
+    "2021": {
+      "mean_frp": 32.46,
+      "fire_count": 334720
+    },
+    "2022": {
+      "mean_frp": 30.79,
+      "fire_count": 348282
+    },
+    "2023": {
+      "mean_frp": 31.92,
+      "fire_count": 338821
+    },
+    "2024": {
+      "mean_frp": 30.03,
+      "fire_count": 384205
+    }
+  }
+}
