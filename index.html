@@ -199,6 +199,47 @@ tbody td{padding:9px 16px;font-size:11px;}
 .fade-in{animation:fadeIn .4s ease forwards;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .highlight-row{background:rgba(0,212,255,.08)!important;}
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sidebar{transform:translateX(-220px);}
+  body.sidebar-open .sidebar{transform:translateX(0);}
+  .main{margin-left:0;}
+  body.sidebar-open .main{margin-left:0;}
+
+  .topbar{padding:0 14px;}
+  .topbar-title{font-size:11px;}
+  .btn{font-size:9px;padding:5px 8px;}
+
+  .content{padding:14px;}
+
+  .summary-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .card-value{font-size:22px;}
+
+  .map-row{grid-template-columns:1fr;}
+  #map{height:300px;}
+
+  .charts-row{grid-template-columns:1fr;}
+
+  .insights-row{grid-template-columns:1fr;}
+
+  .health-grid{grid-template-columns:1fr;}
+
+  .drivers-grid{grid-template-columns:1fr;}
+
+  .cities-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+
+  .footer{grid-template-columns:1fr 1fr;gap:14px;}
+
+  .map-title span{display:none;}
+
+  .table-scroll{max-height:300px;}
+}
+
+@media (max-width: 420px) {
+  .summary-grid{grid-template-columns:1fr;}
+  .footer{grid-template-columns:1fr;}
+  .topbar-title{display:none;}
+}
 </style>
 </head>
 <body>
@@ -873,7 +914,24 @@ window.addEventListener('load',async()=>{
   initFireCharts();
 });
   function toggleSidebar(){
-  document.body.classList.toggle('sidebar-hidden');
+  const isMobile = window.innerWidth <= 768;
+  if(isMobile){
+    document.body.classList.toggle('sidebar-open');
+  } else {
+    document.body.classList.toggle('sidebar-hidden');
+  }
+}
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', function(e){
+  if(window.innerWidth <= 768){
+    const sidebar = document.querySelector('.sidebar');
+    const menuBtn = document.querySelector('.btn[onclick="toggleSidebar()"]');
+    if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+      document.body.classList.remove('sidebar-open');
+    }
+  }
+});
 }
 </script>
 </body>
