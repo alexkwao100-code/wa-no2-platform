@@ -99,7 +99,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .map-colorbar{padding:10px 14px;border-top:1px solid var(--border);background:var(--panel);}
 .colorbar-title{font-size:9px;color:var(--text-dim);margin-bottom:4px;font-weight:500;}
 .colorbar-wrap{display:flex;align-items:center;gap:8px;}
-.colorbar-bar{flex:1;height:10px;border-radius:3px;background:linear-gradient(90deg,#313695,#4575b4,#74add1,#abd9e9,#e0f3f8,#fee090,#fdae61,#f46d43,#d73027,#a50026);}
+.colorbar-bar{flex:1;height:10px;border-radius:3px;background:linear-gradient(90deg,#00007f,#0000ff,#00ffff,#00ff00,#ffff00,#ff0000,#7f0000);}
 .colorbar-ticks{display:flex;justify-content:space-between;font-size:8px;color:var(--text-dim);margin-top:2px;font-family:var(--font-mono);}
 
 /* COUNTRY TABLE PANEL */
@@ -370,7 +370,7 @@ tbody td{padding:7px 10px;font-size:11px;}
       <div class="map-panel">
         <div class="map-header">
           <div class="map-title">
-            Tropospheric NO₂ Column (TROPOMI)
+            Population Weighted Exposure - Normalized (NPWE)
             <div class="map-title-info" title="Normalised Population-Weighted Exposure Index. Only urban pixels included.">?</div>
           </div>
           <div class="map-controls">
@@ -506,14 +506,14 @@ tbody td{padding:7px 10px;font-size:11px;}
   <footer id="footer" class="footer">
     <div>
       <p style="color:#94a3b8;font-weight:600;margin-bottom:2px;">West Africa NO₂ Exposure Risk Platform</p>
-      <p>Climate and Health Research Lab (CAHL) · KNUST, Kumasi, Ghana</p>
+      <p>Air Pollution Lab · KNUST, Kumasi, Ghana</p>
     </div>
     <div style="text-align:center;">
-      <p>Data: Sentinel-5P TROPOMI · WorldPop 2020 · NASA FIRMS</p>
+      <p>Data: Sentinel-5P TROPOMI · NASA Gridded Population · NASA FIRMS</p>
       <p>Period: January 2020 – December 2024</p>
     </div>
     <div style="text-align:right;">
-      <a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a>
+      <a href="mailto:airpollutionlab@gmail.com">airpollutionlab@gmail.com</a>
       <p style="margin-top:2px;cursor:pointer;color:#2563eb;" onclick="showMethodology()">Methodology ↗</p>
     </div>
   </footer>
