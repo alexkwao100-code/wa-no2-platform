@@ -218,13 +218,33 @@ tbody td{padding:7px 10px;font-size:11px;}
 <aside class="sidebar">
   <div class="sidebar-section">
     <div class="sidebar-section-title">Explore</div>
+
     <a class="sidebar-nav-item active" onclick="showPage('page-overview')">
+      <span>📊</span> Dashboard
+    </a>
+
     <a class="sidebar-nav-item" onclick="showPage('page-map')">
+      <span>🗺</span> Map
+    </a>
+
     <a class="sidebar-nav-item" onclick="showPage('page-trends')">
-    <a class="sidebar-nav-item" href="#cities-section"><span>🏙</span> Cities at Risk</a>
-    <a class="sidebar-nav-item" href="#health-section"><span>🫁</span> Health Impact</a>
-    <a class="sidebar-nav-item" href="#footer"><span>ℹ</span> About</a>
+      <span>📈</span> Trends
+    </a>
+
+    <a class="sidebar-nav-item" href="#cities-section">
+      <span>🏙</span> Cities at Risk
+    </a>
+
+    <a class="sidebar-nav-item" href="#health-section">
+      <span>🫁</span> Health Impact
+    </a>
+
+    <a class="sidebar-nav-item" href="#footer">
+      <span>ℹ</span> About
+    </a>
+
   </div>
+</aside>
 
   <hr class="sidebar-divider">
 
@@ -451,15 +471,37 @@ let SUMMARY={},COUNTRY_PWE={},SEASONAL_TREND={},BOUNDS={},CITIES_PWE={},HEALTH_I
 const MAP_IMAGES={DJF:'web_data/pwe_djf.png',JJA:'web_data/pwe_jja.png',Annual:'web_data/pwe_annual.png'};
 
 async function loadData(){
-  [SUMMARY,COUNTRY_PWE,SEASONAL_TREND,BOUNDS,CITIES_PWE,HEALTH_IMPACT,FIRE_DRIVERS]=await Promise.all([
-    fetch('./web_data/summary.json').then(r=>r.json()),
-    fetch('./web_data/country_pwe.json').then(r=>r.json()),
-    fetch('./web_data/seasonal_trend.json').then(r=>r.json()),
-    fetch('./web_data/bounds.json').then(r=>r.json()),
-    fetch('./web_data/cities_pwe.json').then(r=>r.json()),
-    fetch('./web_data/health_impact.json').then(r=>r.json()),
-    fetch('./web_data/fire_drivers.json').then(r=>r.json()),
-  ]);
+  try {
+    const [
+      summary,
+      country,
+      seasonal,
+      bounds,
+      cities,
+      health,
+      fire
+    ] = await Promise.all([
+      fetch('web_data/summary.json').then(r=>r.json()),
+      fetch('web_data/country_pwe.json').then(r=>r.json()),
+      fetch('web_data/seasonal_trend.json').then(r=>r.json()),
+      fetch('web_data/bounds.json').then(r=>r.json()),
+      fetch('web_data/cities_pwe.json').then(r=>r.json()),
+      fetch('web_data/health_impact.json').then(r=>r.json()),
+      fetch('web_data/fire_drivers.json').then(r=>r.json()),
+    ]);
+
+    SUMMARY = summary;
+    COUNTRY_PWE = country;
+    SEASONAL_TREND = seasonal;
+    BOUNDS = bounds;
+    CITIES_PWE = cities;
+    HEALTH_IMPACT = health;
+    FIRE_DRIVERS = fire;
+
+  } catch (error) {
+    console.error("❌ Data loading failed:", error);
+    alert("⚠️ One or more data files are missing in /web_data folder.");
+  }
 }
 
 function normalise(rawValues){
