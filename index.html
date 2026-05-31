@@ -72,7 +72,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .page.active{display:block;}
 
 /* SUMMARY CARDS */
-/* FIX 4: summary-row is now its own div inside the page section, restores grid correctly */
 .summary-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
 .card{
   background:var(--panel);border:1px solid var(--border);border-radius:8px;
@@ -89,6 +88,72 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .card-icon{position:absolute;top:12px;right:12px;font-size:22px;opacity:.15;}
 .range-bar{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#2563eb,#22c55e,#eab308,#f97316,#ef4444);}
 .range-labels{display:flex;justify-content:space-between;font-size:8px;color:var(--text-dim);margin-top:2px;font-family:var(--font-mono);}
+
+/* ── OVERVIEW LAYOUT ─────────────────────────────────────────────── */
+.ov-section-label{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--text-dim);margin:0 0 10px;padding-bottom:8px;
+  border-bottom:2px solid var(--border);
+}
+.ov-goto-btn{
+  font-size:10px;font-weight:600;color:var(--accent);background:none;
+  border:1px solid var(--border);border-radius:4px;padding:4px 10px;
+  cursor:pointer;transition:all .15s;text-transform:none;letter-spacing:0;
+}
+.ov-goto-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.ov-goto-btn-sm{
+  font-size:9px;font-weight:600;color:var(--accent);background:none;
+  border:none;cursor:pointer;text-transform:none;letter-spacing:0;padding:0;
+}
+.ov-goto-btn-sm:hover{text-decoration:underline;}
+
+/* KPI cards row */
+.summary-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+
+/* MAP + CITIES ROW */
+.ov-mid-row{display:grid;grid-template-columns:1fr 300px;gap:12px;margin-bottom:20px;}
+.mini-map-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+#mini-map{height:240px;background:#e8f0f8;}
+.mini-map-footer{padding:8px 12px;border-top:1px solid var(--border);background:var(--panel2);display:flex;align-items:center;justify-content:space-between;}
+.mini-colorbar{display:flex;align-items:center;gap:6px;flex:1;}
+.mini-colorbar-bar{width:90px;height:6px;border-radius:3px;background:linear-gradient(90deg,#00007f,#0000ff,#00ffff,#00ff00,#ffff00,#ff0000,#7f0000);}
+.mini-colorbar span{font-size:8px;color:var(--text-dim);font-family:var(--font-mono);}
+.top-cities-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.top-cities-hdr{padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;}
+.top-cities-scroll{flex:1;overflow-y:auto;max-height:240px;}
+.top-cities-foot{padding:6px 12px;border-top:1px solid var(--border);background:var(--panel2);font-size:9px;color:var(--text-dim);}
+.city-row{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid var(--border);transition:background .12s;}
+.city-row:last-child{border-bottom:none;}
+.city-row:hover{background:var(--panel2);}
+.city-rank{font-size:9px;font-weight:700;color:var(--text-dim);width:16px;flex-shrink:0;font-family:var(--font-mono);}
+.city-name{flex:1;font-size:11px;font-weight:600;color:var(--text);}
+.city-country{font-size:10px;color:var(--text-dim);margin-right:6px;}
+.city-bar-wrap{display:flex;align-items:center;gap:4px;}
+.city-bar{height:6px;border-radius:2px;}
+.city-score{font-size:10px;font-weight:700;font-family:var(--font-mono);min-width:26px;text-align:right;}
+
+/* TRENDS ROW — 3 cols (trend chart, seasonal chart, insights) */
+.ov-trends-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
+.ov-chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;}
+.ov-chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.ov-chart-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.ov-chart-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 6px;border-radius:3px;}
+.ov-chart-unit{font-size:9px;color:var(--text-dim);margin-bottom:8px;font-family:var(--font-mono);}
+.ov-chart-wrap{flex:1;position:relative;min-height:140px;}
+.ov-insights-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;}
+.ov-insights-hdr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:10px;}
+.ov-insight-item{display:flex;gap:8px;padding:7px 6px;border-bottom:1px solid var(--border);border-radius:4px;transition:background .15s;}
+.ov-insight-item:hover{background:var(--panel2);}
+.ov-insight-item:last-child{border-bottom:none;}
+.ov-insight-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+.ov-insight-text{font-size:11px;line-height:1.5;color:var(--text-dim);}
+.ov-insight-text strong{color:var(--text);}
+
+/* RISK LEGEND (inline in header) */
+.risk-legend{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.risk-badge{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text-dim);}
+.risk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
 /* MAP ROW */
 .map-row{display:grid;grid-template-columns:1fr 320px;gap:12px;margin-bottom:16px;}
@@ -172,10 +237,15 @@ tbody td{padding:7px 10px;font-size:11px;}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
 /* MOBILE */
+@media(max-width:1100px){
+  .ov-trends-row{grid-template-columns:1fr 1fr;}
+}
 @media(max-width:900px){
-  .summary-row{grid-template-columns:repeat(2,1fr);}
+  .summary-row{grid-template-columns:repeat(3,1fr);}
   .map-row{grid-template-columns:1fr;}
   .bottom-row{grid-template-columns:1fr 1fr;}
+  .ov-mid-row{grid-template-columns:1fr;}
+  .ov-trends-row{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   .sidebar{position:fixed;top:52px;left:0;bottom:0;z-index:150;transform:translateX(-220px);}
@@ -185,6 +255,7 @@ tbody td{padding:7px 10px;font-size:11px;}
   .bottom-row{grid-template-columns:1fr;}
   .topbar-nav{display:none;}
   .brand-sub{display:none;}
+  .ov-section-label{flex-direction:column;align-items:flex-start;gap:6px;}
 }
 @media(max-width:400px){
   .summary-row{grid-template-columns:1fr;}
@@ -315,62 +386,141 @@ tbody td{padding:7px 10px;font-size:11px;}
 <main class="main">
   <div class="content">
 
-    <!-- PAGE: OVERVIEW (Summary Cards) -->
-    <!-- FIX 2: summary-row div is now properly closed; section tag matches its own closing tag -->
+    <!-- PAGE: OVERVIEW — Summary of all pages -->
     <section id="page-overview" class="page active">
+
+      <!-- Dashboard header -->
+      <div class="page-section-hdr">
+        <div class="page-section-hdr-left">
+          <h2>West Africa NO₂ Dashboard</h2>
+          <p>Population-weighted NO₂ exposure summary · Sentinel-5P TROPOMI · 2020–2024</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="risk-legend" style="margin-bottom:0;">
+            <div class="risk-badge"><div class="risk-dot" style="background:#22c55e"></div> Minimal</div>
+            <div class="risk-badge"><div class="risk-dot" style="background:#84cc16"></div> Elevated</div>
+            <div class="risk-badge"><div class="risk-dot" style="background:#eab308"></div> Moderate</div>
+            <div class="risk-badge"><div class="risk-dot" style="background:#f97316"></div> High</div>
+            <div class="risk-badge"><div class="risk-dot" style="background:#ef4444"></div> Severe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SECTION 1: KPI Cards ─────────────────────────────────── -->
+      <div class="ov-section-label">
+        <span>📊 Key Metrics</span>
+      </div>
       <div class="summary-row">
         <div class="card">
           <div class="card-icon">📊</div>
-          <div class="card-label">West Africa Average<br>Exposure Risk</div>
+          <div class="card-label">West Africa Avg<br>Exposure Risk</div>
           <div class="card-main">
             <div class="card-value" id="wa-npwei">--</div>
-            <div class="card-unit">/100 NPWEI<br><span id="wa-risk-label" style="font-weight:600">--</span></div>
+            <div class="card-unit">/100 NPWEI</div>
           </div>
-          <div class="card-sub">2020–2024 mean</div>
+          <div class="card-unit" style="margin-top:2px;"><span id="wa-risk-label" style="font-weight:700">--</span></div>
+          <div class="card-sub">2020–2024 annual mean</div>
         </div>
-
         <div class="card">
           <div class="card-icon">🏆</div>
-          <div class="card-label">Highest Exposure<br>Burden Country</div>
+          <div class="card-label">Highest Exposure<br>Country</div>
           <div class="card-main">
-            <div class="card-value" id="highest-country" style="font-size:20px">--</div>
+            <div class="card-value" id="highest-country" style="font-size:18px;line-height:1.2">--</div>
           </div>
-          <div class="card-unit" id="highest-score">-- /100</div>
-          <div class="card-sub">Most exposed urban population</div>
+          <div class="card-unit" id="highest-score">-- /100 NPWEI</div>
+          <div class="card-sub">Highest urban burden</div>
         </div>
-
         <div class="card">
           <div class="card-icon">🏙</div>
-          <div class="card-label">Highest Exposure<br>Urban Hotspot</div>
+          <div class="card-label">Top Urban<br>Hotspot City</div>
           <div class="card-main">
-            <div class="card-value" id="top-city" style="font-size:16px;line-height:1.2">--</div>
+            <div class="card-value" id="top-city" style="font-size:14px;line-height:1.3">--</div>
           </div>
-          <div class="card-unit" id="top-city-score">-- /100</div>
-          <div class="card-sub">Highest city NPWEI</div>
+          <div class="card-unit" id="top-city-score">-- /100 NPWEI</div>
+          <div class="card-sub">Highest city score</div>
         </div>
-
         <div class="card">
           <div class="card-icon">👥</div>
-          <div class="card-label">Urban Population<br>at Elevated Risk</div>
+          <div class="card-label">Urban Pop<br>at Elevated Risk</div>
           <div class="card-main">
-            <div class="card-value" id="high-risk-pop" style="font-size:20px">--</div>
+            <div class="card-value" id="high-risk-pop" style="font-size:22px">--</div>
           </div>
-          <div class="card-unit" id="high-risk-pct">-- % of urban population</div>
-          <div class="card-sub">NPWEI ≥ 60 (High or Severe)</div>
+          <div class="card-unit" id="high-risk-pct">-- % of urban pop</div>
+          <div class="card-sub">NPWEI ≥ 60 (High / Severe)</div>
         </div>
-
         <div class="card">
-          <div class="card-label">NPWEI Range</div>
-          <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">West Africa</div>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
-            <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim)">0</span>
-            <div class="range-bar"></div>
-            <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim)">100</span>
+          <div class="card-icon">📅</div>
+          <div class="card-label">Dry–Wet Season<br>NPWEI Gap</div>
+          <div class="card-main">
+            <div class="card-value" id="ov-season-diff" style="font-size:26px;color:#f97316">--</div>
+            <div class="card-unit">%</div>
           </div>
-          <div class="range-labels" style="padding:0 14px;margin-top:4px;"><span>Min</span><span>Max</span></div>
-          <div class="card-sub" style="margin-top:6px;">×10¹⁵ molecules cm⁻²</div>
+          <div class="card-sub">DJF higher than JJA avg</div>
         </div>
-      </div><!-- end .summary-row -->
+      </div>
+
+      <!-- ── SECTION 2: Map preview + City rankings ─────────────────── -->
+      <div class="ov-section-label" style="margin-top:4px;">
+        <span>🗺 Exposure Map &amp; City Rankings
+          <span style="font-size:9px;font-weight:400;color:var(--text-light);margin-left:6px;">Annual Mean · 2020–2024</span>
+        </span>
+        <button class="ov-goto-btn" onclick="navTo('page-map')">Open Full Map page →</button>
+      </div>
+      <div class="ov-mid-row">
+        <!-- Mini Leaflet map -->
+        <div class="mini-map-panel">
+          <div id="mini-map"></div>
+          <div class="mini-map-footer">
+            <div class="mini-colorbar">
+              <span>Low</span><div class="mini-colorbar-bar"></div><span>High</span>
+            </div>
+            <span style="font-size:9px;color:var(--text-dim);margin-left:10px;">NPWEI 0–100</span>
+          </div>
+        </div>
+        <!-- Top cities ranked list -->
+        <div class="top-cities-panel">
+          <div class="top-cities-hdr">
+            <span>🏙 Top 10 Cities by Exposure</span>
+            <button class="ov-goto-btn-sm" onclick="navTo('page-map')">Full table →</button>
+          </div>
+          <div class="top-cities-scroll"><div id="ov-cities-list"></div></div>
+          <div class="top-cities-foot">WorldPop 2020 · ≥50 ppl/km² urban pixels</div>
+        </div>
+      </div>
+
+      <!-- ── SECTION 3: Trends preview ─────────────────────────────── -->
+      <div class="ov-section-label">
+        <span>📈 Exposure Trends &amp; Seasonal Cycle
+          <span style="font-size:9px;font-weight:400;color:var(--text-light);margin-left:6px;">West Africa Average NPWEI</span>
+        </span>
+        <button class="ov-goto-btn" onclick="navTo('page-trends')">Open Full Trends page →</button>
+      </div>
+      <div class="ov-trends-row">
+        <!-- Annual/DJF/JJA trend -->
+        <div class="ov-chart-panel">
+          <div class="ov-chart-hdr">
+            <span class="ov-chart-title">Yearly Trend (2020–2024)</span>
+            <span class="ov-chart-badge">Annual · DJF · JJA</span>
+          </div>
+          <div class="ov-chart-unit">NPWEI (0–100)</div>
+          <div class="ov-chart-wrap"><canvas id="ov-trend-chart"></canvas></div>
+        </div>
+        <!-- Seasonal monthly cycle -->
+        <div class="ov-chart-panel">
+          <div class="ov-chart-hdr">
+            <span class="ov-chart-title">Seasonal Monthly Cycle</span>
+            <span class="ov-chart-badge">Dry vs Wet season</span>
+          </div>
+          <div class="ov-chart-unit">NPWEI (0–100)</div>
+          <div class="ov-chart-wrap"><canvas id="ov-seasonal-chart"></canvas></div>
+        </div>
+        <!-- Key insights -->
+        <div class="ov-insights-panel">
+          <div class="ov-insights-hdr">💡 Key Insights</div>
+          <div id="ov-insights-list"></div>
+        </div>
+      </div>
+
     </section>
 
     <!-- PAGE: MAP -->
@@ -542,7 +692,120 @@ function riskColor(s){
   if(s<20) return'#22c55e'; if(s<40) return'#84cc16'; if(s<60) return'#eab308'; if(s<80) return'#f97316'; return'#ef4444';
 }
 
-let currentSeason='Annual',mapOverlay=null,leafletMap=null;
+let miniMap=null, miniOverlay=null, ovTrendChart=null, ovSeasonalChart=null;
+
+/* ── Helper: navigate to a page and sync nav highlights ── */
+function navTo(pageId){
+  // find matching nav link by page id mapping
+  const map={'page-overview':0,'page-map':1,'page-trends':2};
+  const idx=map[pageId]??0;
+  const navLinks=document.querySelectorAll('.nav-link');
+  const sideLinks=document.querySelectorAll('.sidebar-nav-item');
+  showPage(pageId, navLinks[idx]||null);
+  sideLinks.forEach((el,i)=>{ if(i===idx) el.classList.add('active'); else el.classList.remove('active'); });
+}
+
+/* ── Mini Leaflet map ── */
+function initMiniMap(){
+  if(miniMap) return;
+  miniMap=L.map('mini-map',{center:[12,-1],zoom:4,zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,touchZoom:false,keyboard:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:8}).addTo(miniMap);
+  if(BOUNDS.south!==undefined){
+    miniOverlay=L.imageOverlay(MAP_IMAGES['Annual'],[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],{opacity:0.7}).addTo(miniMap);
+  }
+}
+
+/* ── Top cities list ── */
+function updateOverviewCities(season){
+  const cityNpwei=getCityNPWEI(season);
+  const sorted=Object.entries(cityNpwei).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  document.getElementById('ov-cities-list').innerHTML=sorted.map(([city,score],i)=>{
+    const risk=riskLabel(score);
+    const d=CITIES_PWE[city];
+    return`<div class="city-row">
+      <div class="city-rank">${i+1}</div>
+      <div class="city-name">${city}</div>
+      <div class="city-country">${d?.country??''}</div>
+      <div class="city-bar-wrap">
+        <div class="city-bar" style="width:${Math.max(score*.65,4)}px;background:${risk.color}"></div>
+        <span class="city-score" style="color:${risk.color}">${score}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── Season diff KPI card ── */
+function updateSeasonDiffCard(){
+  if(!Object.keys(COUNTRY_PWE).length) return;
+  const djfM=Object.values(getNPWEI('DJF')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
+  const jjaM=Object.values(getNPWEI('JJA')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
+  const diff=Math.round(((djfM-jjaM)/jjaM)*100);
+  const el=document.getElementById('ov-season-diff');
+  if(el){ el.textContent=`+${diff}`; el.style.color='#f97316'; }
+}
+
+/* ── Overview trend chart (yearly) ── */
+function initOverviewTrendChart(){
+  if(ovTrendChart) return;
+  const trend=getTrendNPWEI();
+  ovTrendChart=new Chart(document.getElementById('ov-trend-chart'),{
+    type:'line',
+    data:{labels:trend.years,datasets:[
+      {label:'Annual',data:trend.Annual,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',fill:true,tension:0.3,pointBackgroundColor:'#2563eb',pointRadius:3,borderWidth:2},
+      {label:'DJF (Dry)',data:trend.DJF,borderColor:'#f97316',backgroundColor:'transparent',tension:0.3,pointRadius:2,borderWidth:1.5,borderDash:[4,3]},
+      {label:'JJA (Wet)',data:trend.JJA,borderColor:'#22c55e',backgroundColor:'transparent',tension:0.3,pointRadius:2,borderWidth:1.5,borderDash:[4,3]}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}}},
+      scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
+  });
+}
+
+/* ── Overview seasonal chart (monthly) ── */
+function initOverviewSeasonalChart(){
+  if(ovSeasonalChart) return;
+  ovSeasonalChart=new Chart(document.getElementById('ov-seasonal-chart'),{
+    type:'line',
+    data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],datasets:[
+      {label:'Dry Season (Nov–May)',data:[85,90,82,75,65,45,35,30,35,50,65,80],borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.06)',fill:true,tension:0.4,pointRadius:2,borderWidth:2},
+      {label:'Wet Season (Jun–Oct)',data:[45,40,42,48,55,70,75,72,68,60,55,48],borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.06)',fill:true,tension:0.4,pointRadius:2,borderWidth:1.5,borderDash:[4,3]}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}}},
+      scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
+  });
+}
+
+/* ── Key insights ── */
+function updateOverviewInsights(season){
+  const npwei=getNPWEI(season);
+  const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
+  const top=sorted[0];
+  const hd=HEALTH_IMPACT[season];
+  const djfM=Object.values(getNPWEI('DJF')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
+  const jjaM=Object.values(getNPWEI('JJA')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
+  const diff=Math.round(((djfM-jjaM)/jjaM)*100);
+  const cityNpwei=getCityNPWEI(season);
+  const topCities=Object.entries(cityNpwei).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([c])=>c);
+  document.getElementById('ov-insights-list').innerHTML=[
+    {color:'#ef4444',text:`<strong>${top?.[0]??'--'}</strong> has the highest country-level NPWEI in West Africa — a critical industrial and urban NO₂ burden.`},
+    {color:'#f97316',text:`Dry season (DJF) average NPWEI is <strong>${diff}% higher</strong> than wet season (JJA) due to Harmattan winds and biomass burning.`},
+    {color:'#3b82f6',text:`An estimated <strong>${hd?.high_risk_population_millions?.toFixed(1)??'--'}M people</strong> (${hd?.high_risk_pct_urban??'--'}% of urban West Africa) live in high-risk NO₂ exposure zones.`},
+    {color:'#22c55e',text:`<strong>${topCities.join(', ')}</strong> are the top urban NO₂ hotspots. <span style="color:var(--accent);cursor:pointer;font-weight:600;" onclick="navTo('page-map')">Explore map →</span>`}
+  ].map(ins=>`<div class="ov-insight-item"><div class="ov-insight-dot" style="background:${ins.color}"></div><div class="ov-insight-text">${ins.text}</div></div>`).join('');
+}
+
+/* ── Init all overview extras ── */
+function initOverviewExtras(){
+  initMiniMap();
+  updateOverviewCities('Annual');
+  updateSeasonDiffCard();
+  initOverviewTrendChart();
+  initOverviewSeasonalChart();
+  updateOverviewInsights('Annual');
+}
+
+
 let trendChart=null,seasonalChart=null;
 let countryLayers={};
 
@@ -698,6 +961,9 @@ function applyFilters(){
   updateTable(season);
   updateInsights(season);
   updateCountryStyles(season);
+  updateOverviewCities(season);
+  updateOverviewInsights(season);
+  updateSeasonDiffCard();
 }
 document.getElementById('season-select').addEventListener('change',function(){applyFilters();});
 
@@ -745,7 +1011,6 @@ function showMethodology(){
   alert('Methodology\n\nPWE = Σ(population × NO₂) / Σ(population)\nOnly urban pixels (≥50 people/km²) included.\n\nNPWEI = (PWE - min) / (max - min) × 100\nNormalised per season across West African countries.');
 }
 
-// FIX 4: showPage now properly handles display types (grid vs block) and active nav state
 function showPage(pageId, clickedEl){
   // Hide all pages
   document.querySelectorAll('.page').forEach(page=>{
@@ -753,18 +1018,24 @@ function showPage(pageId, clickedEl){
     page.style.display='none';
   });
 
-  // Show target page with correct display type
+  // Show target page
   const target=document.getElementById(pageId);
   if(target){
     target.classList.add('active');
-    // overview uses .summary-row (grid), map uses .map-row (grid), trends uses .bottom-row (grid)
-    // but the section itself just needs to be visible — child grids handle their own display
     target.style.display='block';
   }
 
   // Update active state on nav links and sidebar items
   document.querySelectorAll('.nav-link, .sidebar-nav-item').forEach(el=>el.classList.remove('active'));
   if(clickedEl) clickedEl.classList.add('active');
+
+  // Invalidate Leaflet maps when their container becomes visible
+  if(pageId==='page-overview' && miniMap){
+    setTimeout(()=>miniMap.invalidateSize(), 50);
+  }
+  if(pageId==='page-map' && leafletMap){
+    setTimeout(()=>leafletMap.invalidateSize(), 50);
+  }
 }
 
 // FIX 5: Loading screen is properly hidden after data loads
@@ -782,6 +1053,9 @@ window.addEventListener('load', async()=>{
   const loader=document.getElementById('loading');
   loader.classList.add('hidden');
   setTimeout(()=>{ loader.style.display='none'; }, 450);
+
+  // Init overview summary extras after main data is ready
+  initOverviewExtras();
 });
 </script>
 </body>
