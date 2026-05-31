@@ -397,16 +397,14 @@ tbody td{padding:7px 10px;font-size:11px;}
 
       <div class="table-panel">
         <div class="table-header">
-          <div class="table-title">Population-Weighted NO₂ Exposure by Country</div>
+          <div class="table-title">Population-Weighted NO₂ Exposure by City</div>
           <div class="table-sub" id="table-season-label">Annual Average · 2020–2024</div>
         </div>
         <div class="table-scroll">
           <table>
             <thead>
               <tr>
-                <th>Country</th>
-                <th>NPWEI</th>
-                <th>Urban Pop (M)</th>
+                <th>City</th><th>Country</th><th>NPWEI</th><th>Urban Pop (M)</th>
               </tr>
             </thead>
             <tbody id="country-tbody"></tbody>
@@ -680,24 +678,21 @@ function updateSummaryCards(season){
 
 // ── COUNTRY TABLE ─────────────────────────────────────────────────
 function updateTable(season){
-  const npwei=getNPWEI(season);
+  const npwei=getCityNPWEI(season);
   const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
   document.getElementById('table-season-label').textContent={DJF:'Dry Season (DJF) · 2020–2024',JJA:'Wet Season (JJA) · 2020–2024',Annual:'Annual Average · 2020–2024'}[season];
-  document.getElementById('country-tbody').innerHTML=sorted.map(([country,score])=>{
+  document.getElementById('country-tbody').innerHTML=sorted.map(([city,score])=>{
     const risk=riskLabel(score);
-    const urbanPop=COUNTRY_PWE[country]?.urban_population_millions??'--';
-    return`<tr onclick="highlightCountry('${country}')">
-      <td class="t-country">${country}</td>
-      <td>
-        <div class="t-bar-wrap">
-          <div class="t-bar" style="width:${Math.max(score*1.2,4)}px;background:${risk.color}"></div>
-          <span class="t-val" style="color:${risk.color}">${score}</span>
-        </div>
-      </td>
-      <td class="t-pop">${typeof urbanPop==='number'?urbanPop.toFixed(1):urbanPop}</td>
+    const d=CITIES_PWE[city];
+    return`<tr>
+      <td class="t-country">${city}</td>
+      <td style="font-size:10px;color:var(--text-dim)">${d.country}</td>
+      <td><div class="t-bar-wrap"><div class="t-bar" style="width:${Math.max(score*1.2,4)}px;background:${risk.color}"></div><span class="t-val" style="color:${risk.color}">${score}</span></div></td>
+      <td class="t-pop">${d.urban_pop?.toFixed(1)??'--'}</td>
     </tr>`;
   }).join('');
 }
+  
 function highlightCountry(name){
   document.querySelectorAll('#country-tbody tr').forEach(r=>r.classList.remove('row-highlight'));
   event.currentTarget.classList.add('row-highlight');
