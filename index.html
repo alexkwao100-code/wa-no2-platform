@@ -440,51 +440,6 @@ tbody td{padding:7px 10px;font-size:11px;}
       </div>
     </div>
 
-    <!-- CITIES -->
-    <div id="cities-section" style="background:var(--panel);border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden;">
-      <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);">Cities at Risk</div>
-          <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Urban centre NO₂ exposure rankings</div>
-        </div>
-        <div class="seg-ctrl">
-          <button class="seg-btn" onclick="setCitySeason('DJF',this)">DJF</button>
-          <button class="seg-btn active" onclick="setCitySeason('Annual',this)">Annual</button>
-          <button class="seg-btn" onclick="setCitySeason('JJA',this)">JJA</button>
-        </div>
-      </div>
-      <div style="padding:14px;">
-        <div id="cities-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;"></div>
-      </div>
-    </div>
-
-    <!-- HEALTH IMPACT -->
-    <div id="health-section" style="background:var(--panel);border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden;">
-      <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);">Health Impact</div>
-          <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Urban population distribution across risk tiers</div>
-        </div>
-        <div class="seg-ctrl">
-          <button class="seg-btn" onclick="setHealthSeason('DJF',this)">DJF</button>
-          <button class="seg-btn active" onclick="setHealthSeason('Annual',this)">Annual</button>
-          <button class="seg-btn" onclick="setHealthSeason('JJA',this)">JJA</button>
-        </div>
-      </div>
-      <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div>
-          <div style="font-size:10px;font-weight:600;color:var(--text-dim);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;">Population by Risk Tier (Millions)</div>
-          <div id="health-tier-bars"></div>
-          <div style="font-size:9px;color:var(--text-dim);margin-top:10px;padding:8px;background:var(--panel2);border-radius:4px;border:1px solid var(--border);line-height:1.5;">⚠ Figures are urban population estimates (WorldPop 2020). These are exposure estimates, not clinical case counts.</div>
-        </div>
-        <div>
-          <div id="health-stats"></div>
-          <div style="font-size:10px;font-weight:600;color:var(--text-dim);margin:12px 0 8px;text-transform:uppercase;letter-spacing:.06em;">Countries at High Risk (NPWEI ≥ 60)</div>
-          <div id="health-high-risk-list"></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <footer id="footer" class="footer">
