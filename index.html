@@ -14,9 +14,8 @@
   --navy:#0d1b2a;--navy2:#1a2d42;--navy3:#243447;
   --bg:#f0f4f8;--panel:#ffffff;--panel2:#f8fafc;
   --border:#e2e8f0;--border2:#cbd5e1;
-  --accent:#2563eb;--accent2:#f97316;--accent3:#16a34a;
+  --accent:#2563eb;--accent2:#f97316;
   --text:#0f172a;--text-dim:#64748b;--text-light:#94a3b8;
-  --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;--blue:#3b82f6;
   --font:'Inter',sans-serif;--font-mono:'Space Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -33,7 +32,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .nav-link{color:#94a3b8;font-size:12px;font-weight:500;padding:6px 12px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:all .15s;border:none;background:none;}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.08);}
 .nav-link.active{color:#fff;background:rgba(37,99,235,.5);}
-.nav-link span{font-size:13px;}
 .topbar-right{display:flex;align-items:center;gap:8px;}
 .dl-btn{background:#2563eb;color:#fff;border:none;padding:7px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s;}
 .dl-btn:hover{background:#1d4ed8;}
@@ -51,8 +49,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .sidebar-nav-item.active{color:#fff;background:#2563eb;}
 .sidebar-nav-item span{font-size:14px;width:16px;text-align:center;}
 .sidebar-divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:8px 0;}
-
-/* FILTERS */
 .filter-group{margin-bottom:10px;}
 .filter-label{font-size:10px;color:#64748b;font-weight:500;margin-bottom:4px;display:block;}
 .filter-select{width:100%;background:var(--navy2);border:1px solid var(--navy3);color:#cbd5e1;font-size:11px;padding:6px 8px;border-radius:4px;cursor:pointer;outline:none;font-family:var(--font);}
@@ -60,22 +56,24 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .time-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
 .apply-btn{width:100%;background:#2563eb;color:#fff;border:none;padding:7px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .15s;}
 .apply-btn:hover{background:#1d4ed8;}
-
-/* ABOUT BOX */
 .about-box{margin:10px 14px;background:var(--navy2);border:1px solid var(--navy3);border-radius:6px;padding:10px;}
 .about-box-title{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:6px;}
 .about-box p{font-size:10px;color:#94a3b8;line-height:1.5;}
 .about-box .unit{color:#38bdf8;font-family:var(--font-mono);font-size:10px;margin-top:4px;display:block;}
-.learn-more{font-size:10px;color:#2563eb;text-decoration:none;display:inline-block;margin-top:6px;}
 .data-source{font-size:9px;color:#475569;margin-top:8px;line-height:1.5;padding-top:8px;border-top:1px solid var(--navy3);}
 
-/* MAIN CONTENT */
+/* MAIN */
 .main{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
 .content{padding:16px;flex:1;}
 
 /* SUMMARY CARDS */
 .summary-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px;position:relative;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;cursor:default;}
+.card{
+  background:var(--panel);border:1px solid var(--border);border-radius:8px;
+  padding:14px 16px;position:relative;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  cursor:default;
+}
 .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(37,99,235,.12);border-color:#93c5fd;}
 .card-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;line-height:1.3;}
 .card-main{display:flex;align-items:flex-end;gap:8px;margin-bottom:2px;}
@@ -83,7 +81,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .card-unit{font-size:10px;color:var(--text-dim);margin-bottom:3px;line-height:1.3;}
 .card-sub{font-size:10px;color:var(--text-dim);margin-top:2px;}
 .card-icon{position:absolute;top:12px;right:12px;font-size:22px;opacity:.15;}
-.card-range{display:flex;align-items:center;gap:6px;margin-top:8px;}
 .range-bar{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#2563eb,#22c55e,#eab308,#f97316,#ef4444);}
 .range-labels{display:flex;justify-content:space-between;font-size:8px;color:var(--text-dim);margin-top:2px;font-family:var(--font-mono);}
 
@@ -94,8 +91,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .map-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
 .map-title-info{width:16px;height:16px;border-radius:50%;border:1px solid var(--border2);display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:var(--text-dim);cursor:help;}
 .map-controls{display:flex;align-items:center;gap:8px;}
-.ctrl-select{background:var(--panel2);border:1px solid var(--border);color:var(--text);font-size:11px;padding:5px 8px;border-radius:4px;cursor:pointer;outline:none;font-family:var(--font);}
-.ctrl-select:focus{border-color:var(--accent);}
 #map{flex:1;min-height:380px;background:#e8f0f8;}
 .map-colorbar{padding:10px 14px;border-top:1px solid var(--border);background:var(--panel);}
 .colorbar-title{font-size:9px;color:var(--text-dim);margin-bottom:4px;font-weight:500;}
@@ -103,7 +98,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .colorbar-bar{flex:1;height:10px;border-radius:3px;background:linear-gradient(90deg,#00007f,#0000ff,#00ffff,#00ff00,#ffff00,#ff0000,#7f0000);}
 .colorbar-ticks{display:flex;justify-content:space-between;font-size:8px;color:var(--text-dim);margin-top:2px;font-family:var(--font-mono);}
 
-/* COUNTRY TABLE PANEL */
+/* TABLE PANEL */
 .table-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
 .table-header{padding:10px 14px;border-bottom:1px solid var(--border);}
 .table-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
@@ -121,32 +116,31 @@ tbody td{padding:7px 10px;font-size:11px;}
 .t-pop{font-size:10px;color:var(--text-dim);}
 .table-note{font-size:9px;color:var(--text-dim);padding:8px 10px;border-top:1px solid var(--border);background:var(--panel2);line-height:1.4;}
 
-/* BOTTOM ROW */
+/* BOTTOM ROW — 3 columns */
 .bottom-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
-.chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;}
+.chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;transition:box-shadow .2s ease;}
+.chart-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
 .chart-panel-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;}
 .chart-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
 .chart-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 6px;border-radius:3px;white-space:nowrap;}
 .chart-unit{font-size:9px;color:var(--text-dim);margin-bottom:10px;font-family:var(--font-mono);}
 .chart-wrap{flex:1;position:relative;min-height:140px;}
 
-/* FIRE MAP PANEL */
-.fire-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
-.fire-header{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.fire-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
-.fire-badge{font-size:9px;color:var(--text-dim);}
-#fire-map{flex:1;min-height:140px;background:#e8f0f8;}
-.fire-legend{padding:6px 10px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;}
-.fire-legend-bar{flex:1;height:6px;border-radius:2px;background:linear-gradient(90deg,#fee5d9,#fcbba1,#fc9272,#fb6a4a,#ef3b2c,#cb181d,#99000d);}
-
 /* INSIGHTS */
-.insights-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;}
+.insights-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;transition:box-shadow .2s ease;}
+.insights-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
 .insights-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:12px;}
-.insight-item{display:flex;gap:8px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.insight-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.insight-item{display:flex;gap:8px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);transition:background .15s;border-radius:4px;padding:8px;}
+.insight-item:hover{background:var(--panel2);}
+.insight-item:last-child{border-bottom:none;margin-bottom:0;}
 .insight-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:2px;}
 .insight-text{font-size:11px;line-height:1.5;color:var(--text-dim);}
 .insight-text strong{color:var(--text);}
+
+/* SEG CTRL */
+.seg-ctrl{display:flex;background:var(--panel2);border:1px solid var(--border);border-radius:5px;overflow:hidden;}
+.seg-btn{font-size:10px;font-weight:500;padding:5px 10px;cursor:pointer;border:none;background:transparent;color:var(--text-dim);transition:all .15s;}
+.seg-btn.active{background:#fff;color:var(--accent);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1);}
 
 /* FOOTER */
 .footer{background:var(--navy);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
@@ -161,18 +155,13 @@ tbody td{padding:7px 10px;font-size:11px;}
 .loading-bar{height:100%;background:#2563eb;animation:loadBar 1.8s ease forwards;}
 @keyframes loadBar{from{width:0}to{width:100%}}
 
+/* HIGHLIGHT */
+.row-highlight{background:#eff6ff!important;}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
-
-/* SEASON TOGGLE */
-.seg-ctrl{display:flex;background:var(--panel2);border:1px solid var(--border);border-radius:5px;overflow:hidden;}
-.seg-btn{font-size:10px;font-weight:500;padding:5px 10px;cursor:pointer;border:none;background:transparent;color:var(--text-dim);transition:all .15s;}
-.seg-btn.active{background:#fff;color:var(--accent);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1);}
-
-/* HIGHLIGHT */
-.row-highlight{background:#eff6ff!important;}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -293,11 +282,9 @@ tbody td{padding:7px 10px;font-size:11px;}
     <div class="about-box-title">About NPWEI</div>
     <p>Normalised Population-Weighted NO₂ Exposure Index. Urban pixels only (≥50 people/km²).</p>
     <span class="unit">Scale: 0–100 (normalised per season)</span>
-    <a class="learn-more" href="#footer">Learn more →</a>
     <div class="data-source">
       Data: Sentinel-5P TROPOMI<br>
       Population: WorldPop 2020<br>
-      Fire: NASA FIRMS<br>
       Urban threshold: ≥50 ppl/km²
     </div>
   </div>
@@ -351,16 +338,14 @@ tbody td{padding:7px 10px;font-size:11px;}
 
       <div class="card">
         <div class="card-label">NPWEI Range</div>
-        <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;" id="range-region">West Africa</div>
-        <div class="card-range">
+        <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;">West Africa</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
           <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim)">0</span>
           <div class="range-bar"></div>
           <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim)">100</span>
         </div>
-        <div class="range-labels" style="margin-top:4px;padding:0 14px;">
-          <span>Min</span><span>Max</span>
-        </div>
-        <div class="card-sub" style="margin-top:6px;"></div>
+        <div class="range-labels" style="padding:0 14px;margin-top:4px;"><span>Min</span><span>Max</span></div>
+        <div class="card-sub" style="margin-top:6px;">×10¹⁵ molecules cm⁻²</div>
       </div>
     </div>
 
@@ -369,7 +354,7 @@ tbody td{padding:7px 10px;font-size:11px;}
       <div class="map-panel">
         <div class="map-header">
           <div class="map-title">
-            Population Weighted Exposure - Normalized (NPWE)
+            Population Weighted Exposure — Normalized (NPWEI)
             <div class="map-title-info" title="Normalised Population-Weighted Exposure Index. Only urban pixels included.">?</div>
           </div>
           <div class="map-controls">
@@ -403,7 +388,10 @@ tbody td{padding:7px 10px;font-size:11px;}
           <table>
             <thead>
               <tr>
-                <th>City</th><th>Country</th><th>NPWEI</th><th>Urban Pop (M)</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>NPWEI</th>
+                <th>Urban Pop (M)</th>
               </tr>
             </thead>
             <tbody id="country-tbody"></tbody>
@@ -413,10 +401,9 @@ tbody td{padding:7px 10px;font-size:11px;}
       </div>
     </div>
 
-    <!-- BOTTOM ROW: Trend + Monthly + Fire + Insights -->
-    <div id="bottom-row" class="bottom-row" style="margin-bottom:16px;">
-
-      <div class="chart-panel" id="trends-section">
+    <!-- BOTTOM ROW: Trend + Seasonal + Insights -->
+    <div id="trends-section" class="bottom-row">
+      <div class="chart-panel">
         <div class="chart-panel-header">
           <div class="chart-title">NO₂ Exposure Trend<br>(West Africa Average)</div>
           <div class="chart-badge">2020–2024 trend</div>
@@ -445,14 +432,14 @@ tbody td{padding:7px 10px;font-size:11px;}
   <footer id="footer" class="footer">
     <div>
       <p style="color:#94a3b8;font-weight:600;margin-bottom:2px;">West Africa NO₂ Exposure Risk Platform</p>
-      <p>Air Pollution Lab · KNUST, Kumasi, Ghana</p>
+      <p>Climate and Health Research Lab (CAHL) · KNUST, Kumasi, Ghana</p>
     </div>
     <div style="text-align:center;">
-      <p>Data: Sentinel-5P TROPOMI · NASA Gridded Population · NASA FIRMS</p>
+      <p>Data: Sentinel-5P TROPOMI · WorldPop 2020 · NASA FIRMS</p>
       <p>Period: January 2020 – December 2024</p>
     </div>
     <div style="text-align:right;">
-      <a href="mailto:airpollutionlab@gmail.com">airpollutionlab@gmail.com</a>
+      <a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a>
       <p style="margin-top:2px;cursor:pointer;color:#2563eb;" onclick="showMethodology()">Methodology ↗</p>
     </div>
   </footer>
@@ -460,7 +447,6 @@ tbody td{padding:7px 10px;font-size:11px;}
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────
 let SUMMARY={},COUNTRY_PWE={},SEASONAL_TREND={},BOUNDS={},CITIES_PWE={},HEALTH_IMPACT={},FIRE_DRIVERS={};
 const MAP_IMAGES={DJF:'web_data/pwe_djf.png',JJA:'web_data/pwe_jja.png',Annual:'web_data/pwe_annual.png'};
 
@@ -476,7 +462,6 @@ async function loadData(){
   ]);
 }
 
-// ── NORMALISATION ─────────────────────────────────────────────────
 function normalise(rawValues){
   const vals=Object.values(rawValues).filter(v=>v!==null&&!isNaN(v));
   const mn=Math.min(...vals),mx=Math.max(...vals);
@@ -501,7 +486,6 @@ function getTrendNPWEI(){
   const years=Object.keys(SEASONAL_TREND).sort();
   return{years,DJF:years.map(y=>norm(SEASONAL_TREND[y].DJF)),JJA:years.map(y=>norm(SEASONAL_TREND[y].JJA)),Annual:years.map(y=>norm(SEASONAL_TREND[y].Annual))};
 }
-
 function riskLabel(s){
   if(s<20)return{label:'Minimal',color:'#22c55e'};
   if(s<40)return{label:'Elevated',color:'#84cc16'};
@@ -513,22 +497,26 @@ function riskColor(s){
   if(s<20)return'#22c55e';if(s<40)return'#84cc16';if(s<60)return'#eab308';if(s<80)return'#f97316';return'#ef4444';
 }
 
-// ── STATE ─────────────────────────────────────────────────────────
-let currentSeason='Annual',mapOverlay=null,leafletMap=null,fireMap=null,fireLayer=null;
+let currentSeason='Annual',mapOverlay=null,leafletMap=null;
 let trendChart=null,seasonalChart=null;
 let countryLayers={};
 
-// ── MAP ───────────────────────────────────────────────────────────
 function initMap(){
   leafletMap=L.map('map',{center:[12,-1],zoom:5,zoomControl:true,attributionControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:10,attribution:'© CARTO | MapLibre'}).addTo(leafletMap);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:10,attribution:'© CARTO'}).addTo(leafletMap);
   updateMapOverlay('Annual');
-  function loadCountryGeoJSON(){
-  // Create a custom pane above the image overlay
+  loadCountryGeoJSON();
+}
+
+function updateMapOverlay(season){
+  if(mapOverlay)leafletMap.removeLayer(mapOverlay);
+  mapOverlay=L.imageOverlay(MAP_IMAGES[season],[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],{opacity:0.65}).addTo(leafletMap);
+}
+
+function loadCountryGeoJSON(){
   leafletMap.createPane('bordersPane');
   leafletMap.getPane('bordersPane').style.zIndex=450;
   leafletMap.getPane('bordersPane').style.pointerEvents='none';
-
   fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
     .then(r=>r.json()).then(data=>{
       const waNames=Object.keys(COUNTRY_PWE);
@@ -547,36 +535,15 @@ function initMap(){
       });
     }).catch(()=>console.log('GeoJSON failed'));
 }
-}
-function updateMapOverlay(season){
-  if(mapOverlay)leafletMap.removeLayer(mapOverlay);
-  mapOverlay=L.imageOverlay(MAP_IMAGES[season],[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],{opacity:0.65}).addTo(leafletMap);
-}
-function loadCountryGeoJSON(){
-  fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
-    .then(r=>r.json()).then(data=>{
-      const waNames=Object.keys(COUNTRY_PWE);
-      const npwei=getNPWEI(currentSeason);
-      data.features.filter(f=>waNames.some(n=>f.properties.ADMIN===n||f.properties.NAME===n)).forEach(feature=>{
-        const name=waNames.find(n=>feature.properties.ADMIN===n||feature.properties.NAME===n);
-        const score=npwei[name]??0;
-        const layer=L.geoJSON(feature,{style:{fillColor:riskColor(score),fillOpacity:0.0,color:'#1e293b',weight:2,opacity:1}})
-          .bindTooltip(`<strong>${name}</strong><br>NPWEI: ${score}/100<br>Risk: ${riskLabel(score).label}`,{sticky:true});
-        layer.on('mouseover',function(){this.setStyle({fillOpacity:0.35,weight:2});});
-        layer.on('mouseout',function(){this.setStyle({fillOpacity:0.1,weight:1});});
-        layer.addTo(leafletMap);
-        countryLayers[name]=layer;
-      });
-    }).catch(()=>console.log('GeoJSON failed'));
-}
+
 function updateCountryStyles(season){
   const npwei=getNPWEI(season);
   for(const[name,layer]of Object.entries(countryLayers)){
     const score=npwei[name]??0;
-    layer.setStyle({fillColor:riskColor(score)});
     layer.setTooltipContent(`<strong>${name}</strong><br>NPWEI: ${score}/100<br>Risk: ${riskLabel(score).label}`);
   }
 }
+
 function setMapSeason(season,btn){
   document.querySelectorAll('#map-season-ctrl .seg-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -584,7 +551,6 @@ function setMapSeason(season,btn){
   updateCountryStyles(season);
 }
 
-// ── SUMMARY CARDS ─────────────────────────────────────────────────
 function updateSummaryCards(season){
   const npwei=getNPWEI(season);
   const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
@@ -598,7 +564,6 @@ function updateSummaryCards(season){
   document.getElementById('highest-country').textContent=topC;
   document.getElementById('highest-country').style.color=riskColor(topS);
   document.getElementById('highest-score').textContent=`${topS}/100`;
-  // Top city
   const cityNpwei=getCityNPWEI(season);
   const topCityEntry=Object.entries(cityNpwei).sort((a,b)=>b[1]-a[1])[0];
   if(topCityEntry){
@@ -608,7 +573,6 @@ function updateSummaryCards(season){
     document.getElementById('top-city').style.color=riskColor(cs);
     document.getElementById('top-city-score').textContent=`${cs}/100`;
   }
-  // Health
   const hd=HEALTH_IMPACT[season];
   if(hd){
     document.getElementById('high-risk-pop').textContent=`${hd.high_risk_population_millions?.toFixed(1)??'--'}M`;
@@ -617,7 +581,6 @@ function updateSummaryCards(season){
   }
 }
 
-// ── COUNTRY TABLE ─────────────────────────────────────────────────
 function updateTable(season){
   const npwei=getCityNPWEI(season);
   const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
@@ -633,18 +596,7 @@ function updateTable(season){
     </tr>`;
   }).join('');
 }
-  
-function highlightCountry(name){
-  document.querySelectorAll('#country-tbody tr').forEach(r=>r.classList.remove('row-highlight'));
-  event.currentTarget.classList.add('row-highlight');
-  if(countryLayers[name]){
-    leafletMap.fitBounds(countryLayers[name].getBounds(),{padding:[20,20]});
-    countryLayers[name].setStyle({fillOpacity:0.5,weight:2});
-    setTimeout(()=>countryLayers[name].setStyle({fillOpacity:0.1,weight:1}),2000);
-  }
-}
 
-// ── CHARTS ────────────────────────────────────────────────────────
 function initCharts(){
   Chart.defaults.color='#64748b';
   Chart.defaults.font={family:"'Inter',sans-serif",size:10};
@@ -662,17 +614,9 @@ function initCharts(){
       scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
   });
 
-  // Monthly seasonal cycle using SEASONAL_TREND
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const fd=FIRE_DRIVERS;
-  const monthlyClim=months.map((_,i)=>fd.monthly_climatology?.[i+1]?.mean_frp??0);
-  // Normalise monthly fire for display as proxy seasonal cycle
-  const maxF=Math.max(...monthlyClim);
-  const normF=monthlyClim.map(v=>maxF>0?Math.round((v/maxF)*100):0);
-
   seasonalChart=new Chart(document.getElementById('seasonal-chart'),{
     type:'line',
-    data:{labels:months,datasets:[
+    data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],datasets:[
       {label:'Dry Season (Nov–May)',data:[85,90,82,75,65,45,35,30,35,50,65,80],borderColor:'#f97316',backgroundColor:'transparent',tension:0.4,pointRadius:3,borderWidth:2},
       {label:'Wet Season (Jun–Oct)',data:[45,40,42,48,55,70,75,72,68,60,55,48],borderColor:'#22c55e',backgroundColor:'transparent',tension:0.4,pointRadius:3,borderWidth:2,borderDash:[4,3]}
     ]},
@@ -680,20 +624,18 @@ function initCharts(){
       plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:8}}},
       scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
   });
+}
 
-// ── INSIGHTS ──────────────────────────────────────────────────────
 function updateInsights(season){
   const npwei=getNPWEI(season);
   const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
   const top=sorted[0];
-  const highRisk=sorted.filter(([,v])=>v>=60);
   const hd=HEALTH_IMPACT[season];
   const djfM=Object.values(getNPWEI('DJF')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
   const jjaM=Object.values(getNPWEI('JJA')).reduce((a,b)=>a+b,0)/Object.keys(COUNTRY_PWE).length;
   const diff=Math.round(((djfM-jjaM)/jjaM)*100);
   const cityNpwei=getCityNPWEI(season);
   const topCities=Object.entries(cityNpwei).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([c])=>c);
-
   document.getElementById('insights-list').innerHTML=[
     {color:'#ef4444',text:`High NO₂ exposure hotspots are concentrated in major urban and industrial areas, with <strong>${top[0]}</strong> recording the highest NPWEI.`},
     {color:'#f97316',text:`Dry season (DJF) average NPWEI is <strong>${diff}% higher</strong> than wet season (JJA), driven by biomass burning and Harmattan-suppressed vertical mixing.`},
@@ -702,75 +644,6 @@ function updateInsights(season){
   ].map(ins=>`<div class="insight-item"><div class="insight-dot" style="background:${ins.color}"></div><div class="insight-text">${ins.text}</div></div>`).join('');
 }
 
-// ── CITIES ────────────────────────────────────────────────────────
-function updateCities(season){
-  const npwei=getCityNPWEI(season);
-  const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
-  document.getElementById('cities-grid').innerHTML=sorted.map(([city,score])=>{
-    const d=CITIES_PWE[city];
-    const risk=riskLabel(score);
-    return`<div style="background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:10px;border-left:3px solid ${risk.color};">
-      <div style="font-size:11px;font-weight:700;color:var(--text)">${city}</div>
-      <div style="font-size:9px;color:var(--text-dim);margin-bottom:6px">${d.country}</div>
-      <div style="font-size:20px;font-weight:700;color:${risk.color};line-height:1">${score}</div>
-      <div style="font-size:9px;color:${risk.color};font-weight:500;margin-top:2px">${risk.label}</div>
-      <div style="font-size:9px;color:var(--text-dim);margin-top:4px">${d.urban_pop?.toFixed(1)??'--'}M urban</div>
-    </div>`;
-  }).join('');
-}
-function setCitySeason(season,btn){
-  btn.closest('.seg-ctrl').querySelectorAll('.seg-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updateCities(season);
-}
-
-// ── HEALTH ────────────────────────────────────────────────────────
-function updateHealth(season){
-  const hd=HEALTH_IMPACT[season];
-  if(!hd)return;
-  const tiers=[
-    {name:'Minimal',color:'#22c55e'},{name:'Elevated',color:'#84cc16'},
-    {name:'Moderate',color:'#eab308'},{name:'High',color:'#f97316'},{name:'Severe/Critical',color:'#ef4444'}
-  ];
-  const pop=hd.tier_populations_millions;
-  const total=Object.values(pop).reduce((a,b)=>a+b,0);
-  document.getElementById('health-tier-bars').innerHTML=tiers.map(t=>{
-    const v=pop[t.name]??0;
-    const pct=total>0?Math.round((v/total)*100):0;
-    return`<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
-      <div style="font-size:10px;font-weight:600;color:${t.color};width:110px;flex-shrink:0">${t.name}</div>
-      <div style="flex:1;background:var(--panel2);border-radius:3px;height:14px;overflow:hidden;border:1px solid var(--border)">
-        <div style="width:${pct}%;height:100%;background:${t.color};border-radius:3px;"></div>
-      </div>
-      <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim);width:48px;text-align:right">${v.toFixed(1)}M</div>
-    </div>`;
-  }).join('');
-  const waRisk=riskLabel(hd.wa_npwei);
-  document.getElementById('health-stats').innerHTML=`
-    <div style="background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;">
-      <div style="font-size:22px;font-weight:700;color:${waRisk.color}">${hd.wa_npwei}/100</div>
-      <div style="font-size:10px;color:var(--text-dim);margin-top:2px">West Africa average NPWEI (${season}) — ${waRisk.label}</div>
-    </div>
-    <div style="background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;">
-      <div style="font-size:22px;font-weight:700;color:#ef4444">${hd.high_risk_population_millions?.toFixed(1)??'--'}M</div>
-      <div style="font-size:10px;color:var(--text-dim);margin-top:2px">Urban population in High or Severe/Critical risk areas</div>
-    </div>`;
-  document.getElementById('health-high-risk-list').innerHTML=(hd.high_risk_countries||[]).map(c=>{
-    const risk=riskLabel(c.npwei);
-    return`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-      <div style="width:8px;height:8px;border-radius:2px;background:${risk.color};flex-shrink:0"></div>
-      <span style="font-size:11px;font-weight:500;color:var(--text)">${c.country}</span>
-      <span style="font-family:var(--font-mono);font-size:10px;color:${risk.color};margin-left:auto">${c.npwei}/100</span>
-    </div>`;
-  }).join('');
-}
-function setHealthSeason(season,btn){
-  btn.closest('.seg-ctrl').querySelectorAll('.seg-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updateHealth(season);
-}
-
-// ── GLOBAL FILTER ─────────────────────────────────────────────────
 function applyFilters(){
   const season=document.getElementById('season-select').value;
   currentSeason=season;
@@ -781,7 +654,6 @@ function applyFilters(){
 }
 document.getElementById('season-select').addEventListener('change',function(){applyFilters();});
 
-// ── DROPDOWN POPULATION ───────────────────────────────────────────
 function populateDropdowns(){
   const cSel=document.getElementById('country-select');
   Object.keys(COUNTRY_PWE).sort().forEach(name=>{
@@ -797,7 +669,6 @@ function populateDropdowns(){
   });
 }
 
-// ── SIDEBAR TOGGLE ────────────────────────────────────────────────
 function toggleSidebar(){
   document.body.classList.toggle('sidebar-open');
 }
@@ -805,26 +676,28 @@ document.addEventListener('click',function(e){
   if(window.innerWidth<=600){
     const sidebar=document.querySelector('.sidebar');
     const menuBtn=document.querySelector('.menu-btn');
-    if(!sidebar.contains(e.target)&&!menuBtn.contains(e.target)){
+    if(sidebar&&menuBtn&&!sidebar.contains(e.target)&&!menuBtn.contains(e.target)){
       document.body.classList.remove('sidebar-open');
     }
   }
 });
 
-// ── ACTIONS ───────────────────────────────────────────────────────
 function downloadData(){
-  const npwei=getNPWEI(currentSeason);
-  const rows=[['Country','NPWEI','Risk Level','Season']];
-  for(const[c,s]of Object.entries(npwei))rows.push([c,s,riskLabel(s).label,currentSeason]);
+  const npwei=getCityNPWEI(currentSeason);
+  const rows=[['City','Country','NPWEI','Risk Level','Season']];
+  for(const[city,score]of Object.entries(npwei)){
+    const d=CITIES_PWE[city];
+    rows.push([city,d?.country??'',score,riskLabel(score).label,currentSeason]);
+  }
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
-  a.download=`wa_no2_npwei_${currentSeason}.csv`;a.click();
-}
-function showMethodology(){
-  alert('Methodology\n\nPWE = Σ(population × NO₂) / Σ(population)\nOnly urban pixels (≥50 people/km²) included.\n\nNPWEI = (PWE - min) / (max - min) × 100\nNormalised per season across West African countries.\n\nFire: NASA FIRMS VIIRS FRP (MW).');
+  a.download=`wa_no2_cities_npwei_${currentSeason}.csv`;a.click();
 }
 
-// ── INIT ──────────────────────────────────────────────────────────
+function showMethodology(){
+  alert('Methodology\n\nPWE = Σ(population × NO₂) / Σ(population)\nOnly urban pixels (≥50 people/km²) included.\n\nNPWEI = (PWE - min) / (max - min) × 100\nNormalised per season across West African countries.');
+}
+
 window.addEventListener('load',async()=>{
   await loadData();
   setTimeout(()=>{const l=document.getElementById('loading');l.style.opacity='0';setTimeout(()=>l.style.display='none',400);},1600);
@@ -832,8 +705,6 @@ window.addEventListener('load',async()=>{
   updateSummaryCards('Annual');
   updateTable('Annual');
   updateInsights('Annual');
-  updateCities('Annual');
-  updateHealth('Annual');
   populateDropdowns();
   initCharts();
 });
