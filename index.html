@@ -201,9 +201,9 @@ tbody td{padding:7px 10px;font-size:11px;}
     </div>
   </a>
   <nav class="topbar-nav">
-    <a class="nav-link active" href="#overview"><span>⬛</span> Dashboard</a>
-    <a class="nav-link" href="#map-section"><span>🗺</span> Map</a>
-    <a class="nav-link" href="#trends-section"><span>📈</span> Trends</a>
+    <a class="nav-link active" onclick="showPage('page-overview')">Dashboard</a>
+    <a class="nav-link" onclick="showPage('page-map')">Map</a>
+    <a class="nav-link" onclick="showPage('page-trends')">Trends</a>
     <a class="nav-link" href="#cities-section"><span>🏙</span> Cities</a>
   </nav>
   <div class="topbar-right">
@@ -218,9 +218,9 @@ tbody td{padding:7px 10px;font-size:11px;}
 <aside class="sidebar">
   <div class="sidebar-section">
     <div class="sidebar-section-title">Explore</div>
-    <a class="sidebar-nav-item active" href="#overview"><span>⬛</span> Overview</a>
-    <a class="sidebar-nav-item" href="#map-section"><span>🗺</span> Interactive Map</a>
-    <a class="sidebar-nav-item" href="#trends-section"><span>📈</span> Trends & Analytics</a>
+    <a class="sidebar-nav-item active" onclick="showPage('page-overview')">
+    <a class="sidebar-nav-item" onclick="showPage('page-map')">
+    <a class="sidebar-nav-item" onclick="showPage('page-trends')">
     <a class="sidebar-nav-item" href="#cities-section"><span>🏙</span> Cities at Risk</a>
     <a class="sidebar-nav-item" href="#health-section"><span>🫁</span> Health Impact</a>
     <a class="sidebar-nav-item" href="#footer"><span>ℹ</span> About</a>
@@ -295,7 +295,7 @@ tbody td{padding:7px 10px;font-size:11px;}
   <div class="content">
 
     <!-- SUMMARY CARDS -->
-    <div id="overview" class="summary-row">
+    <section id="page-overview" class="page">
       <div class="card">
         <div class="card-icon">📊</div>
         <div class="card-label">West Africa Average<br>Exposure Risk</div>
@@ -350,7 +350,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     </div>
 
     <!-- MAP + TABLE -->
-    <div id="map-section" class="map-row">
+    <section id="page-map" class="page" style="display:none;">
       <div class="map-panel">
         <div class="map-header">
           <div class="map-title">
@@ -402,7 +402,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     </div>
 
     <!-- BOTTOM ROW: Trend + Seasonal + Insights -->
-    <div id="trends-section" class="bottom-row">
+    <section id="page-trends" class="page" style="display:none;">
       <div class="chart-panel">
         <div class="chart-panel-header">
           <div class="chart-title">NO₂ Exposure Trend<br>(West Africa Average)</div>
@@ -698,9 +698,11 @@ function showMethodology(){
   alert('Methodology\n\nPWE = Σ(population × NO₂) / Σ(population)\nOnly urban pixels (≥50 people/km²) included.\n\nNPWEI = (PWE - min) / (max - min) × 100\nNormalised per season across West African countries.');
 }
 
-window.addEventListener('load',async()=>{
+window.addEventListener('load', async()=>{
   await loadData();
-  setTimeout(()=>{const l=document.getElementById('loading');l.style.opacity='0';setTimeout(()=>l.style.display='none',400);},1600);
+
+  showPage('page-overview'); // 👈 ADD THIS
+
   initMap();
   updateSummaryCards('Annual');
   updateTable('Annual');
@@ -708,6 +710,19 @@ window.addEventListener('load',async()=>{
   populateDropdowns();
   initCharts();
 });
+
+function showPage(pageId) {
+  // 1. Hide all pages
+  document.querySelectorAll('.page').forEach(page => {
+    page.style.display = 'none';
+  });
+
+  // 2. Show selected page
+  document.getElementById(pageId).style.display = 'block';
+
+  // 3. Scroll to top
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
