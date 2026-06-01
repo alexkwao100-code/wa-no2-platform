@@ -1208,9 +1208,9 @@ tbody td{padding:7px 10px;font-size:11px;}
             </select>
           </div>
           <div class="hi-filter-group">
-            <label>🌍 Country Focus</label>
+            <label>🏙 City Focus</label>
             <select class="hi-filter-select" id="hi-country" onchange="updateHealthPage()">
-              <option value="all">All West Africa</option>
+              <option value="all">All Cities</option>
             </select>
           </div>
         </div>
@@ -2259,7 +2259,7 @@ let hiTierChart=null, hiSeasonChart=null;
 
 function populateHealthDropdowns(){
   const cSel=document.getElementById('hi-country');
-  Object.keys(COUNTRY_PWE).sort().forEach(name=>{
+  Object.keys(CITIES_PWE).sort().forEach(name=>{
     const o=document.createElement('option'); o.value=name; o.textContent=name; cSel.appendChild(o);
   });
 }
@@ -2335,7 +2335,51 @@ function updateHealthPage(){
   renderHiSeasonChart();
 
   // Country cards
-  renderHiCountryGrid(season, country);
+  function renderHiCountryGrid(season, focusCity){
+  const cityNpwei=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  let entries=Object.entries(CITIES_PWE);
+  if(focusCity!=='all') entries=entries.filter(([city])=>city===focusCity);
+  entries.sort((a,b)=>(cityNpwei[b[0]]??0)-(cityNpwei[a[0]]??0));
+  document.getElementById('hi-country-grid').innerHTML=entries.map(([city,d])=>{
+    const score=cityNpwei[city]??0;
+    const djf=djfAll[city]??0;
+    const jja=jjaAll[city]??0;
+    const risk=riskLabel(score);
+    return`<div class="hi-country-card">
+      <div class="hi-country-name">
+        <div class="hi-country-risk-dot" style="background:${risk.color}"></div>
+        ${city}
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Country</span>
+        <span class="hi-country-stat-val">${d.country}</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">NPWEI (${season})</span>
+        <span class="hi-country-stat-val" style="color:${risk.color}">${score}/100</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Risk Level</span>
+        <span class="hi-country-stat-val" style="color:${risk.color}">${risk.label}</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Urban Pop</span>
+        <span class="hi-country-stat-val">${d.urban_pop?.toFixed(2)??'--'}M</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">DJF / JJA</span>
+        <span class="hi-country-stat-val">${djf} / ${jja}</span>
+      </div>
+      <div class="hi-country-bar-wrap">
+        <div class="hi-country-bar-track">
+          <div class="hi-country-bar-fill" style="width:${score}%;background:${risk.color}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
 
   // Insights
   renderHiInsights(season, hd, npwei, cityNpwei);
@@ -2470,14 +2514,17 @@ function renderHiInsights(season, hd, npwei, cityNpwei){
 
 function exportHealthCSV(){
   const season=document.getElementById('hi-season')?.value??'Annual';
-  const npwei=getNPWEI(season);
-  const rows=[['Country','NPWEI','Risk_Level','Urban_Pop_M','Season']];
-  for(const[c,score]of Object.entries(npwei)){
-    rows.push([c,score,riskLabel(score).label,(COUNTRY_PWE[c]?.urban_pop??0).toFixed(2),season]);
+  const cityNpwei=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  const rows=[['City','Country','NPWEI','Risk_Level','Urban_Pop_M','NPWEI_DJF','NPWEI_JJA','Season']];
+  for(const[city,d]of Object.entries(CITIES_PWE)){
+    const score=cityNpwei[city]??'';
+    rows.push([city,d.country,score,riskLabel(score||0).label,d.urban_pop?.toFixed(2)??'',djfAll[city]??'',jjaAll[city]??'',season]);
   }
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
-  a.download=`wa_no2_health_impact_${season}.csv`; a.click();
+  a.download=`wa_no2_health_impact_cities_${season}.csv`; a.click();
 }
 
 </script>
