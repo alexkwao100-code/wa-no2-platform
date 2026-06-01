@@ -1272,11 +1272,10 @@ window.addEventListener('load', async()=>{
   initMap();
   updateSummaryCards('Annual');
   updateTable('Annual');
-  updateInsights('Annual');
   populateDropdowns();
   populateTrendsDropdowns();
+  populateMapFilterDropdowns();
   updateMapKPIs('Annual');
-  initCharts();
 
   // Hide loading overlay with fade
   const loader=document.getElementById('loading');
