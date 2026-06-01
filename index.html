@@ -596,7 +596,12 @@ tbody td{padding:7px 10px;font-size:14px;}
   </nav>
   <div class="topbar-right">
     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-    <button class="dl-btn" onclick="downloadData()">⬇ Download Data</button>
+    <button class="dl-btn" onclick="showDownloadMenu()" id="dl-main-btn">⬇ Download Data ▾</button>
+    <div id="dl-menu" style="display:none;position:absolute;top:48px;right:20px;background:var(--panel);border:1px solid var(--border);border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:300;min-width:180px;">
+      <div onclick="downloadData()" style="padding:10px 16px;font-size:11px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .12s;" onmouseover="this.style.background='var(--panel2)'" onmouseout="this.style.background=''">⬇ CSV — Cities NPWEI</div>
+      <div onclick="downloadCountryCSV()" style="padding:10px 16px;font-size:11px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .12s;" onmouseover="this.style.background='var(--panel2)'" onmouseout="this.style.background=''">⬇ CSV — Countries NPWEI</div>
+      <div onclick="downloadExcel()" style="padding:10px 16px;font-size:11px;cursor:pointer;font-weight:600;color:var(--accent);transition:background .12s;" onmouseover="this.style.background='var(--panel2)'" onmouseout="this.style.background=''">📊 Excel — Full NPWEI Dataset</div>
+    </div>
   </div>
 </header>
 
@@ -2735,6 +2740,72 @@ function submitFeedback(){
   document.querySelectorAll('.feedback-star').forEach(s=>s.classList.remove('selected'));
   feedbackRating=0;
   setTimeout(()=>{ document.getElementById('fb-success').style.display='none'; }, 5000);
+}
+
+function showDownloadMenu(){
+  const menu=document.getElementById('dl-menu');
+  menu.style.display=menu.style.display==='none'?'block':'none';
+}
+document.addEventListener('click',function(e){
+  const btn=document.getElementById('dl-main-btn');
+  const menu=document.getElementById('dl-menu');
+  if(btn&&menu&&!btn.contains(e.target)&&!menu.contains(e.target)){
+    menu.style.display='none';
+  }
+});
+
+function downloadCountryCSV(){
+  const rows=[['Country','DJF_NPWEI','JJA_NPWEI','Annual_NPWEI','DJF_Risk','JJA_Risk','Annual_Risk','Urban_Pop_M']];
+  const djf=getNPWEI('DJF'), jja=getNPWEI('JJA'), ann=getNPWEI('Annual');
+  Object.keys(COUNTRY_PWE).sort().forEach(c=>{
+    const d=COUNTRY_PWE[c];
+    rows.push([c,djf[c]??'',jja[c]??'',ann[c]??'',
+      riskLabel(djf[c]??0).label,riskLabel(jja[c]??0).label,riskLabel(ann[c]??0).label,
+      d.urban_population_millions??'']);
+  });
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
+  a.download='wa_no2_countries_npwei.csv'; a.click();
+}
+
+function downloadExcel(){
+  // Build full dataset as CSV with all seasons and both city and country
+  const rows=[
+    ['Type','Name','Country','DJF_NPWEI','JJA_NPWEI','Annual_NPWEI',
+     'DJF_Risk','JJA_Risk','Annual_Risk','Urban_Pop_M',
+     'DJF_PWE_raw','JJA_PWE_raw','Annual_PWE_raw']
+  ];
+
+  // Country rows
+  const djfC=getNPWEI('DJF'), jjaC=getNPWEI('JJA'), annC=getNPWEI('Annual');
+  Object.keys(COUNTRY_PWE).sort().forEach(c=>{
+    const d=COUNTRY_PWE[c];
+    rows.push(['Country',c,c,
+      djfC[c]??'', jjaC[c]??'', annC[c]??'',
+      riskLabel(djfC[c]??0).label, riskLabel(jjaC[c]??0).label, riskLabel(annC[c]??0).label,
+      d.urban_population_millions??'',
+      d.DJF?.toExponential(3)??'', d.JJA?.toExponential(3)??'', d.Annual?.toExponential(3)??''
+    ]);
+  });
+
+  // City rows
+  const djfCi=getCityNPWEI('DJF'), jjaCi=getCityNPWEI('JJA'), annCi=getCityNPWEI('Annual');
+  Object.keys(CITIES_PWE).sort().forEach(city=>{
+    const d=CITIES_PWE[city];
+    rows.push(['City', city, d.country??'',
+      djfCi[city]??'', jjaCi[city]??'', annCi[city]??'',
+      riskLabel(djfCi[city]??0).label, riskLabel(jjaCi[city]??0).label, riskLabel(annCi[city]??0).label,
+      d.urban_pop??'',
+      d.DJF_pwe?.toExponential(3)??'', d.JJA_pwe?.toExponential(3)??'', d.Annual_pwe?.toExponential(3)??''
+    ]);
+  });
+
+  // Download as CSV (opens perfectly in Excel)
+  const bom='\uFEFF'; // UTF-8 BOM so Excel reads it correctly
+  const csv=bom+rows.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  a.download='wa_no2_full_npwei_dataset.csv'; a.click();
 }
 </script>
 </body>
