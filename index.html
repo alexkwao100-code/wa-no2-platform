@@ -2302,8 +2302,7 @@ function updateHealthPage(){
     {label:'Elevated',color:'#84cc16',min:20},
     {label:'Minimal',color:'#22c55e',min:0}
   ];
-  // Estimate population per tier from city data
-  const cityNpwei=getCityNPWEI(season);
+  // Estimate population per tier from city data (reuse cityNpwei already declared above)
   const tierPops=tiers.map(t=>{
     let pop=0;
     for(const[city,score]of Object.entries(cityNpwei)){
