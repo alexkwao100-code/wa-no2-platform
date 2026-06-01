@@ -54,7 +54,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 .hi-kpi-sub{font-size:10px;color:var(--text-dim);}
 .hi-kpi-icon{position:absolute;top:14px;right:14px;font-size:22px;opacity:.12;}
 
-.hi-top-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.hi-top-row{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px;}
 .hi-tier-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;}
 .hi-tier-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);}
 .hi-panel-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
@@ -1258,39 +1258,6 @@ tbody td{padding:7px 10px;font-size:11px;}
           </div>
         </div>
 
-        <!-- WHO context -->
-        <div class="hi-who-panel">
-          <div class="hi-panel-hdr">
-            <div class="hi-panel-title">WHO NO₂ Guideline Context</div>
-            <div class="hi-panel-badge">AQG 2021</div>
-          </div>
-          <div class="hi-who-intro">
-            The WHO 2021 Air Quality Guidelines recommend an annual mean NO₂ concentration of <strong>10 µg/m³</strong> and a 24-hour mean of <strong>25 µg/m³</strong>. The NPWEI index reflects relative population-weighted column NO₂, not surface concentrations, but higher NPWEI tiers correspond to elevated surface exposure risk.
-          </div>
-          <div class="hi-who-grid">
-            <div class="hi-who-card exceeded">
-              <div class="hi-who-card-label">WHO Annual Guideline</div>
-              <div class="hi-who-card-val">10 µg/m³</div>
-              <div class="hi-who-card-sub">⚠ Exceeded in all High/Severe cities</div>
-            </div>
-            <div class="hi-who-card exceeded">
-              <div class="hi-who-card-label">24-hr Mean Guideline</div>
-              <div class="hi-who-card-val">25 µg/m³</div>
-              <div class="hi-who-card-sub">⚠ Likely exceeded during DJF peak</div>
-            </div>
-            <div class="hi-who-card">
-              <div class="hi-who-card-label">Dry Season Peak Risk</div>
-              <div class="hi-who-card-val" id="hi-who-djf">--</div>
-              <div class="hi-who-card-sub">West Africa avg NPWEI (DJF)</div>
-            </div>
-            <div class="hi-who-card">
-              <div class="hi-who-card-label">Wet Season Baseline</div>
-              <div class="hi-who-card-val" id="hi-who-jja">--</div>
-              <div class="hi-who-card-sub">West Africa avg NPWEI (JJA)</div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <!-- Charts row -->
@@ -1319,7 +1286,7 @@ tbody td{padding:7px 10px;font-size:11px;}
       <!-- Country-level breakdown -->
       <div class="hi-country-section">
         <div class="hi-country-hdr">
-          <div class="hi-country-title">Country-Level Exposure Summary</div>
+          <div class="hi-country-title">City-Level Exposure Summary</div>
           <div class="hi-panel-badge" id="hi-country-badge">Annual Mean · NPWEI + Urban Pop</div>
         </div>
         <div class="hi-country-grid" id="hi-country-grid">
@@ -2307,7 +2274,7 @@ function updateHealthPage(){
   const seasonLabel={DJF:'Dry Season (DJF)',JJA:'Wet Season (JJA)',Annual:'Annual Mean'}[season];
   document.getElementById('hi-tier-badge').textContent=seasonLabel;
   document.getElementById('hi-chart1-badge').textContent=seasonLabel;
-  document.getElementById('hi-country-badge').textContent=`${seasonLabel} · NPWEI + Urban Pop`;
+  document.getElementById('hi-country-badge').textContent=`${seasonLabel} · ${Object.keys(CITIES_PWE).length} cities ranked by NPWEI`;
 
   // KPI cards
   const highM=hd.high_risk_population_millions??0;
@@ -2327,10 +2294,6 @@ function updateHealthPage(){
   document.getElementById('hi-kpi-countries').textContent=highCountries;
   document.getElementById('hi-kpi-countries-sub').textContent=`of ${Object.keys(npwei).length} countries · NPWEI ≥ 60`;
 
-  // WHO cards
-  document.getElementById('hi-who-djf').textContent=`${getWaNPWEI('DJF')}/100`;
-  document.getElementById('hi-who-jja').textContent=`${getWaNPWEI('JJA')}/100`;
-
   // Tier breakdown
   const tiers=[
     {label:'Severe / Critical',color:'#ef4444',min:80},
@@ -2339,14 +2302,14 @@ function updateHealthPage(){
     {label:'Elevated',color:'#84cc16',min:20},
     {label:'Minimal',color:'#22c55e',min:0}
   ];
-  // Estimate population per tier from country data
+  // Estimate population per tier from city data
+  const cityNpwei=getCityNPWEI(season);
   const tierPops=tiers.map(t=>{
     let pop=0;
-    for(const[c,score]of Object.entries(npwei)){
+    for(const[city,score]of Object.entries(cityNpwei)){
       const maxScore=tiers.find(tt=>score>=tt.min)?.min??0;
       if(maxScore===t.min){
-        // sum urban pop for countries in this tier
-        pop+=(COUNTRY_PWE[c]?.urban_pop??0);
+        pop+=(CITIES_PWE[city]?.urban_pop??0);
       }
     }
     return pop;
@@ -2433,18 +2396,25 @@ function renderHiSeasonChart(){
 }
 
 function renderHiCountryGrid(season, focusCountry){
-  const npwei=getNPWEI(season);
-  const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
-  document.getElementById('hi-country-grid').innerHTML=sorted.map(([country,score])=>{
-    if(focusCountry!=='all'&&country!==focusCountry) return'';
+  const cityNpwei=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  let entries=Object.entries(CITIES_PWE);
+  if(focusCountry!=='all') entries=entries.filter(([,d])=>d.country===focusCountry);
+  entries.sort((a,b)=>(cityNpwei[b[0]]??0)-(cityNpwei[a[0]]??0));
+  document.getElementById('hi-country-grid').innerHTML=entries.map(([city,d])=>{
+    const score=cityNpwei[city]??0;
+    const djf=djfAll[city]??0;
+    const jja=jjaAll[city]??0;
     const risk=riskLabel(score);
-    const urbanPop=(COUNTRY_PWE[country]?.urban_pop??0).toFixed(2);
-    const djf=getNPWEI('DJF')[country]??0;
-    const jja=getNPWEI('JJA')[country]??0;
     return`<div class="hi-country-card">
       <div class="hi-country-name">
         <div class="hi-country-risk-dot" style="background:${risk.color}"></div>
-        ${country}
+        ${city}
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Country</span>
+        <span class="hi-country-stat-val">${d.country}</span>
       </div>
       <div class="hi-country-stat">
         <span class="hi-country-stat-label">NPWEI (${season})</span>
@@ -2456,7 +2426,7 @@ function renderHiCountryGrid(season, focusCountry){
       </div>
       <div class="hi-country-stat">
         <span class="hi-country-stat-label">Urban Pop</span>
-        <span class="hi-country-stat-val">${urbanPop}M</span>
+        <span class="hi-country-stat-val">${d.urban_pop?.toFixed(2)??'--'}M</span>
       </div>
       <div class="hi-country-stat">
         <span class="hi-country-stat-label">DJF / JJA</span>
