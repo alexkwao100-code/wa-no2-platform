@@ -21,6 +21,34 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:13px;}
 
+/* TRENDS PAGE */
+.trends-header{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.trends-header-left{}
+.trends-header-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.trends-header-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.trends-header-sub{font-size:11px;color:var(--text-dim);}
+.trends-header-btns{display:flex;gap:8px;flex-shrink:0;}
+.trends-export-btn{display:flex;align-items:center;gap:5px;background:var(--navy);color:#fff;border:none;padding:8px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s;}
+.trends-export-btn:hover{background:var(--accent);}
+
+.trends-filter-bar{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 20px;margin-bottom:12px;}
+.trends-filter-row{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+.trends-filter-group{display:flex;flex-direction:column;gap:4px;min-width:140px;}
+.trends-filter-group label{font-size:10px;font-weight:600;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:4px;}
+.trends-filter-select{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:8px 10px;border-radius:5px;cursor:pointer;outline:none;font-family:var(--font);transition:border-color .15s;}
+.trends-filter-select:focus{border-color:var(--accent);}
+
+.trends-charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.trends-chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;}
+.trends-chart-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.trends-chart-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;}
+.trends-chart-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.trends-chart-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 8px;border-radius:3px;}
+.trends-chart-sub{font-size:10px;color:var(--text-dim);margin-bottom:10px;font-family:var(--font-mono);}
+.trends-chart-wrap{flex:1;position:relative;min-height:200px;}
+.trends-country-badge{display:inline-flex;align-items:center;gap:5px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+@media(max-width:900px){.trends-charts-grid{grid-template-columns:1fr;}}
+
 /* TOPBAR */
 .topbar{background:var(--navy);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:200;flex-shrink:0;}
 .topbar-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
@@ -700,30 +728,109 @@ tbody td{padding:7px 10px;font-size:11px;}
 
     <!-- PAGE: TRENDS -->
     <section id="page-trends" class="page">
-      <div class="bottom-row">
-        <div class="chart-panel">
-          <div class="chart-panel-header">
-            <div class="chart-title">NO₂ Exposure Trend<br>(West Africa Average)</div>
-            <div class="chart-badge">2020–2024 trend</div>
+            <!-- TRENDS HEADER -->
+      <div class="trends-header">
+        <div class="trends-header-left">
+          <div class="trends-header-tag">Trends and Analytics</div>
+          <div class="trends-header-title">West Africa Trend Diagnostics</div>
+          <div class="trends-header-sub">Annual trends, seasonal cycle, and population-weighted exposure — linked to the filter state below.</div>
+        </div>
+        <div class="trends-header-btns">
+          <button class="trends-export-btn" onclick="exportTrendsCSV()">⬇ CSV</button>
+          <button class="trends-export-btn" onclick="window.print()">🖨 PDF</button>
+        </div>
+      </div>
+      
+      <!-- TRENDS FILTER BAR -->
+      <div class="trends-filter-bar">
+        <div class="trends-filter-row">
+          <div class="trends-filter-group">
+            <label>🌍 Country</label>
+            <select class="trends-filter-select" id="tr-country" onchange="updateTrendsPage()">
+              <option value="all">All West Africa</option>
+            </select>
           </div>
-          <div class="chart-unit">NPWEI (0–100)</div>
-          <div class="chart-wrap"><canvas id="trend-chart"></canvas></div>
-        </div>
-
-        <div class="chart-panel">
-          <div class="chart-panel-header">
-            <div class="chart-title">Seasonal Cycle<br>(West Africa Average)</div>
-            <div class="chart-badge">Monthly cycle</div>
+          <div class="trends-filter-group">
+            <label>🏙 City</label>
+            <select class="trends-filter-select" id="tr-city" onchange="updateTrendsPage()">
+              <option value="all">All cities</option>
+            </select>
           </div>
-          <div class="chart-unit">NPWEI (0–100)</div>
-          <div class="chart-wrap"><canvas id="seasonal-chart"></canvas></div>
+          <div class="trends-filter-group">
+            <label>📅 Year</label>
+            <select class="trends-filter-select" id="tr-year" onchange="updateTrendsPage()">
+              <option value="all">All years</option>
+              <option>2020</option><option>2021</option><option>2022</option><option>2023</option><option selected>2024</option>
+            </select>
+          </div>
+          <div class="trends-filter-group">
+            <label>📆 Month</label>
+            <select class="trends-filter-select" id="tr-month">
+              <option value="all">All months</option>
+              <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+              <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+              <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+              <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+            </select>
+          </div>
+          <div class="trends-filter-group">
+            <label>🌤 Season</label>
+            <select class="trends-filter-select" id="tr-season" onchange="updateTrendsPage()">
+              <option value="Annual">All seasons</option>
+              <option value="DJF">Dry season (DJF)</option>
+              <option value="JJA">Wet season (JJA)</option>
+            </select>
+          </div>
         </div>
-
-        <div class="insights-panel">
-          <div class="insights-title">Key Insights</div>
-          <div id="insights-list"></div>
+      </div>
+      
+      <!-- SELECTED CONTEXT BADGE -->
+      <div id="tr-context-badge" style="margin-bottom:10px;"></div>
+      
+      <!-- CHARTS GRID -->
+      <div class="trends-charts-grid">
+      
+        <!-- Chart 1: Yearly trend -->
+        <div class="trends-chart-panel">
+          <div class="trends-chart-hdr">
+            <div class="trends-chart-title">Yearly NPWEI Trend (2020–2024)</div>
+            <div class="trends-chart-badge" id="tr-badge-trend">West Africa Average</div>
+          </div>
+          <div class="trends-chart-sub">Annual · DJF · JJA — normalised 0–100</div>
+          <div class="trends-chart-wrap"><canvas id="tr-trend-chart"></canvas></div>
         </div>
-      </div><!-- end .bottom-row -->
+      
+        <!-- Chart 2: Country comparison -->
+        <div class="trends-chart-panel">
+          <div class="trends-chart-hdr">
+            <div class="trends-chart-title">Country Comparison</div>
+            <div class="trends-chart-badge" id="tr-badge-country">NPWEI Ranking</div>
+          </div>
+          <div class="trends-chart-sub">All countries ranked by NPWEI for selected season</div>
+          <div class="trends-chart-wrap"><canvas id="tr-country-chart"></canvas></div>
+        </div>
+      
+        <!-- Chart 3: Seasonal cycle -->
+        <div class="trends-chart-panel">
+          <div class="trends-chart-hdr">
+            <div class="trends-chart-title">Seasonal Monthly Cycle</div>
+            <div class="trends-chart-badge">Dry vs Wet pattern</div>
+          </div>
+          <div class="trends-chart-sub">Indicative monthly NPWEI pattern</div>
+          <div class="trends-chart-wrap"><canvas id="tr-seasonal-chart"></canvas></div>
+        </div>
+      
+        <!-- Chart 4: City rankings -->
+        <div class="trends-chart-panel">
+          <div class="trends-chart-hdr">
+            <div class="trends-chart-title">City Rankings</div>
+            <div class="trends-chart-badge" id="tr-badge-city">Urban hotspots</div>
+          </div>
+          <div class="trends-chart-sub">Top cities by NPWEI for selected season / country</div>
+          <div class="trends-chart-wrap"><canvas id="tr-city-chart"></canvas></div>
+        </div>
+      
+      </div>
     </section>
 
   </div><!-- end .content -->
@@ -1167,6 +1274,7 @@ window.addEventListener('load', async()=>{
   updateTable('Annual');
   updateInsights('Annual');
   populateDropdowns();
+  populateTrendsDropdowns();
   updateMapKPIs('Annual');
   initCharts();
 
@@ -1269,6 +1377,168 @@ function toggleMapLayer(layer, btn){
   }
 }
 
+// ── TRENDS PAGE ───────────────────────────────────────────────────
+let trTrendChart=null, trCountryChart=null, trSeasonalChart=null, trCityChart=null;
+
+function populateTrendsDropdowns(){
+  const cSel=document.getElementById('tr-country');
+  const citySel=document.getElementById('tr-city');
+  Object.keys(COUNTRY_PWE).sort().forEach(name=>{
+    const o=document.createElement('option'); o.value=name; o.textContent=name; cSel.appendChild(o);
+  });
+  Object.keys(CITIES_PWE).sort().forEach(name=>{
+    const o=document.createElement('option'); o.value=name; o.textContent=name; citySel.appendChild(o);
+  });
+  cSel.addEventListener('change',function(){
+    // filter city dropdown to selected country
+    const country=this.value;
+    const citySel=document.getElementById('tr-city');
+    citySel.innerHTML='<option value="all">All cities</option>';
+    const filtered=Object.keys(CITIES_PWE).filter(c=>country==='all'||CITIES_PWE[c].country===country).sort();
+    filtered.forEach(name=>{
+      const o=document.createElement('option'); o.value=name; o.textContent=name; citySel.appendChild(o);
+    });
+    updateTrendsPage();
+  });
+}
+
+function updateTrendsPage(){
+  const country=document.getElementById('tr-country')?.value??'all';
+  const season=document.getElementById('tr-season')?.value??'Annual';
+
+  // Context badge
+  const badge=document.getElementById('tr-context-badge');
+  if(country!=='all'){
+    const npwei=getNPWEI(season);
+    const score=npwei[country]??'--';
+    const risk=riskLabel(typeof score==='number'?score:50);
+    badge.innerHTML=`<div class="trends-country-badge"><span>📍</span> ${country} · NPWEI ${score}/100 · ${risk.label}</div>`;
+  } else {
+    badge.innerHTML='';
+  }
+
+  document.getElementById('tr-badge-trend').textContent=country==='all'?'West Africa Average':country;
+  document.getElementById('tr-badge-country').textContent={DJF:'Dry Season (DJF)',JJA:'Wet Season (JJA)',Annual:'Annual Mean'}[season];
+  document.getElementById('tr-badge-city').textContent=country==='all'?'Top 10 All Countries':country;
+
+  renderTrendChart(country, season);
+  renderCountryChart(season, country);
+  renderTrendsSeasonalChart();
+  renderCityChart(country, season);
+}
+
+function renderTrendChart(country, season){
+  const trend=getTrendNPWEI();
+  const datasets=[
+    {label:'Annual (WA)',data:trend.Annual,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',fill:true,tension:0.3,pointRadius:4,borderWidth:2},
+    {label:'DJF (WA)',data:trend.DJF,borderColor:'#f97316',backgroundColor:'transparent',tension:0.3,pointRadius:3,borderWidth:1.5,borderDash:[5,3]},
+    {label:'JJA (WA)',data:trend.JJA,borderColor:'#22c55e',backgroundColor:'transparent',tension:0.3,pointRadius:3,borderWidth:1.5,borderDash:[5,3]}
+  ];
+  // Add country reference line if selected
+  if(country!=='all'){
+    const npwei=getNPWEI(season);
+    const score=npwei[country];
+    if(score!=null){
+      datasets.push({
+        label:`${country} avg (${season})`,
+        data:trend.years.map(()=>score),
+        borderColor:'#a855f7',backgroundColor:'transparent',
+        borderWidth:2,borderDash:[8,4],pointRadius:0,
+      });
+    }
+  }
+  if(trTrendChart) trTrendChart.destroy();
+  trTrendChart=new Chart(document.getElementById('tr-trend-chart'),{
+    type:'line',
+    data:{labels:trend.years,datasets},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}}},
+      scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
+  });
+}
+
+function renderCountryChart(season, highlightCountry){
+  const npwei=getNPWEI(season);
+  const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
+  if(trCountryChart) trCountryChart.destroy();
+  trCountryChart=new Chart(document.getElementById('tr-country-chart'),{
+    type:'bar',
+    data:{
+      labels:sorted.map(([c])=>c.length>14?c.slice(0,13)+'…':c),
+      datasets:[{
+        data:sorted.map(([,v])=>v),
+        backgroundColor:sorted.map(([c,v])=>c===highlightCountry?'#2563eb':riskColor(v)),
+        borderRadius:3,
+        borderSkipped:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9}}},y:{grid:{display:false},ticks:{font:{size:9}}}}}
+  });
+}
+
+function renderTrendsSeasonalChart(){
+  if(trSeasonalChart) trSeasonalChart.destroy();
+  trSeasonalChart=new Chart(document.getElementById('tr-seasonal-chart'),{
+    type:'line',
+    data:{
+      labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      datasets:[
+        {label:'Dry Season (Nov–May)',data:[85,90,82,75,65,45,35,30,35,50,65,80],borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.06)',fill:true,tension:0.4,pointRadius:3,borderWidth:2},
+        {label:'Wet Season (Jun–Oct)',data:[45,40,42,48,55,70,75,72,68,60,55,48],borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.06)',fill:true,tension:0.4,pointRadius:3,borderWidth:1.5,borderDash:[4,3]}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}}},
+      scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:9}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9},stepSize:25}}}}
+  });
+}
+
+function renderCityChart(country, season){
+  const cityNpwei=getCityNPWEI(season);
+  let entries=Object.entries(cityNpwei);
+  if(country!=='all'){
+    entries=entries.filter(([c])=>CITIES_PWE[c]?.country===country);
+  }
+  const sorted=entries.sort((a,b)=>b[1]-a[1]).slice(0,10);
+  if(trCityChart) trCityChart.destroy();
+  trCityChart=new Chart(document.getElementById('tr-city-chart'),{
+    type:'bar',
+    data:{
+      labels:sorted.map(([c])=>c),
+      datasets:[{
+        data:sorted.map(([,v])=>v),
+        backgroundColor:sorted.map(([,v])=>riskColor(v)),
+        borderRadius:3,
+        borderSkipped:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9}}},y:{grid:{display:false},ticks:{font:{size:9}}}}}
+  });
+}
+
+function exportTrendsCSV(){
+  const country=document.getElementById('tr-country')?.value??'all';
+  const season=document.getElementById('tr-season')?.value??'Annual';
+  const npwei=getNPWEI(season);
+  const cityNpwei=getCityNPWEI(season);
+  let rows=[['Type','Name','Country','NPWEI','Risk Level','Season']];
+  for(const[c,s]of Object.entries(npwei)){
+    if(country==='all'||c===country)
+      rows.push(['Country',c,c,s,riskLabel(s).label,season]);
+  }
+  for(const[city,s]of Object.entries(cityNpwei)){
+    const d=CITIES_PWE[city];
+    if(country==='all'||d?.country===country)
+      rows.push(['City',city,d?.country??'',s,riskLabel(s).label,season]);
+  }
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
+  a.download=`wa_no2_trends_${country}_${season}.csv`; a.click();
+}
 
 </script>
 </body>
