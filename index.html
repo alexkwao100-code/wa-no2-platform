@@ -534,6 +534,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="nav-link" onclick="showPage('page-trends',this)">Trends</a>
     <a class="nav-link" onclick="showPage('page-cities',this)"><span>🏙</span> Cities</a>
     <a class="nav-link" onclick="showPage('page-health',this)"><span>🫁</span> Health</a>
+    <a class="nav-link" onclick="showPage('page-about',this)"><span>ℹ</span> About</a>
   </nav>
   <div class="topbar-right">
     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
@@ -562,7 +563,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="sidebar-nav-item" onclick="showPage('page-health',this)">
       <span>🫁</span> Health Impact
     </a>
-    <a class="sidebar-nav-item" href="#footer">
+    <a class="sidebar-nav-item" onclick="showPage('page-about',this)">
       <span>ℹ</span> About
     </a>
   </div>
@@ -1305,7 +1306,145 @@ tbody td{padding:7px 10px;font-size:11px;}
     </section>
     
   </div><!-- end .content -->
+    <!-- PAGE: ABOUT -->
+    <section id="page-about" class="page">
 
+      <!-- Hero -->
+      <div class="about-page-hero">
+        <div class="about-hero-icon">🛰</div>
+        <div>
+          <div class="about-hero-title">West Africa NO₂ Exposure Risk Platform</div>
+          <div class="about-hero-sub">An open-access satellite-derived dashboard tracking population-weighted NO₂ exposure across West African urban centres from 2020 to 2024. Built by the Climate and Health Research Lab (CAHL) at KNUST, Kumasi, Ghana, to support air quality research, policy dialogue, and public health awareness.</div>
+          <div class="about-hero-tags">
+            <span class="about-hero-tag">Sentinel-5P TROPOMI</span>
+            <span class="about-hero-tag">WorldPop 2020</span>
+            <span class="about-hero-tag">2020–2024</span>
+            <span class="about-hero-tag">27 Cities</span>
+            <span class="about-hero-tag">15 Countries</span>
+            <span class="about-hero-tag">KNUST CAHL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info cards -->
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-icon">🎯</div>
+          <div class="about-card-title">Purpose & Objectives</div>
+          <div class="about-card-text">This platform visualises satellite-derived NO₂ column data to estimate urban population exposure across West Africa. It supports researchers, policymakers, and public health practitioners in identifying high-risk areas, seasonal exposure patterns, and city-level burden — providing evidence for air quality interventions and climate-health policy.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🏛</div>
+          <div class="about-card-title">Research Group</div>
+          <div class="about-card-text">Developed by the <strong>Climate and Health Research Lab (CAHL)</strong> at the Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana. CAHL focuses on the intersection of climate variability, air quality, and population health across sub-Saharan Africa.<br><br>Contact: <a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a></div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">📐</div>
+          <div class="about-card-title">NPWEI Definition</div>
+          <div class="about-card-text">The <strong>Normalised Population-Weighted Exposure Index (NPWEI)</strong> is computed as:<br><br><code style="background:var(--panel2);padding:4px 8px;border-radius:4px;font-size:10px;display:block;margin:6px 0;">PWE = Σ(population × NO₂) / Σ(population)</code>Only urban pixels (≥50 people/km²) are included. Raw PWE values are then normalised 0–100 across countries per season: <code style="background:var(--panel2);padding:4px 8px;border-radius:4px;font-size:10px;display:block;margin:6px 0;">NPWEI = (PWE − min) / (max − min) × 100</code></div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">⚠️</div>
+          <div class="about-card-title">Limitations & Disclaimer</div>
+          <div class="about-card-text">TROPOMI measures tropospheric NO₂ columns (molecules/cm²), not surface concentrations. Results reflect relative exposure differences between cities, not absolute air quality standards. Population figures are estimates from WorldPop 2020. No clinical health outcomes (mortality, hospitalisation) are implied. Seasonal data uses DJF (Dec–Feb) and JJA (Jun–Aug) bins only.</div>
+        </div>
+      </div>
+
+      <!-- Methodology steps -->
+      <div class="about-method-panel">
+        <div class="about-method-title">⚙️ Processing Methodology</div>
+        <div class="about-method-steps">
+          <div class="about-method-step">
+            <div class="about-method-step-num">1</div>
+            <div class="about-method-step-title">Data Acquisition</div>
+            <div class="about-method-step-text">Monthly TROPOMI NO₂ L3 files (.nc4) downloaded for Jan 2020 – Dec 2024. WorldPop 2020 population raster at 0.1° resolution clipped to West Africa.</div>
+          </div>
+          <div class="about-method-step">
+            <div class="about-method-step-num">2</div>
+            <div class="about-method-step-title">Urban Masking</div>
+            <div class="about-method-step-text">Population density computed per pixel accounting for latitude-varying cell area. Only pixels with density ≥50 people/km² contribute to exposure calculations.</div>
+          </div>
+          <div class="about-method-step">
+            <div class="about-method-step-num">3</div>
+            <div class="about-method-step-title">PWE Computation</div>
+            <div class="about-method-step-text">NO₂ fields interpolated onto the population grid using RegularGridInterpolator. Seasonal means computed for DJF, JJA, and Annual. PWE scalar calculated per country and city.</div>
+          </div>
+          <div class="about-method-step">
+            <div class="about-method-step-num">4</div>
+            <div class="about-method-step-title">Normalisation & Export</div>
+            <div class="about-method-step-text">Raw PWE normalised 0–100 per season. Results exported as JSON for web display. Map overlays exported as georeferenced PNG tiles for Leaflet rendering.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data sources table -->
+      <div class="about-data-panel">
+        <div class="about-data-hdr">📦 Data Sources</div>
+        <table class="about-data-table">
+          <thead>
+            <tr><th>Dataset</th><th>Source</th><th>Resolution</th><th>Period</th><th>Use</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>TROPOMI NO₂ L3</td><td>ESA Sentinel-5P / NASA GES DISC</td><td>0.01° × 0.01°</td><td>Jan 2020 – Dec 2024</td><td>NO₂ column concentration</td></tr>
+            <tr><td>WorldPop Population</td><td>WorldPop / University of Southampton</td><td>0.1° (~11 km)</td><td>2020 baseline</td><td>Urban population weighting</td></tr>
+            <tr><td>Country Boundaries</td><td>Natural Earth / geo-countries</td><td>Vector</td><td>Current</td><td>Country masking &amp; map display</td></tr>
+            <tr><td>Fire Radiative Power</td><td>NASA FIRMS VIIRS</td><td>375 m</td><td>2020–2024</td><td>Fire activity driver data</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- User Feedback -->
+      <div class="feedback-panel">
+        <div class="feedback-title">💬 Share Your Feedback</div>
+        <div class="feedback-sub">Help us improve this platform. Your experience, suggestions, and comments are valuable to the research team at CAHL KNUST.</div>
+
+        <div class="feedback-rating-label">How would you rate this platform?</div>
+        <div class="feedback-rating" id="feedback-stars">
+          <span class="feedback-star" onclick="setRating(1)" data-val="1">⭐</span>
+          <span class="feedback-star" onclick="setRating(2)" data-val="2">⭐</span>
+          <span class="feedback-star" onclick="setRating(3)" data-val="3">⭐</span>
+          <span class="feedback-star" onclick="setRating(4)" data-val="4">⭐</span>
+          <span class="feedback-star" onclick="setRating(5)" data-val="5">⭐</span>
+        </div>
+
+        <div class="feedback-fields">
+          <div class="feedback-field">
+            <label>Your Name (optional)</label>
+            <input class="feedback-input" id="fb-name" type="text" placeholder="e.g. Dr. Amara Diallo">
+          </div>
+          <div class="feedback-field">
+            <label>Affiliation (optional)</label>
+            <input class="feedback-input" id="fb-affil" type="text" placeholder="e.g. University of Ghana">
+          </div>
+        </div>
+
+        <div style="margin-bottom:6px;font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;">What best describes you?</div>
+        <div class="feedback-checks" style="margin-bottom:14px;">
+          <label class="feedback-check"><input type="radio" name="fb-role" value="Researcher"> Researcher</label>
+          <label class="feedback-check"><input type="radio" name="fb-role" value="Policymaker"> Policymaker</label>
+          <label class="feedback-check"><input type="radio" name="fb-role" value="Student"> Student</label>
+          <label class="feedback-check"><input type="radio" name="fb-role" value="Health Professional"> Health Professional</label>
+          <label class="feedback-check"><input type="radio" name="fb-role" value="General Public"> General Public</label>
+          <label class="feedback-check"><input type="radio" name="fb-role" value="Other"> Other</label>
+        </div>
+
+        <div style="margin-bottom:6px;font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;">Which sections did you find most useful?</div>
+        <div class="feedback-checks">
+          <label class="feedback-check"><input type="checkbox" value="Dashboard"> Dashboard</label>
+          <label class="feedback-check"><input type="checkbox" value="Map"> Interactive Map</label>
+          <label class="feedback-check"><input type="checkbox" value="Trends"> Trends</label>
+          <label class="feedback-check"><input type="checkbox" value="Cities"> Cities at Risk</label>
+          <label class="feedback-check"><input type="checkbox" value="Health"> Health Impact</label>
+        </div>
+
+        <div style="margin:14px 0 6px;font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;">Your comments or suggestions</div>
+        <textarea class="feedback-textarea" id="fb-comments" placeholder="What did you find useful? What could be improved? Any features you'd like to see added?"></textarea>
+
+        <button class="feedback-submit" onclick="submitFeedback()">✉ Submit Feedback</button>
+        <div class="feedback-success" id="fb-success">✅ Thank you for your feedback! It has been recorded and will be reviewed by the CAHL team.</div>
+      </div>
+
+    </section>
   <footer id="footer" class="footer">
     <div>
       <p style="color:#94a3b8;font-weight:600;margin-bottom:2px;">West Africa NO₂ Exposure Risk Platform</p>
@@ -2527,6 +2666,117 @@ function exportHealthCSV(){
   a.download=`wa_no2_health_impact_cities_${season}.csv`; a.click();
 }
 
+
+
+
+/* ABOUT PAGE */
+.about-page-hero{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:8px;padding:32px 28px;margin-bottom:14px;display:flex;align-items:flex-start;gap:20px;}
+.about-hero-icon{font-size:48px;flex-shrink:0;}
+.about-hero-title{font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;}
+.about-hero-sub{font-size:12px;color:#94a3b8;line-height:1.7;max-width:600px;}
+.about-hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.about-hero-tag{background:rgba(37,99,235,.4);color:#93c5fd;font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid rgba(37,99,235,.5);}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.about-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px 20px;}
+.about-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.about-card-icon{font-size:24px;margin-bottom:10px;}
+.about-card-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.about-card-text{font-size:11px;color:var(--text-dim);line-height:1.7;}
+.about-card-text a{color:var(--accent);text-decoration:none;}
+.about-card-text a:hover{text-decoration:underline;}
+
+.about-method-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:14px;}
+.about-method-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.about-method-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.about-method-step{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center;}
+.about-method-step-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+.about-method-step-title{font-size:10px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.about-method-step-text{font-size:9px;color:var(--text-dim);line-height:1.5;}
+
+.about-data-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px;}
+.about-data-hdr{padding:12px 20px;border-bottom:1px solid var(--border);font-size:12px;font-weight:700;color:var(--text);}
+.about-data-table{width:100%;border-collapse:collapse;}
+.about-data-table th{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim);padding:8px 16px;text-align:left;border-bottom:1px solid var(--border);background:var(--panel2);}
+.about-data-table td{font-size:11px;padding:9px 16px;border-bottom:1px solid var(--border);color:var(--text-dim);}
+.about-data-table td:first-child{font-weight:600;color:var(--text);}
+.about-data-table tr:last-child td{border-bottom:none;}
+.about-data-table tr:hover td{background:var(--panel2);}
+
+/* FEEDBACK BOX */
+.feedback-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:14px;}
+.feedback-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.feedback-sub{font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.5;}
+.feedback-rating{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.feedback-rating-label{font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:block;}
+.feedback-star{font-size:28px;cursor:pointer;opacity:.3;transition:opacity .15s,transform .15s;}
+.feedback-star:hover,.feedback-star.selected{opacity:1;transform:scale(1.15);}
+.feedback-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.feedback-field{display:flex;flex-direction:column;gap:4px;}
+.feedback-field label{font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;}
+.feedback-input{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:8px 10px;border-radius:5px;outline:none;font-family:var(--font);transition:border-color .15s;}
+.feedback-input:focus{border-color:var(--accent);}
+.feedback-textarea{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:10px;border-radius:5px;outline:none;font-family:var(--font);resize:vertical;min-height:90px;width:100%;transition:border-color .15s;margin-bottom:12px;}
+.feedback-textarea:focus{border-color:var(--accent);}
+.feedback-checks{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.feedback-check{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-dim);cursor:pointer;}
+.feedback-check input{accent-color:var(--accent);}
+.feedback-submit{background:var(--accent);color:#fff;border:none;padding:10px 24px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:6px;}
+.feedback-submit:hover{background:#1d4ed8;}
+.feedback-success{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:14px 18px;text-align:center;color:#166534;font-size:12px;font-weight:600;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;}.about-method-steps{grid-template-columns:1fr 1fr;}.feedback-fields{grid-template-columns:1fr;}}
+
+
+
+// ── ABOUT & FEEDBACK ──────────────────────────────────────────────
+let feedbackRating=0;
+
+function setRating(val){
+  feedbackRating=val;
+  document.querySelectorAll('.feedback-star').forEach((s,i)=>{
+    s.classList.toggle('selected', i<val);
+  });
+}
+
+function submitFeedback(){
+  const name=document.getElementById('fb-name').value.trim();
+  const affil=document.getElementById('fb-affil').value.trim();
+  const role=[...document.querySelectorAll('input[name="fb-role"]:checked')].map(r=>r.value).join('');
+  const sections=[...document.querySelectorAll('.feedback-checks input[type=checkbox]:checked')].map(c=>c.value).join(', ');
+  const comments=document.getElementById('fb-comments').value.trim();
+
+  if(!feedbackRating){
+    alert('Please select a star rating before submitting.'); return;
+  }
+  if(!comments){
+    alert('Please add a comment or suggestion before submitting.'); return;
+  }
+
+  // Store in localStorage as a simple log
+  const entry={
+    timestamp:new Date().toISOString(),
+    rating:feedbackRating,
+    name:name||'Anonymous',
+    affiliation:affil||'Not specified',
+    role:role||'Not specified',
+    sections_used:sections||'Not specified',
+    comments
+  };
+  const existing=JSON.parse(localStorage.getItem('wa_no2_feedback')||'[]');
+  existing.push(entry);
+  localStorage.setItem('wa_no2_feedback', JSON.stringify(existing));
+
+  // Show success, reset form
+  document.getElementById('fb-success').style.display='block';
+  document.getElementById('fb-name').value='';
+  document.getElementById('fb-affil').value='';
+  document.getElementById('fb-comments').value='';
+  document.querySelectorAll('input[name="fb-role"]').forEach(r=>r.checked=false);
+  document.querySelectorAll('.feedback-checks input[type=checkbox]').forEach(c=>c.checked=false);
+  document.querySelectorAll('.feedback-star').forEach(s=>s.classList.remove('selected'));
+  feedbackRating=0;
+  setTimeout(()=>{ document.getElementById('fb-success').style.display='none'; }, 5000);
+}
 </script>
 </body>
 </html>
