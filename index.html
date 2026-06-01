@@ -21,6 +21,105 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:13px;}
 
+/* HEALTH IMPACT PAGE */
+.hi-header{background:linear-gradient(135deg,#7f1d1d,#991b1b);border-radius:8px;padding:20px 24px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.hi-header-left{}
+.hi-header-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fca5a5;margin-bottom:6px;}
+.hi-header-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;}
+.hi-header-sub{font-size:11px;color:#fca5a5;line-height:1.5;}
+.hi-header-btns{display:flex;gap:8px;flex-shrink:0;}
+.hi-export-btn{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s;}
+.hi-export-btn:hover{background:rgba(255,255,255,.25);}
+.hi-disclaimer{background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:10px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start;}
+.hi-disclaimer-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.hi-disclaimer-text{font-size:10px;color:#92400e;line-height:1.6;}
+
+.hi-filter-bar{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 20px;margin-bottom:12px;}
+.hi-filter-row{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+.hi-filter-group{display:flex;flex-direction:column;gap:4px;min-width:130px;}
+.hi-filter-group label{font-size:10px;font-weight:600;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;}
+.hi-filter-select{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:8px 10px;border-radius:5px;cursor:pointer;outline:none;font-family:var(--font);transition:border-color .15s;}
+.hi-filter-select:focus{border-color:#ef4444;}
+
+.hi-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.hi-kpi{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:default;position:relative;overflow:hidden;}
+.hi-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.hi-kpi.red::before{background:#ef4444;}
+.hi-kpi.orange::before{background:#f97316;}
+.hi-kpi.blue::before{background:#3b82f6;}
+.hi-kpi.purple::before{background:#a855f7;}
+.hi-kpi:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08);border-color:#cbd5e1;}
+.hi-kpi-label{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+.hi-kpi-value{font-size:26px;font-weight:700;line-height:1;margin-bottom:3px;}
+.hi-kpi-sub{font-size:10px;color:var(--text-dim);}
+.hi-kpi-icon{position:absolute;top:14px;right:14px;font-size:22px;opacity:.12;}
+
+.hi-top-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.hi-tier-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;}
+.hi-tier-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.hi-panel-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.hi-panel-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.hi-panel-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 8px;border-radius:3px;}
+.hi-tier-list{display:flex;flex-direction:column;gap:8px;}
+.hi-tier-row{display:flex;align-items:center;gap:10px;}
+.hi-tier-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.hi-tier-label{font-size:11px;font-weight:600;color:var(--text);width:120px;flex-shrink:0;}
+.hi-tier-bar-track{flex:1;height:10px;background:var(--panel2);border-radius:5px;overflow:hidden;border:1px solid var(--border);}
+.hi-tier-bar-fill{height:100%;border-radius:5px;transition:width .5s ease;}
+.hi-tier-val{font-size:11px;font-weight:700;font-family:var(--font-mono);min-width:50px;text-align:right;}
+.hi-tier-pct{font-size:10px;color:var(--text-dim);min-width:36px;text-align:right;}
+
+.hi-who-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;}
+.hi-who-intro{font-size:11px;color:var(--text-dim);line-height:1.6;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.hi-who-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.hi-who-card{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;}
+.hi-who-card-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px;}
+.hi-who-card-val{font-size:14px;font-weight:700;color:var(--text);font-family:var(--font-mono);}
+.hi-who-card-sub{font-size:9px;color:var(--text-dim);margin-top:2px;}
+.hi-who-card.exceeded{border-color:#fca5a5;background:#fff1f2;}
+.hi-who-card.exceeded .hi-who-card-val{color:#ef4444;}
+
+.hi-mid-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.hi-chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;transition:box-shadow .2s;}
+.hi-chart-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.hi-chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.hi-chart-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.hi-chart-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 8px;border-radius:3px;}
+.hi-chart-sub{font-size:10px;color:var(--text-dim);margin-bottom:10px;font-family:var(--font-mono);}
+.hi-chart-wrap{flex:1;position:relative;min-height:200px;}
+
+.hi-country-section{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:12px;}
+.hi-country-hdr{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.hi-country-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.hi-country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;border-top:1px solid var(--border);}
+.hi-country-card{padding:12px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .12s;cursor:default;}
+.hi-country-card:hover{background:var(--panel2);}
+.hi-country-name{font-size:11px;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.hi-country-risk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.hi-country-stat{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;}
+.hi-country-stat-label{color:var(--text-dim);}
+.hi-country-stat-val{font-weight:700;font-family:var(--font-mono);}
+.hi-country-bar-wrap{margin-top:6px;}
+.hi-country-bar-track{height:5px;background:var(--panel2);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+.hi-country-bar-fill{height:100%;border-radius:3px;}
+
+.hi-insight-row{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px;}
+.hi-insight-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:12px;}
+.hi-insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.hi-insight-card{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:12px;display:flex;gap:10px;transition:box-shadow .2s,transform .2s;}
+.hi-insight-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.06);transform:translateY(-2px);}
+.hi-insight-icon{font-size:20px;flex-shrink:0;}
+.hi-insight-body{}
+.hi-insight-card-title{font-size:10px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.hi-insight-card-text{font-size:10px;color:var(--text-dim);line-height:1.5;}
+@media(max-width:900px){
+  .hi-top-row{grid-template-columns:1fr;}
+  .hi-mid-row{grid-template-columns:1fr;}
+  .hi-kpi-row{grid-template-columns:1fr 1fr;}
+  .hi-insight-grid{grid-template-columns:1fr;}
+  .hi-who-grid{grid-template-columns:1fr;}
+}
+
 /* CITIES AT RISK PAGE */
 .cities-page-header{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
 .cities-page-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f97316;margin-bottom:6px;}
@@ -434,6 +533,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="nav-link" onclick="showPage('page-map',this)">Map</a>
     <a class="nav-link" onclick="showPage('page-trends',this)">Trends</a>
     <a class="nav-link" onclick="showPage('page-cities',this)"><span>🏙</span> Cities</a>
+    <a class="nav-link" onclick="showPage('page-health',this)"><span>🫁</span> Health</a>
   </nav>
   <div class="topbar-right">
     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
@@ -459,7 +559,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="sidebar-nav-item" onclick="showPage('page-cities',this)">
       <span>🏙</span> Cities at Risk
     </a>
-    <a class="sidebar-nav-item" href="#footer">
+    <a class="sidebar-nav-item" onclick="showPage('page-health',this)">
       <span>🫁</span> Health Impact
     </a>
     <a class="sidebar-nav-item" href="#footer">
@@ -1069,6 +1169,173 @@ tbody td{padding:7px 10px;font-size:11px;}
       </div>
 
     </section>
+
+
+
+
+
+    <!-- PAGE: HEALTH IMPACT -->
+    <section id="page-health" class="page">
+
+      <!-- Header -->
+      <div class="hi-header">
+        <div class="hi-header-left">
+          <div class="hi-header-tag">🫁 Health Impact</div>
+          <div class="hi-header-title">Population Exposure &amp; Health Risk Assessment</div>
+          <div class="hi-header-sub">Urban NO₂ burden across West Africa · Based on NPWEI tiers · Sentinel-5P TROPOMI · 2020–2024</div>
+        </div>
+        <div class="hi-header-btns">
+          <button class="hi-export-btn" onclick="exportHealthCSV()">⬇ CSV</button>
+          <button class="hi-export-btn" onclick="window.print()">🖨 PDF</button>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="hi-disclaimer">
+        <div class="hi-disclaimer-icon">⚠️</div>
+        <div class="hi-disclaimer-text"><strong>Important:</strong> Population figures are estimated from WorldPop 2020 urban pixels (≥50 people/km²) clipped to country boundaries. These are exposure estimates based on satellite-derived NO₂ columns, not clinical health outcomes. No mortality or hospitalisation rates are implied. Risk tiers follow NPWEI thresholds (0–100 normalised scale).</div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="hi-filter-bar">
+        <div class="hi-filter-row">
+          <div class="hi-filter-group">
+            <label>🌤 Season</label>
+            <select class="hi-filter-select" id="hi-season" onchange="updateHealthPage()">
+              <option value="Annual">Annual Mean</option>
+              <option value="DJF">Dry Season (DJF)</option>
+              <option value="JJA">Wet Season (JJA)</option>
+            </select>
+          </div>
+          <div class="hi-filter-group">
+            <label>🌍 Country Focus</label>
+            <select class="hi-filter-select" id="hi-country" onchange="updateHealthPage()">
+              <option value="all">All West Africa</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="hi-kpi-row">
+        <div class="hi-kpi red">
+          <div class="hi-kpi-icon">🫁</div>
+          <div class="hi-kpi-label">High + Severe Risk Population</div>
+          <div class="hi-kpi-value" id="hi-kpi-highrisk" style="color:#ef4444">--</div>
+          <div class="hi-kpi-sub" id="hi-kpi-highrisk-sub">NPWEI ≥ 60 · millions</div>
+        </div>
+        <div class="hi-kpi orange">
+          <div class="hi-kpi-icon">👥</div>
+          <div class="hi-kpi-label">% Urban Pop at High Risk</div>
+          <div class="hi-kpi-value" id="hi-kpi-pct" style="color:#f97316">--</div>
+          <div class="hi-kpi-sub" id="hi-kpi-pct-sub">of total urban West Africa</div>
+        </div>
+        <div class="hi-kpi blue">
+          <div class="hi-kpi-icon">🏙</div>
+          <div class="hi-kpi-label">High-Risk Cities</div>
+          <div class="hi-kpi-value" id="hi-kpi-cities" style="color:#3b82f6">--</div>
+          <div class="hi-kpi-sub" id="hi-kpi-cities-sub">cities with NPWEI ≥ 60</div>
+        </div>
+        <div class="hi-kpi purple">
+          <div class="hi-kpi-icon">🗺</div>
+          <div class="hi-kpi-label">High-Risk Countries</div>
+          <div class="hi-kpi-value" id="hi-kpi-countries" style="color:#a855f7">--</div>
+          <div class="hi-kpi-sub" id="hi-kpi-countries-sub">countries with NPWEI ≥ 60</div>
+        </div>
+      </div>
+
+      <!-- Tier breakdown + WHO context -->
+      <div class="hi-top-row">
+
+        <!-- Population by risk tier -->
+        <div class="hi-tier-panel">
+          <div class="hi-panel-hdr">
+            <div class="hi-panel-title">Population by Risk Tier</div>
+            <div class="hi-panel-badge" id="hi-tier-badge">Annual Mean</div>
+          </div>
+          <div class="hi-tier-list" id="hi-tier-list">
+            <!-- filled by JS -->
+          </div>
+        </div>
+
+        <!-- WHO context -->
+        <div class="hi-who-panel">
+          <div class="hi-panel-hdr">
+            <div class="hi-panel-title">WHO NO₂ Guideline Context</div>
+            <div class="hi-panel-badge">AQG 2021</div>
+          </div>
+          <div class="hi-who-intro">
+            The WHO 2021 Air Quality Guidelines recommend an annual mean NO₂ concentration of <strong>10 µg/m³</strong> and a 24-hour mean of <strong>25 µg/m³</strong>. The NPWEI index reflects relative population-weighted column NO₂, not surface concentrations, but higher NPWEI tiers correspond to elevated surface exposure risk.
+          </div>
+          <div class="hi-who-grid">
+            <div class="hi-who-card exceeded">
+              <div class="hi-who-card-label">WHO Annual Guideline</div>
+              <div class="hi-who-card-val">10 µg/m³</div>
+              <div class="hi-who-card-sub">⚠ Exceeded in all High/Severe cities</div>
+            </div>
+            <div class="hi-who-card exceeded">
+              <div class="hi-who-card-label">24-hr Mean Guideline</div>
+              <div class="hi-who-card-val">25 µg/m³</div>
+              <div class="hi-who-card-sub">⚠ Likely exceeded during DJF peak</div>
+            </div>
+            <div class="hi-who-card">
+              <div class="hi-who-card-label">Dry Season Peak Risk</div>
+              <div class="hi-who-card-val" id="hi-who-djf">--</div>
+              <div class="hi-who-card-sub">West Africa avg NPWEI (DJF)</div>
+            </div>
+            <div class="hi-who-card">
+              <div class="hi-who-card-label">Wet Season Baseline</div>
+              <div class="hi-who-card-val" id="hi-who-jja">--</div>
+              <div class="hi-who-card-sub">West Africa avg NPWEI (JJA)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts row -->
+      <div class="hi-mid-row">
+
+        <div class="hi-chart-panel">
+          <div class="hi-chart-hdr">
+            <div class="hi-chart-title">Population Exposure by Risk Tier</div>
+            <div class="hi-chart-badge" id="hi-chart1-badge">Annual Mean</div>
+          </div>
+          <div class="hi-chart-sub">Urban population (millions) in each NPWEI risk tier</div>
+          <div class="hi-chart-wrap"><canvas id="hi-tier-chart"></canvas></div>
+        </div>
+
+        <div class="hi-chart-panel">
+          <div class="hi-chart-hdr">
+            <div class="hi-chart-title">DJF vs JJA High-Risk Population</div>
+            <div class="hi-chart-badge">Seasonal Comparison</div>
+          </div>
+          <div class="hi-chart-sub">Population at NPWEI ≥ 60 by season (millions)</div>
+          <div class="hi-chart-wrap"><canvas id="hi-season-chart"></canvas></div>
+        </div>
+
+      </div>
+
+      <!-- Country-level breakdown -->
+      <div class="hi-country-section">
+        <div class="hi-country-hdr">
+          <div class="hi-country-title">Country-Level Exposure Summary</div>
+          <div class="hi-panel-badge" id="hi-country-badge">Annual Mean · NPWEI + Urban Pop</div>
+        </div>
+        <div class="hi-country-grid" id="hi-country-grid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Key health insights -->
+      <div class="hi-insight-row">
+        <div class="hi-insight-title">💡 Health Risk Insights</div>
+        <div class="hi-insight-grid" id="hi-insight-grid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+    </section>
     
   </div><!-- end .content -->
 
@@ -1523,6 +1790,8 @@ window.addEventListener('load', async()=>{
   initOverviewExtras();
   populateCitiesDropdowns();
   updateCitiesPage();
+  populateHealthDropdowns();
+  updateHealthPage();
 });
 
 const MONTH_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -2015,6 +2284,231 @@ function exportCitiesCSV(){
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
   a.download=`wa_no2_cities_${season}.csv`; a.click();
+}
+
+
+// ── HEALTH IMPACT PAGE ─────────────────────────────────────────────
+let hiTierChart=null, hiSeasonChart=null;
+
+function populateHealthDropdowns(){
+  const cSel=document.getElementById('hi-country');
+  Object.keys(COUNTRY_PWE).sort().forEach(name=>{
+    const o=document.createElement('option'); o.value=name; o.textContent=name; cSel.appendChild(o);
+  });
+}
+
+function updateHealthPage(){
+  const season=document.getElementById('hi-season')?.value??'Annual';
+  const country=document.getElementById('hi-country')?.value??'all';
+  const hd=HEALTH_IMPACT[season];
+  if(!hd) return;
+
+  // Season badge updates
+  const seasonLabel={DJF:'Dry Season (DJF)',JJA:'Wet Season (JJA)',Annual:'Annual Mean'}[season];
+  document.getElementById('hi-tier-badge').textContent=seasonLabel;
+  document.getElementById('hi-chart1-badge').textContent=seasonLabel;
+  document.getElementById('hi-country-badge').textContent=`${seasonLabel} · NPWEI + Urban Pop`;
+
+  // KPI cards
+  const highM=hd.high_risk_population_millions??0;
+  const highPct=hd.high_risk_pct_urban??0;
+  document.getElementById('hi-kpi-highrisk').textContent=`${highM.toFixed(1)}M`;
+  document.getElementById('hi-kpi-highrisk-sub').textContent=`NPWEI ≥ 60 · ${seasonLabel}`;
+  document.getElementById('hi-kpi-pct').textContent=`${highPct}%`;
+  document.getElementById('hi-kpi-pct-sub').textContent=`of urban West Africa · ${seasonLabel}`;
+
+  const cityNpwei=getCityNPWEI(season);
+  const highCities=Object.values(cityNpwei).filter(v=>v>=60).length;
+  document.getElementById('hi-kpi-cities').textContent=highCities;
+  document.getElementById('hi-kpi-cities-sub').textContent=`of ${Object.keys(cityNpwei).length} cities · NPWEI ≥ 60`;
+
+  const npwei=getNPWEI(season);
+  const highCountries=Object.values(npwei).filter(v=>v>=60).length;
+  document.getElementById('hi-kpi-countries').textContent=highCountries;
+  document.getElementById('hi-kpi-countries-sub').textContent=`of ${Object.keys(npwei).length} countries · NPWEI ≥ 60`;
+
+  // WHO cards
+  document.getElementById('hi-who-djf').textContent=`${getWaNPWEI('DJF')}/100`;
+  document.getElementById('hi-who-jja').textContent=`${getWaNPWEI('JJA')}/100`;
+
+  // Tier breakdown
+  const tiers=[
+    {label:'Severe / Critical',color:'#ef4444',min:80},
+    {label:'High',color:'#f97316',min:60},
+    {label:'Moderate',color:'#eab308',min:40},
+    {label:'Elevated',color:'#84cc16',min:20},
+    {label:'Minimal',color:'#22c55e',min:0}
+  ];
+  // Estimate population per tier from country data
+  const tierPops=tiers.map(t=>{
+    let pop=0;
+    for(const[c,score]of Object.entries(npwei)){
+      const maxScore=tiers.find(tt=>score>=tt.min)?.min??0;
+      if(maxScore===t.min){
+        // sum urban pop for countries in this tier
+        pop+=(COUNTRY_PWE[c]?.urban_pop??0);
+      }
+    }
+    return pop;
+  });
+  const totalPop=tierPops.reduce((a,b)=>a+b,0)||1;
+
+  document.getElementById('hi-tier-list').innerHTML=tiers.map((t,i)=>{
+    const pop=tierPops[i];
+    const pct=Math.round((pop/totalPop)*100);
+    const width=Math.max(pct,2);
+    return`<div class="hi-tier-row">
+      <div class="hi-tier-dot" style="background:${t.color}"></div>
+      <div class="hi-tier-label">${t.label}</div>
+      <div class="hi-tier-bar-track"><div class="hi-tier-bar-fill" style="width:${width}%;background:${t.color}"></div></div>
+      <div class="hi-tier-val" style="color:${t.color}">${pop.toFixed(1)}M</div>
+      <div class="hi-tier-pct">${pct}%</div>
+    </div>`;
+  }).join('');
+
+  // Tier bar chart
+  renderHiTierChart(tiers, tierPops);
+
+  // Season comparison chart
+  renderHiSeasonChart();
+
+  // Country cards
+  renderHiCountryGrid(season, country);
+
+  // Insights
+  renderHiInsights(season, hd, npwei, cityNpwei);
+}
+
+function renderHiTierChart(tiers, tierPops){
+  if(hiTierChart) hiTierChart.destroy();
+  hiTierChart=new Chart(document.getElementById('hi-tier-chart'),{
+    type:'bar',
+    data:{
+      labels:tiers.map(t=>t.label),
+      datasets:[{
+        data:tierPops,
+        backgroundColor:tiers.map(t=>t.color),
+        borderRadius:4,
+        borderSkipped:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.raw.toFixed(2)}M people`}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9}}},
+        y:{grid:{color:'#f1f5f9'},ticks:{font:{size:9},callback:v=>`${v}M`},title:{display:true,text:'Population (M)',font:{size:9},color:'#94a3b8'}}
+      }
+    }
+  });
+}
+
+function renderHiSeasonChart(){
+  const seasons=['Annual','DJF','JJA'];
+  const labels=['Annual Mean','Dry (DJF)','Wet (JJA)'];
+  const colors=['#3b82f6','#f97316','#22c55e'];
+  const data=seasons.map(s=>{
+    const hd=HEALTH_IMPACT[s];
+    return hd?.high_risk_population_millions??0;
+  });
+  if(hiSeasonChart) hiSeasonChart.destroy();
+  hiSeasonChart=new Chart(document.getElementById('hi-season-chart'),{
+    type:'bar',
+    data:{
+      labels,
+      datasets:[{
+        data,
+        backgroundColor:colors,
+        borderRadius:6,
+        borderSkipped:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.raw.toFixed(2)}M at high/severe risk`}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10}}},
+        y:{grid:{color:'#f1f5f9'},ticks:{font:{size:9},callback:v=>`${v}M`},title:{display:true,text:'Population (M)',font:{size:9},color:'#94a3b8'}}
+      }
+    }
+  });
+}
+
+function renderHiCountryGrid(season, focusCountry){
+  const npwei=getNPWEI(season);
+  const sorted=Object.entries(npwei).sort((a,b)=>b[1]-a[1]);
+  document.getElementById('hi-country-grid').innerHTML=sorted.map(([country,score])=>{
+    if(focusCountry!=='all'&&country!==focusCountry) return'';
+    const risk=riskLabel(score);
+    const urbanPop=(COUNTRY_PWE[country]?.urban_pop??0).toFixed(2);
+    const djf=getNPWEI('DJF')[country]??0;
+    const jja=getNPWEI('JJA')[country]??0;
+    return`<div class="hi-country-card">
+      <div class="hi-country-name">
+        <div class="hi-country-risk-dot" style="background:${risk.color}"></div>
+        ${country}
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">NPWEI (${season})</span>
+        <span class="hi-country-stat-val" style="color:${risk.color}">${score}/100</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Risk Level</span>
+        <span class="hi-country-stat-val" style="color:${risk.color}">${risk.label}</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">Urban Pop</span>
+        <span class="hi-country-stat-val">${urbanPop}M</span>
+      </div>
+      <div class="hi-country-stat">
+        <span class="hi-country-stat-label">DJF / JJA</span>
+        <span class="hi-country-stat-val">${djf} / ${jja}</span>
+      </div>
+      <div class="hi-country-bar-wrap">
+        <div class="hi-country-bar-track">
+          <div class="hi-country-bar-fill" style="width:${score}%;background:${risk.color}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderHiInsights(season, hd, npwei, cityNpwei){
+  const topCountry=Object.entries(npwei).sort((a,b)=>b[1]-a[1])[0];
+  const topCity=Object.entries(cityNpwei).sort((a,b)=>b[1]-a[1])[0];
+  const djfHigh=HEALTH_IMPACT['DJF']?.high_risk_population_millions??0;
+  const jjaHigh=HEALTH_IMPACT['JJA']?.high_risk_population_millions??0;
+  const seasonDiff=(djfHigh-jjaHigh).toFixed(1);
+  const highCityList=Object.entries(cityNpwei).filter(([,v])=>v>=80).map(([c])=>c).slice(0,3).join(', ')||'--';
+
+  const insights=[
+    {icon:'🏭',title:'Highest Burden Country',text:`<strong>${topCountry?.[0]??'--'}</strong> records the highest country NPWEI (${topCountry?.[1]??'--'}/100) in ${season==='Annual'?'annual mean':season+' season'}, driven by dense urban-industrial activity and traffic emissions in major centres.`},
+    {icon:'🌵',title:'Dry Season Health Burden',text:`An additional <strong>${seasonDiff}M people</strong> enter high-risk exposure zones during the dry season (DJF) compared to the wet season, consistent with Harmattan dust suppressing vertical mixing and concentrating near-surface NO₂.`},
+    {icon:'🏙',title:'Critical Urban Hotspots',text:`Cities at Severe/Critical tier (NPWEI ≥ 80) include <strong>${highCityList}</strong>. Residents in these areas face chronic NO₂ exposure likely exceeding WHO 2021 annual guidelines of 10 µg/m³.`},
+    {icon:'👶',title:'Vulnerable Populations',text:`Children, elderly, and people with pre-existing respiratory conditions (asthma, COPD) in high-exposure zones face disproportionate health risk. Approximately <strong>${hd?.high_risk_population_millions?.toFixed(1)??'--'}M</strong> urban residents are affected.`},
+    {icon:'📉',title:'Wet Season Relief',text:`During the wet season (JJA), monsoon ventilation and convective mixing reduce NO₂ burden across most cities. The regional NPWEI drops significantly, offering a natural seasonal respite in exposure.`},
+    {icon:'📡',title:'Data Basis',text:`All exposure estimates are derived from Sentinel-5P TROPOMI monthly NO₂ column data (2020–2024), population-weighted using WorldPop 2020 at 0.1° resolution, restricted to urban pixels ≥50 people/km².`}
+  ];
+
+  document.getElementById('hi-insight-grid').innerHTML=insights.map(ins=>`
+    <div class="hi-insight-card">
+      <div class="hi-insight-icon">${ins.icon}</div>
+      <div class="hi-insight-body">
+        <div class="hi-insight-card-title">${ins.title}</div>
+        <div class="hi-insight-card-text">${ins.text}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function exportHealthCSV(){
+  const season=document.getElementById('hi-season')?.value??'Annual';
+  const npwei=getNPWEI(season);
+  const rows=[['Country','NPWEI','Risk_Level','Urban_Pop_M','Season']];
+  for(const[c,score]of Object.entries(npwei)){
+    rows.push([c,score,riskLabel(score).label,(COUNTRY_PWE[c]?.urban_pop??0).toFixed(2),season]);
+  }
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
+  a.download=`wa_no2_health_impact_${season}.csv`; a.click();
 }
 
 </script>
