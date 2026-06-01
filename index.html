@@ -70,6 +70,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex
 /* PAGE SECTIONS */
 .page{display:none;}
 .page.active{display:block;}
+.page-section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.page-section-hdr-left h2{font-size:16px;font-weight:700;color:var(--text);}
+.page-section-hdr-left p{font-size:11px;color:var(--text-dim);margin-top:2px;}
 
 /* SUMMARY CARDS */
 .summary-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
@@ -691,7 +694,7 @@ function riskLabel(s){
 function riskColor(s){
   if(s<20) return'#22c55e'; if(s<40) return'#84cc16'; if(s<60) return'#eab308'; if(s<80) return'#f97316'; return'#ef4444';
 }
-
+let currentSeason='Annual', leafletMap=null, mapOverlay=null;
 let miniMap=null, miniOverlay=null, ovTrendChart=null, ovSeasonalChart=null;
 
 /* ── Helper: navigate to a page and sync nav highlights ── */
