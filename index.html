@@ -21,6 +21,95 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;font-size:13px;}
 
+/* CITIES AT RISK PAGE */
+.cities-page-header{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.cities-page-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f97316;margin-bottom:6px;}
+.cities-page-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.cities-page-sub{font-size:11px;color:var(--text-dim);}
+.cities-page-btns{display:flex;gap:8px;flex-shrink:0;}
+.cities-export-btn{display:flex;align-items:center;gap:5px;background:var(--navy);color:#fff;border:none;padding:8px 14px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s;}
+.cities-export-btn:hover{background:var(--accent);}
+
+.cities-filter-bar{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 20px;margin-bottom:12px;}
+.cities-filter-row{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+.cities-filter-group{display:flex;flex-direction:column;gap:4px;min-width:130px;}
+.cities-filter-group label{font-size:10px;font-weight:600;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;}
+.cities-filter-select{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:8px 10px;border-radius:5px;cursor:pointer;outline:none;font-family:var(--font);transition:border-color .15s;}
+.cities-filter-select:focus{border-color:var(--accent);}
+
+.cities-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.cities-kpi{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:default;}
+.cities-kpi:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(37,99,235,.1);border-color:#93c5fd;}
+.cities-kpi-label{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+.cities-kpi-value{font-size:24px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px;}
+.cities-kpi-sub{font-size:10px;color:var(--text-dim);}
+.cities-kpi-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;}
+
+.cities-main-grid{display:grid;grid-template-columns:1fr 340px;gap:12px;margin-bottom:14px;}
+.cities-table-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.cities-table-hdr{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.cities-table-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.cities-table-sub{font-size:10px;color:var(--text-dim);margin-top:2px;}
+.cities-search-wrap{position:relative;}
+.cities-search{background:var(--panel2);border:1px solid var(--border2);color:var(--text);font-size:11px;padding:6px 10px 6px 28px;border-radius:5px;outline:none;font-family:var(--font);width:160px;transition:border-color .15s;}
+.cities-search:focus{border-color:var(--accent);}
+.cities-search-icon{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--text-dim);}
+.cities-tbl-scroll{flex:1;overflow-y:auto;max-height:480px;}
+.cities-tbl{width:100%;border-collapse:collapse;}
+.cities-tbl thead th{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel);white-space:nowrap;cursor:pointer;user-select:none;}
+.cities-tbl thead th:hover{color:var(--accent);}
+.cities-tbl tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;}
+.cities-tbl tbody tr:hover{background:#eff6ff;}
+.cities-tbl tbody tr.selected{background:#dbeafe;}
+.cities-tbl tbody td{padding:8px 12px;font-size:11px;}
+.ct-rank{font-size:10px;font-weight:700;color:var(--text-dim);font-family:var(--font-mono);width:28px;}
+.ct-city{font-weight:600;color:var(--text);}
+.ct-country{font-size:10px;color:var(--text-dim);}
+.ct-risk-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;color:#fff;}
+.ct-bar-wrap{display:flex;align-items:center;gap:5px;}
+.ct-bar{height:7px;border-radius:3px;min-width:4px;transition:width .3s;}
+.ct-val{font-family:var(--font-mono);font-size:10px;font-weight:700;min-width:28px;}
+.ct-pop{font-size:10px;color:var(--text-dim);}
+.cities-tbl-note{font-size:9px;color:var(--text-dim);padding:8px 12px;border-top:1px solid var(--border);background:var(--panel2);}
+
+.city-detail-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;overflow:hidden;}
+.city-detail-hdr{padding:14px 16px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,var(--navy),var(--navy2));}
+.city-detail-name{font-size:18px;font-weight:700;color:#fff;margin-bottom:2px;}
+.city-detail-country{font-size:11px;color:#94a3b8;}
+.city-detail-score-row{display:flex;align-items:center;gap:10px;margin-top:10px;}
+.city-detail-score{font-size:36px;font-weight:700;line-height:1;}
+.city-detail-score-label{font-size:10px;color:#94a3b8;margin-top:2px;}
+.city-detail-risk{font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;color:#fff;align-self:flex-start;}
+.city-detail-body{padding:14px 16px;flex:1;overflow-y:auto;}
+.city-detail-section{margin-bottom:14px;}
+.city-detail-section-title{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.city-detail-stat{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);}
+.city-detail-stat:last-child{border-bottom:none;}
+.city-detail-stat-label{font-size:11px;color:var(--text-dim);}
+.city-detail-stat-value{font-size:11px;font-weight:700;color:var(--text);font-family:var(--font-mono);}
+.city-season-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.city-season-card{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;}
+.city-season-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px;}
+.city-season-val{font-size:20px;font-weight:700;font-family:var(--font-mono);}
+.city-season-sub{font-size:9px;color:var(--text-dim);margin-top:2px;}
+.city-detail-bar-section{margin-bottom:6px;}
+.city-detail-bar-label{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;}
+.city-detail-bar-track{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;border:1px solid var(--border);}
+.city-detail-bar-fill{height:100%;border-radius:4px;transition:width .4s ease;}
+.city-detail-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:40px;text-align:center;color:var(--text-dim);}
+.city-detail-empty-icon{font-size:36px;margin-bottom:10px;opacity:.4;}
+.city-detail-empty-text{font-size:12px;line-height:1.6;}
+
+.cities-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.cities-chart-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;transition:box-shadow .2s;}
+.cities-chart-panel:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.cities-chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.cities-chart-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.cities-chart-badge{font-size:9px;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);padding:2px 8px;border-radius:3px;}
+.cities-chart-sub{font-size:10px;color:var(--text-dim);margin-bottom:10px;font-family:var(--font-mono);}
+.cities-chart-wrap{flex:1;position:relative;min-height:200px;}
+@media(max-width:900px){.cities-main-grid{grid-template-columns:1fr;}.cities-kpi-row{grid-template-columns:1fr 1fr;}.cities-bottom-row{grid-template-columns:1fr;}}
+
 /* TRENDS PAGE */
 .trends-header{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
 .trends-header-left{}
@@ -344,7 +433,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="nav-link active" onclick="showPage('page-overview',this)">Dashboard</a>
     <a class="nav-link" onclick="showPage('page-map',this)">Map</a>
     <a class="nav-link" onclick="showPage('page-trends',this)">Trends</a>
-    <a class="nav-link" href="#footer"><span>🏙</span> Cities</a>
+    <a class="nav-link" onclick="showPage('page-cities',this)"><span>🏙</span> Cities</a>
   </nav>
   <div class="topbar-right">
     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
@@ -367,7 +456,7 @@ tbody td{padding:7px 10px;font-size:11px;}
     <a class="sidebar-nav-item" onclick="showPage('page-trends',this)">
       <span>📈</span> Trends
     </a>
-    <a class="sidebar-nav-item" href="#footer">
+    <a class="sidebar-nav-item" onclick="showPage('page-cities',this)">
       <span>🏙</span> Cities at Risk
     </a>
     <a class="sidebar-nav-item" href="#footer">
@@ -833,6 +922,154 @@ tbody td{padding:7px 10px;font-size:11px;}
       </div>
     </section>
 
+
+
+    <!-- PAGE: CITIES AT RISK -->
+    <section id="page-cities" class="page">
+
+      <!-- Header -->
+      <div class="cities-page-header">
+        <div>
+          <div class="cities-page-tag">🏙 Cities at Risk</div>
+          <div class="cities-page-title">Urban NO₂ Exposure Hotspots</div>
+          <div class="cities-page-sub">Population-weighted exposure across 27 West African cities · Sentinel-5P TROPOMI · 2020–2024</div>
+        </div>
+        <div class="cities-page-btns">
+          <button class="cities-export-btn" onclick="exportCitiesCSV()">⬇ CSV</button>
+          <button class="cities-export-btn" onclick="window.print()">🖨 PDF</button>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="cities-filter-bar">
+        <div class="cities-filter-row">
+          <div class="cities-filter-group">
+            <label>🌍 Country</label>
+            <select class="cities-filter-select" id="ct-country" onchange="updateCitiesPage()">
+              <option value="all">All Countries</option>
+            </select>
+          </div>
+          <div class="cities-filter-group">
+            <label>🌤 Season</label>
+            <select class="cities-filter-select" id="ct-season" onchange="updateCitiesPage()">
+              <option value="Annual">Annual Mean</option>
+              <option value="DJF">Dry Season (DJF)</option>
+              <option value="JJA">Wet Season (JJA)</option>
+            </select>
+          </div>
+          <div class="cities-filter-group">
+            <label>⚠ Risk Level</label>
+            <select class="cities-filter-select" id="ct-risk" onchange="updateCitiesPage()">
+              <option value="all">All Risk Levels</option>
+              <option value="Severe/Critical">Severe / Critical</option>
+              <option value="High">High</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Elevated">Elevated</option>
+              <option value="Minimal">Minimal</option>
+            </select>
+          </div>
+          <div class="cities-filter-group">
+            <label>🔢 Sort By</label>
+            <select class="cities-filter-select" id="ct-sort" onchange="updateCitiesPage()">
+              <option value="npwei">NPWEI Score</option>
+              <option value="pop">Urban Population</option>
+              <option value="alpha">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="cities-kpi-row">
+        <div class="cities-kpi">
+          <div class="cities-kpi-label">Cities Analysed</div>
+          <div class="cities-kpi-value" id="ct-kpi-total">27</div>
+          <div class="cities-kpi-sub">West Africa urban centres</div>
+        </div>
+        <div class="cities-kpi">
+          <div class="cities-kpi-label">High / Severe Risk Cities</div>
+          <div class="cities-kpi-value" id="ct-kpi-high" style="color:#ef4444">--</div>
+          <div class="cities-kpi-sub" id="ct-kpi-high-sub">NPWEI ≥ 60</div>
+        </div>
+        <div class="cities-kpi">
+          <div class="cities-kpi-label">Top Hotspot City</div>
+          <div class="cities-kpi-value" id="ct-kpi-top" style="font-size:16px;line-height:1.3">--</div>
+          <div class="cities-kpi-sub" id="ct-kpi-top-score">--</div>
+        </div>
+        <div class="cities-kpi">
+          <div class="cities-kpi-label">Urban Pop at High Risk</div>
+          <div class="cities-kpi-value" id="ct-kpi-pop" style="color:#3b82f6">--</div>
+          <div class="cities-kpi-sub" id="ct-kpi-pop-sub">millions of people</div>
+        </div>
+      </div>
+
+      <!-- Main: table + detail panel -->
+      <div class="cities-main-grid">
+
+        <!-- Cities table -->
+        <div class="cities-table-panel">
+          <div class="cities-table-hdr">
+            <div>
+              <div class="cities-table-title">City Exposure Rankings</div>
+              <div class="cities-table-sub" id="ct-table-sub">Annual Mean · 2020–2024</div>
+            </div>
+            <div class="cities-search-wrap">
+              <span class="cities-search-icon">🔍</span>
+              <input class="cities-search" id="ct-search" type="text" placeholder="Search city…" oninput="updateCitiesPage()">
+            </div>
+          </div>
+          <div class="cities-tbl-scroll">
+            <table class="cities-tbl">
+              <thead>
+                <tr>
+                  <th class="ct-rank">#</th>
+                  <th onclick="ctSetSort('alpha')">City ↕</th>
+                  <th>Country</th>
+                  <th onclick="ctSetSort('npwei')">NPWEI ↕</th>
+                  <th>Risk</th>
+                  <th onclick="ctSetSort('pop')">Urban Pop (M) ↕</th>
+                  <th>DJF</th>
+                  <th>JJA</th>
+                </tr>
+              </thead>
+              <tbody id="ct-tbody"></tbody>
+            </table>
+          </div>
+          <div class="cities-tbl-note">Click any row to see city details · WorldPop 2020 · ≥50 ppl/km² urban pixels</div>
+        </div>
+
+        <!-- City detail panel -->
+        <div class="city-detail-panel" id="city-detail-panel">
+          <div class="city-detail-empty">
+            <div class="city-detail-empty-icon">🏙</div>
+            <div class="city-detail-empty-text">Click any city in the table<br>to see detailed exposure stats</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom charts row -->
+      <div class="cities-bottom-row">
+        <div class="cities-chart-panel">
+          <div class="cities-chart-hdr">
+            <div class="cities-chart-title">Top 15 Cities — NPWEI Ranking</div>
+            <div class="cities-chart-badge" id="ct-chart1-badge">Annual Mean</div>
+          </div>
+          <div class="cities-chart-sub">Ranked by exposure score · 0–100</div>
+          <div class="cities-chart-wrap"><canvas id="ct-bar-chart"></canvas></div>
+        </div>
+        <div class="cities-chart-panel">
+          <div class="cities-chart-hdr">
+            <div class="cities-chart-title">Dry vs Wet Season Comparison</div>
+            <div class="cities-chart-badge">DJF vs JJA · Top 10</div>
+          </div>
+          <div class="cities-chart-sub">DJF (orange) vs JJA (green) · NPWEI 0–100</div>
+          <div class="cities-chart-wrap"><canvas id="ct-season-chart"></canvas></div>
+        </div>
+      </div>
+
+    </section>
+    
   </div><!-- end .content -->
 
   <footer id="footer" class="footer">
@@ -1284,6 +1521,8 @@ window.addEventListener('load', async()=>{
 
   // Init overview summary extras after main data is ready
   initOverviewExtras();
+  populateCitiesDropdowns();
+  updateCitiesPage();
 });
 
 const MONTH_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1537,6 +1776,245 @@ function exportTrendsCSV(){
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
   a.download=`wa_no2_trends_${country}_${season}.csv`; a.click();
+}
+
+
+// ── CITIES AT RISK PAGE ────────────────────────────────────────────
+let ctBarChart=null, ctSeasonChart=null;
+
+function populateCitiesDropdowns(){
+  const cSel=document.getElementById('ct-country');
+  const countries=[...new Set(Object.values(CITIES_PWE).map(d=>d.country))].sort();
+  countries.forEach(name=>{
+    const o=document.createElement('option'); o.value=name; o.textContent=name; cSel.appendChild(o);
+  });
+  cSel.addEventListener('change', updateCitiesPage);
+}
+
+function ctSetSort(val){
+  document.getElementById('ct-sort').value=val;
+  updateCitiesPage();
+}
+
+function updateCitiesPage(){
+  const country=document.getElementById('ct-country')?.value??'all';
+  const season=document.getElementById('ct-season')?.value??'Annual';
+  const riskFilter=document.getElementById('ct-risk')?.value??'all';
+  const sortBy=document.getElementById('ct-sort')?.value??'npwei';
+  const search=(document.getElementById('ct-search')?.value??'').toLowerCase();
+
+  const npweiAll=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+
+  // Filter
+  let entries=Object.entries(CITIES_PWE).filter(([city,d])=>{
+    if(country!=='all'&&d.country!==country) return false;
+    if(riskFilter!=='all'&&riskLabel(npweiAll[city]??0).label!==riskFilter) return false;
+    if(search&&!city.toLowerCase().includes(search)&&!d.country.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  // Sort
+  if(sortBy==='npwei') entries.sort((a,b)=>(npweiAll[b[0]]??0)-(npweiAll[a[0]]??0));
+  else if(sortBy==='pop') entries.sort((a,b)=>(b[1].urban_pop??0)-(a[1].urban_pop??0));
+  else entries.sort((a,b)=>a[0].localeCompare(b[0]));
+
+  // Update table sub label
+  document.getElementById('ct-table-sub').textContent={
+    DJF:'Dry Season (DJF) · 2020–2024',
+    JJA:'Wet Season (JJA) · 2020–2024',
+    Annual:'Annual Mean · 2020–2024'
+  }[season];
+
+  // KPI cards
+  const allScores=Object.values(npweiAll).filter(v=>v!=null);
+  const highRiskCities=entries.filter(([c])=>(npweiAll[c]??0)>=60);
+  document.getElementById('ct-kpi-total').textContent=entries.length;
+  document.getElementById('ct-kpi-high').textContent=highRiskCities.length;
+  document.getElementById('ct-kpi-high-sub').textContent=`of ${entries.length} cities shown`;
+  const topEntry=entries[sortBy==='npwei'?0:Object.entries(npweiAll).sort((a,b)=>b[1]-a[1])[0]];
+  const topCity=Object.entries(npweiAll).sort((a,b)=>b[1]-a[1])[0];
+  if(topCity){
+    document.getElementById('ct-kpi-top').textContent=topCity[0];
+    document.getElementById('ct-kpi-top').style.color=riskColor(topCity[1]);
+    document.getElementById('ct-kpi-top-score').textContent=`${topCity[1]}/100 NPWEI · ${riskLabel(topCity[1]).label}`;
+  }
+  const hd=HEALTH_IMPACT[season];
+  if(hd){
+    document.getElementById('ct-kpi-pop').textContent=`${hd.high_risk_population_millions?.toFixed(1)??'--'}M`;
+    document.getElementById('ct-kpi-pop-sub').textContent=`${hd.high_risk_pct_urban??'--'}% of urban pop · NPWEI ≥ 60`;
+  }
+
+  // Render table rows
+  document.getElementById('ct-tbody').innerHTML=entries.map(([city,d],i)=>{
+    const score=npweiAll[city]??0;
+    const djf=djfAll[city]??0;
+    const jja=jjaAll[city]??0;
+    const risk=riskLabel(score);
+    return`<tr onclick="showCityDetail('${city}')" id="ct-row-${city.replace(/\s/g,'_')}">
+      <td class="ct-rank">${i+1}</td>
+      <td class="ct-city">${city}</td>
+      <td class="ct-country">${d.country}</td>
+      <td><div class="ct-bar-wrap"><div class="ct-bar" style="width:${Math.max(score*.9,4)}px;background:${risk.color}"></div><span class="ct-val" style="color:${risk.color}">${score}</span></div></td>
+      <td><span class="ct-risk-badge" style="background:${risk.color}">${risk.label}</span></td>
+      <td class="ct-pop">${d.urban_pop?.toFixed(2)??'--'}</td>
+      <td style="font-size:10px;font-family:var(--font-mono);color:${riskColor(djf)};font-weight:700">${djf}</td>
+      <td style="font-size:10px;font-family:var(--font-mono);color:${riskColor(jja)};font-weight:700">${jja}</td>
+    </tr>`;
+  }).join('');
+
+  // Charts
+  renderCtBarChart(entries, npweiAll);
+  renderCtSeasonChart();
+
+  // Update badge
+  document.getElementById('ct-chart1-badge').textContent={DJF:'Dry Season (DJF)',JJA:'Wet Season (JJA)',Annual:'Annual Mean'}[season];
+}
+
+function showCityDetail(city){
+  const d=CITIES_PWE[city];
+  if(!d) return;
+  // Highlight selected row
+  document.querySelectorAll('.cities-tbl tbody tr').forEach(r=>r.classList.remove('selected'));
+  const row=document.getElementById(`ct-row-${city.replace(/\s/g,'_')}`);
+  if(row){ row.classList.add('selected'); row.scrollIntoView({block:'nearest',behavior:'smooth'}); }
+
+  const season=document.getElementById('ct-season')?.value??'Annual';
+  const npweiAll=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  const score=npweiAll[city]??0;
+  const djf=djfAll[city]??0;
+  const jja=jjaAll[city]??0;
+  const risk=riskLabel(score);
+  const seasonDiff=djf-jja;
+
+  document.getElementById('city-detail-panel').innerHTML=`
+    <div class="city-detail-hdr">
+      <div class="city-detail-name">${city}</div>
+      <div class="city-detail-country">${d.country} · ${d.lat?.toFixed(2)??''}°N, ${d.lon?.toFixed(2)??''}°E</div>
+      <div class="city-detail-score-row">
+        <div>
+          <div class="city-detail-score" style="color:${risk.color}">${score}</div>
+          <div class="city-detail-score-label">/100 NPWEI</div>
+        </div>
+        <span class="city-detail-risk" style="background:${risk.color}">${risk.label}</span>
+      </div>
+    </div>
+    <div class="city-detail-body">
+
+      <div class="city-detail-section">
+        <div class="city-detail-section-title">Seasonal Comparison</div>
+        <div class="city-season-compare">
+          <div class="city-season-card">
+            <div class="city-season-label">🌵 Dry (DJF)</div>
+            <div class="city-season-val" style="color:${riskColor(djf)}">${djf}</div>
+            <div class="city-season-sub">/100 NPWEI</div>
+          </div>
+          <div class="city-season-card">
+            <div class="city-season-label">🌧 Wet (JJA)</div>
+            <div class="city-season-val" style="color:${riskColor(jja)}">${jja}</div>
+            <div class="city-season-sub">/100 NPWEI</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--text-dim);text-align:center;">
+          ${seasonDiff>0?`🔺 DJF is <strong style="color:#f97316">${seasonDiff} points higher</strong> than JJA`:`🔽 JJA is <strong style="color:#22c55e">${Math.abs(seasonDiff)} points higher</strong> than DJF`}
+        </div>
+      </div>
+
+      <div class="city-detail-section">
+        <div class="city-detail-section-title">Exposure Profile</div>
+        <div class="city-detail-bar-section">
+          <div class="city-detail-bar-label"><span>Annual NPWEI</span><span style="font-weight:700;color:${risk.color}">${score}/100</span></div>
+          <div class="city-detail-bar-track"><div class="city-detail-bar-fill" style="width:${score}%;background:${risk.color}"></div></div>
+        </div>
+        <div class="city-detail-bar-section" style="margin-top:8px;">
+          <div class="city-detail-bar-label"><span>Dry Season (DJF)</span><span style="font-weight:700;color:${riskColor(djf)}">${djf}/100</span></div>
+          <div class="city-detail-bar-track"><div class="city-detail-bar-fill" style="width:${djf}%;background:${riskColor(djf)}"></div></div>
+        </div>
+        <div class="city-detail-bar-section" style="margin-top:8px;">
+          <div class="city-detail-bar-label"><span>Wet Season (JJA)</span><span style="font-weight:700;color:${riskColor(jja)}">${jja}/100</span></div>
+          <div class="city-detail-bar-track"><div class="city-detail-bar-fill" style="width:${jja}%;background:${riskColor(jja)}"></div></div>
+        </div>
+      </div>
+
+      <div class="city-detail-section">
+        <div class="city-detail-section-title">City Statistics</div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Urban Population</span><span class="city-detail-stat-value">${d.urban_pop?.toFixed(2)??'--'} M</span></div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Coordinates</span><span class="city-detail-stat-value">${d.lat?.toFixed(3)??''}°, ${d.lon?.toFixed(3)??''}°</span></div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Country</span><span class="city-detail-stat-value">${d.country}</span></div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Raw PWE (Annual)</span><span class="city-detail-stat-value">${d.Annual_pwe!=null?(d.Annual_pwe/1e15).toFixed(3)+' ×10¹⁵':'--'}</span></div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Raw PWE (DJF)</span><span class="city-detail-stat-value">${d.DJF_pwe!=null?(d.DJF_pwe/1e15).toFixed(3)+' ×10¹⁵':'--'}</span></div>
+        <div class="city-detail-stat"><span class="city-detail-stat-label">Raw PWE (JJA)</span><span class="city-detail-stat-value">${d.JJA_pwe!=null?(d.JJA_pwe/1e15).toFixed(3)+' ×10¹⁵':'--'}</span></div>
+      </div>
+
+      <div class="city-detail-section">
+        <div class="city-detail-section-title">Risk Interpretation</div>
+        <div style="font-size:11px;color:var(--text-dim);line-height:1.6;background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:10px;">
+          ${score>=80?`<strong style="color:#ef4444">Critical NO₂ burden.</strong> ${city} sits in the highest exposure tier. Major sources include traffic, industry, and biomass burning concentrated in dense urban areas.`:
+            score>=60?`<strong style="color:#f97316">High exposure risk.</strong> ${city} experiences significantly elevated NO₂ levels. Vulnerable populations (children, elderly) are at increased respiratory risk.`:
+            score>=40?`<strong style="color:#eab308">Moderate exposure.</strong> ${city} shows notable NO₂ levels above background. Prolonged exposure may affect respiratory health.`:
+            score>=20?`<strong style="color:#84cc16">Elevated but manageable.</strong> ${city} shows above-background NO₂. Continued monitoring recommended.`:
+            `<strong style="color:#22c55e">Minimal risk.</strong> ${city} shows low NO₂ exposure relative to West African cities.`}
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+function renderCtBarChart(entries, npweiAll){
+  const top15=entries.slice(0,15);
+  if(ctBarChart) ctBarChart.destroy();
+  ctBarChart=new Chart(document.getElementById('ct-bar-chart'),{
+    type:'bar',
+    data:{
+      labels:top15.map(([c])=>c),
+      datasets:[{
+        data:top15.map(([c])=>npweiAll[c]??0),
+        backgroundColor:top15.map(([c])=>riskColor(npweiAll[c]??0)),
+        borderRadius:4,borderSkipped:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`NPWEI: ${ctx.raw}/100 · ${riskLabel(ctx.raw).label}`}}},
+      scales:{x:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9}}},y:{grid:{display:false},ticks:{font:{size:9}}}}}
+  });
+}
+
+function renderCtSeasonChart(){
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  const top10=Object.entries(djfAll).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  if(ctSeasonChart) ctSeasonChart.destroy();
+  ctSeasonChart=new Chart(document.getElementById('ct-season-chart'),{
+    type:'bar',
+    data:{
+      labels:top10.map(([c])=>c.length>10?c.slice(0,9)+'…':c),
+      datasets:[
+        {label:'DJF (Dry)',data:top10.map(([c])=>djfAll[c]??0),backgroundColor:'#f97316',borderRadius:3,borderSkipped:false},
+        {label:'JJA (Wet)',data:top10.map(([c])=>jjaAll[c]??0),backgroundColor:'#22c55e',borderRadius:3,borderSkipped:false}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#f1f5f9'},min:0,max:100,ticks:{font:{size:9}}}}}
+  });
+}
+
+function exportCitiesCSV(){
+  const season=document.getElementById('ct-season')?.value??'Annual';
+  const npweiAll=getCityNPWEI(season);
+  const djfAll=getCityNPWEI('DJF');
+  const jjaAll=getCityNPWEI('JJA');
+  const rows=[['City','Country','Latitude','Longitude','NPWEI_Annual','NPWEI_DJF','NPWEI_JJA','Risk_Level','Urban_Pop_M']];
+  for(const[city,d]of Object.entries(CITIES_PWE)){
+    rows.push([city,d.country,d.lat,d.lon,npweiAll[city]??'',djfAll[city]??'',jjaAll[city]??'',riskLabel(npweiAll[city]??0).label,d.urban_pop?.toFixed(2)??'']);
+  }
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'}));
+  a.download=`wa_no2_cities_${season}.csv`; a.click();
 }
 
 </script>
