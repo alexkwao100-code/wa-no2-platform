@@ -60,12 +60,33 @@ body{font-family:var(--font);background:var(--panel2);color:var(--text);min-heig
 .brand-sub{color:var(--light);font-size:9px;font-weight:400;margin-top:1px;}
 .topbar-nav{display:flex;gap:2px;}
 .nav-link{
-  color:rgba(255,255,255,0.5);font-size:12px;font-weight:500;
-  padding:6px 13px;border-radius:5px;cursor:pointer;transition:all .15s;
-  text-decoration:none;border:none;background:none;font-family:var(--font);
+  color:rgba(255,255,255,0.5);
+  font-size:12px;
+  font-weight:500;
+  padding:6px 13px;
+  border-radius:5px;
+  cursor:pointer;
+  text-decoration:none;
+  border:none;
+  background:none;
+  font-family:var(--font);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
-.nav-link:hover{color:#fff;background:rgba(255,255,255,0.07);}
-.nav-link.active{color:#fff;background:rgba(19,86,214,0.5);}
+
+.nav-link:hover{
+  color:#fff;
+  background:rgba(19,86,214,0.5);
+  transform:translateY(-3px);
+}
+
+.nav-link.active{
+  color:#fff;
+  background:rgba(19,86,214,0.5);
+}
 .topbar-right{display:flex;align-items:center;gap:8px;position:relative;}
 .dl-btn{
   background:var(--accent);color:#fff;border:none;
