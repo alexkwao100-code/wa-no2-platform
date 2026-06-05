@@ -87,6 +87,24 @@ body{font-family:var(--font);background:var(--panel2);color:var(--text);min-heig
 .hero{
   background:var(--navy);position:relative;overflow:hidden;padding:72px 40px 64px;
 }
+
+.hero-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:0;
+}
+
 .hero::before{
   content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse 80% 60% at 60% 40%, rgba(14,165,233,0.1) 0%,transparent 70%),
@@ -745,6 +763,13 @@ tbody td{padding:7px 10px;font-size:13px;}
 
   <!-- HERO -->
   <section class="hero">
+
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="web_data/Cinematic aerial view of a large city covered by atmospheric air pollution. Thick gray smog drifts between skyscrapers and industrial zones. Vehicle exhaust rises from busy highways, factory smokestacks.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
     <div class="hero-inner">
       <div class="hero-tag">
         <span class="hero-tag-dot"></span>
