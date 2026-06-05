@@ -773,7 +773,7 @@ tbody td{padding:7px 10px;font-size:13px;}
     <div class="hero-inner">
       <div class="hero-tag">
         <span class="hero-tag-dot"></span>
-        Live Research Platform · TROPOMI · KNUST CAHL
+        NO₂ Exposure Platform · Asilevi Air Pollution Lab, KNUST.
       </div>
       <h1 class="hero-title">
         Understanding<br><span>NO₂ Population</span><br>Exposure in West Africa
@@ -788,7 +788,7 @@ tbody td{padding:7px 10px;font-size:13px;}
       </div>
       <div class="hero-badges">
         <div class="hero-badge">🛰 Sentinel-5P TROPOMI</div>
-        <div class="hero-badge">👥 WorldPop 2020</div>
+        <div class="hero-badge">👥 NASA Gridded Population 2020</div>
         <div class="hero-badge">🏙 27 Cities Tracked</div>
         <div class="hero-badge">🌍 15 Countries</div>
         <div class="hero-badge">📅 2020–2024 Dataset</div>
@@ -891,7 +891,7 @@ tbody td{padding:7px 10px;font-size:13px;}
         <div class="process-step">
           <div class="step-num">1</div>
           <div class="step-title">Data Acquisition</div>
-          <div class="step-text">Monthly TROPOMI NO₂ L3 files (.nc4) downloaded from NASA GES DISC for Jan 2020–Dec 2024. WorldPop 2020 population raster clipped to West Africa at 0.1° resolution.</div>
+          <div class="step-text">Monthly TROPOMI NO₂ L3 files (.nc4) downloaded from NASA GES DISC for Jan 2020–Dec 2024. NASA Gridded 2020 population raster clipped to West Africa at 0.1° resolution.</div>
         </div>
         <div class="process-step">
           <div class="step-num">2</div>
@@ -957,7 +957,7 @@ tbody td{padding:7px 10px;font-size:13px;}
 
   <footer class="main-footer">
     <div><p style="color:#94a3b8;font-weight:600;margin-bottom:2px;">West Africa NO₂ Exposure Risk Platform</p><p>Climate and Health Research Lab (CAHL) · KNUST, Kumasi, Ghana</p></div>
-    <div style="text-align:center;"><p>Data: Sentinel-5P TROPOMI · WorldPop 2020 · NASA FIRMS</p><p>Period: January 2020 – December 2024</p></div>
+    <div style="text-align:center;"><p>Data: Sentinel-5P TROPOMI · NASA Gridded Population 2020</p><p>Period: January 2020 – December 2024</p></div>
     <div style="text-align:right;"><a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a></div>
   </footer>
 </div>
@@ -1023,7 +1023,7 @@ tbody td{padding:7px 10px;font-size:13px;}
         <div class="about-box-title">About NPWEI</div>
         <p>Normalised Population-Weighted NO₂ Exposure Index. Urban pixels only (≥50 people/km²).</p>
         <span class="unit">Scale: 0–100 (normalised per season)</span>
-        <div class="data-source">Data: Sentinel-5P TROPOMI<br>Population: WorldPop 2020<br>Urban threshold: ≥50 ppl/km²</div>
+        <div class="data-source">Data: Sentinel-5P TROPOMI<br>Population: NASA Gridded Population 2020<br>Urban threshold: ≥50 ppl/km²</div>
       </div>
     </aside>
 
@@ -1059,7 +1059,7 @@ tbody td{padding:7px 10px;font-size:13px;}
           <div class="ov-section-label" style="margin-top:4px;"><span>🗺 Exposure Map &amp; City Rankings</span><button class="ov-goto-btn" onclick="switchInnerPage('page-map',null)">Open Full Map →</button></div>
           <div class="ov-mid-row">
             <div class="mini-map-panel"><div id="mini-map"></div><div class="mini-map-footer"><div class="mini-colorbar"><span style="font-size:9px;color:var(--dim);font-family:var(--mono)">Low</span><div class="mini-colorbar-bar"></div><span style="font-size:9px;color:var(--dim);font-family:var(--mono)">High</span></div><div class="mini-colorbar-ticks"><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span></div></div></div>
-            <div class="top-cities-panel"><div class="top-cities-hdr"><span>🏙 Top 10 Cities</span><button class="ov-goto-btn-sm" onclick="switchInnerPage('page-cities',null)">Full table →</button></div><div class="top-cities-scroll"><div id="ov-cities-list"></div></div><div class="top-cities-foot">WorldPop 2020 · ≥50 ppl/km²</div></div>
+            <div class="top-cities-panel"><div class="top-cities-hdr"><span>🏙 Top 10 Cities</span><button class="ov-goto-btn-sm" onclick="switchInnerPage('page-cities',null)">Full table →</button></div><div class="top-cities-scroll"><div id="ov-cities-list"></div></div><div class="top-cities-foot">NASA Gridded Population 2020 · ≥50 ppl/km²</div></div>
           </div>
           <div class="ov-section-label"><span>📈 Exposure Trends &amp; Seasonal Cycle</span><button class="ov-goto-btn" onclick="switchInnerPage('page-trends',null)">Open Trends →</button></div>
           <div class="ov-trends-row">
@@ -1113,7 +1113,7 @@ tbody td{padding:7px 10px;font-size:13px;}
             <div class="table-panel">
               <div class="table-header"><div class="table-title">NO₂ Exposure by City</div><div class="table-sub" id="table-season-label">Annual Average · 2020–2024</div></div>
               <div class="table-scroll"><table><thead><tr><th>City</th><th>Country</th><th>NPWEI</th><th>Urban Pop (M)</th></tr></thead><tbody id="country-tbody"></tbody></table></div>
-              <div class="table-note">WorldPop 2020 · ≥50 ppl/km² urban pixels</div>
+              <div class="table-note">NASA Gridded Population 2020 · ≥50 ppl/km² urban pixels</div>
             </div>
           </div>
         </section>
@@ -1173,7 +1173,7 @@ tbody td{padding:7px 10px;font-size:13px;}
                   <tbody id="ct-tbody"></tbody>
                 </table>
               </div>
-              <div class="cities-tbl-note">Click any row for city details · WorldPop 2020 · ≥50 ppl/km²</div>
+              <div class="cities-tbl-note">Click any row for city details · NASA Gridded Population 2020 · ≥50 ppl/km²</div>
             </div>
             <div class="city-detail-panel" id="city-detail-panel">
               <div class="city-detail-empty"><div class="city-detail-empty-icon">🏙</div><div class="city-detail-empty-text">Click any city in the table<br>to see detailed exposure stats</div></div>
@@ -1191,7 +1191,7 @@ tbody td{padding:7px 10px;font-size:13px;}
             <div><div class="hi-header-tag">🫁 Health Impact</div><div class="hi-header-title">Population Exposure &amp; Health Risk</div><div class="hi-header-sub">Urban NO₂ burden · NPWEI tiers · TROPOMI · 2020–2024</div></div>
             <div class="hi-header-btns"><button class="hi-export-btn" onclick="exportHealthCSV()">⬇ CSV</button><button class="hi-export-btn" onclick="window.print()">🖨 PDF</button></div>
           </div>
-          <div class="hi-disclaimer"><div class="hi-disclaimer-icon">⚠️</div><div class="hi-disclaimer-text"><strong>Important:</strong> Population figures are estimated from WorldPop 2020 urban pixels. These are exposure estimates based on satellite-derived NO₂ columns, not clinical health outcomes. No mortality or hospitalisation rates are implied.</div></div>
+          <div class="hi-disclaimer"><div class="hi-disclaimer-icon">⚠️</div><div class="hi-disclaimer-text"><strong>Important:</strong> Population figures are estimated from NASA Gridded Population 2020 urban pixels. These are exposure estimates based on satellite-derived NO₂ columns, not clinical health outcomes. No mortality or hospitalisation rates are implied.</div></div>
           <div class="hi-filter-bar">
             <div class="hi-filter-row">
               <div class="hi-filter-group"><label>🌤 Season</label><select class="hi-filter-select" id="hi-season" onchange="updateHealthPage()"><option value="Annual">Annual Mean</option><option value="DJF">Dry (DJF)</option><option value="JJA">Wet (JJA)</option></select></div>
@@ -1223,7 +1223,7 @@ tbody td{padding:7px 10px;font-size:13px;}
               <div class="about-hero-title">West Africa NO₂ Exposure Risk Platform</div>
               <div class="about-hero-sub">An open-access satellite-derived dashboard tracking population-weighted NO₂ exposure across West African urban centres from 2020 to 2024. Built by the Climate and Health Research Lab (CAHL) at KNUST, Kumasi, Ghana.</div>
               <div class="about-hero-tags">
-                <span class="about-hero-tag">Sentinel-5P TROPOMI</span><span class="about-hero-tag">WorldPop 2020</span><span class="about-hero-tag">2020–2024</span><span class="about-hero-tag">27 Cities</span><span class="about-hero-tag">15 Countries</span><span class="about-hero-tag">KNUST CAHL</span>
+                <span class="about-hero-tag">Sentinel-5P TROPOMI</span><span class="about-hero-tag">NASA Gridded Population 2020</span><span class="about-hero-tag">2020–2024</span><span class="about-hero-tag">27 Cities</span><span class="about-hero-tag">15 Countries</span><span class="about-hero-tag">KNUST CAHL</span>
               </div>
             </div>
           </div>
@@ -1231,12 +1231,12 @@ tbody td{padding:7px 10px;font-size:13px;}
             <div class="about-card"><div class="about-card-icon">🎯</div><div class="about-card-title">Purpose & Objectives</div><div class="about-card-text">This platform visualises satellite-derived NO₂ column data to estimate urban population exposure across West Africa. It supports researchers, policymakers, and public health practitioners in identifying high-risk areas, seasonal patterns, and city-level burden.</div></div>
             <div class="about-card"><div class="about-card-icon">🏛</div><div class="about-card-title">Research Group</div><div class="about-card-text">Developed by the <strong>Climate and Health Research Lab (CAHL)</strong> at KNUST, Kumasi, Ghana. CAHL focuses on climate variability, air quality, and population health across sub-Saharan Africa.<br><br>Contact: <a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a></div></div>
             <div class="about-card"><div class="about-card-icon">📐</div><div class="about-card-title">NPWEI Definition</div><div class="about-card-text">The <strong>Normalised Population-Weighted Exposure Index (NPWEI)</strong>:<br><br><code style="background:var(--panel2);padding:4px 8px;border-radius:4px;font-size:10px;display:block;margin:6px 0;">PWE = Σ(population × NO₂) / Σ(population)</code>Urban pixels ≥50 people/km² only. Normalised 0–100:<code style="background:var(--panel2);padding:4px 8px;border-radius:4px;font-size:10px;display:block;margin:6px 0;">NPWEI = (PWE − min)/(max − min) × 100</code></div></div>
-            <div class="about-card"><div class="about-card-icon">⚠️</div><div class="about-card-title">Limitations & Disclaimer</div><div class="about-card-text">TROPOMI measures tropospheric NO₂ columns, not surface concentrations. Results reflect relative exposure differences. Population figures are WorldPop 2020 estimates. No clinical health outcomes are implied.</div></div>
+            <div class="about-card"><div class="about-card-icon">⚠️</div><div class="about-card-title">Limitations & Disclaimer</div><div class="about-card-text">TROPOMI measures tropospheric NO₂ columns, not surface concentrations. Results reflect relative exposure differences. Population figures are NASA Gridded Population 2020 estimates. No clinical health outcomes are implied.</div></div>
           </div>
           <div class="about-method-panel">
             <div class="about-method-title">⚙️ Processing Methodology</div>
             <div class="about-method-steps">
-              <div class="about-method-step"><div class="about-method-step-num">1</div><div class="about-method-step-title">Data Acquisition</div><div class="about-method-step-text">Monthly TROPOMI NO₂ L3 files downloaded Jan 2020–Dec 2024. WorldPop 2020 at 0.1° clipped to West Africa.</div></div>
+              <div class="about-method-step"><div class="about-method-step-num">1</div><div class="about-method-step-title">Data Acquisition</div><div class="about-method-step-text">Monthly TROPOMI NO₂ L3 files downloaded Jan 2020–Dec 2024. NASA Gridded Population 2020 at 0.1° clipped to West Africa.</div></div>
               <div class="about-method-step"><div class="about-method-step-num">2</div><div class="about-method-step-title">Urban Masking</div><div class="about-method-step-text">Only pixels ≥50 people/km² included. Latitude-varying cell area computed.</div></div>
               <div class="about-method-step"><div class="about-method-step-num">3</div><div class="about-method-step-title">PWE Computation</div><div class="about-method-step-text">NO₂ interpolated onto population grid. Seasonal means: DJF, JJA, Annual per city and country.</div></div>
               <div class="about-method-step"><div class="about-method-step-num">4</div><div class="about-method-step-title">Normalisation</div><div class="about-method-step-text">Raw PWE normalised 0–100. Exported as JSON + georeferenced PNG tiles for Leaflet.</div></div>
@@ -1248,7 +1248,7 @@ tbody td{padding:7px 10px;font-size:13px;}
               <thead><tr><th>Dataset</th><th>Source</th><th>Resolution</th><th>Period</th><th>Use</th></tr></thead>
               <tbody>
                 <tr><td>TROPOMI NO₂ L3</td><td>ESA Sentinel-5P / NASA GES DISC</td><td>0.01°</td><td>Jan 2020–Dec 2024</td><td>NO₂ column</td></tr>
-                <tr><td>WorldPop Population</td><td>WorldPop / Univ. of Southampton</td><td>0.1°</td><td>2020 baseline</td><td>Urban weighting</td></tr>
+                <tr><td>NASA Gridded Population Population</td><td>NASA Gridded Population / Univ. of Southampton</td><td>0.1°</td><td>2020 baseline</td><td>Urban weighting</td></tr>
                 <tr><td>Country Boundaries</td><td>Natural Earth / geo-countries</td><td>Vector</td><td>Current</td><td>Masking & display</td></tr>
                 <tr><td>Fire Radiative Power</td><td>NASA FIRMS VIIRS</td><td>375 m</td><td>2020–2024</td><td>Fire driver data</td></tr>
               </tbody>
@@ -1283,7 +1283,7 @@ tbody td{padding:7px 10px;font-size:13px;}
       </div><!-- end dash-content -->
       <footer class="main-footer">
         <div><p style="color:#94a3b8;font-weight:600;margin-bottom:2px;">West Africa NO₂ Exposure Risk Platform</p><p>Climate and Health Research Lab (CAHL) · KNUST, Kumasi, Ghana</p></div>
-        <div style="text-align:center;"><p>Data: Sentinel-5P TROPOMI · WorldPop 2020 · NASA FIRMS</p><p>Period: January 2020 – December 2024</p></div>
+        <div style="text-align:center;"><p>Data: Sentinel-5P TROPOMI · NASA Gridded Population 2020 · NASA FIRMS</p><p>Period: January 2020 – December 2024</p></div>
         <div style="text-align:right;"><a href="mailto:cahl@knust.edu.gh">cahl@knust.edu.gh</a></div>
       </footer>
     </main>
@@ -1805,7 +1805,7 @@ function updateHealthPage(){
   const topCountry=Object.entries(npwei).sort((a,b)=>b[1]-a[1])[0];const topCity2=Object.entries(cityNpwei2).sort((a,b)=>b[1]-a[1])[0];
   const highCityList=Object.entries(cityNpwei2).filter(([,v])=>v>=80).map(([c])=>c).slice(0,3).join(', ')||'--';
   const djfHigh=HEALTH_IMPACT['DJF']?.high_risk_population_millions??0;const jjaHigh=HEALTH_IMPACT['JJA']?.high_risk_population_millions??0;
-  document.getElementById('hi-insight-grid').innerHTML=[{icon:'🏭',title:'Highest Burden Country',text:`<strong>${topCountry?.[0]??'--'}</strong> records the highest NPWEI (${topCountry?.[1]??'--'}/100) driven by dense urban-industrial activity.`},{icon:'🌵',title:'Dry Season Health Burden',text:`An additional <strong>${(djfHigh-jjaHigh).toFixed(1)}M people</strong> enter high-risk zones during the dry season (DJF) due to Harmattan-suppressed vertical mixing.`},{icon:'🏙',title:'Critical Urban Hotspots',text:`Cities at Severe/Critical tier include <strong>${highCityList}</strong>. Residents face chronic NO₂ exposure likely exceeding WHO 2021 guidelines.`},{icon:'👶',title:'Vulnerable Populations',text:`Children, elderly, and people with respiratory conditions in high-exposure zones face disproportionate health risk.`},{icon:'📉',title:'Wet Season Relief',text:`Monsoon ventilation during JJA reduces NO₂ burden across most cities — a natural seasonal respite.`},{icon:'📡',title:'Data Basis',text:`All estimates use Sentinel-5P TROPOMI NO₂ columns (2020–2024), population-weighted via WorldPop 2020 at ≥50 ppl/km².`}].map(ins=>`<div class="hi-insight-card"><div class="hi-insight-icon">${ins.icon}</div><div><div class="hi-insight-card-title">${ins.title}</div><div class="hi-insight-card-text">${ins.text}</div></div></div>`).join('');
+  document.getElementById('hi-insight-grid').innerHTML=[{icon:'🏭',title:'Highest Burden Country',text:`<strong>${topCountry?.[0]??'--'}</strong> records the highest NPWEI (${topCountry?.[1]??'--'}/100) driven by dense urban-industrial activity.`},{icon:'🌵',title:'Dry Season Health Burden',text:`An additional <strong>${(djfHigh-jjaHigh).toFixed(1)}M people</strong> enter high-risk zones during the dry season (DJF) due to Harmattan-suppressed vertical mixing.`},{icon:'🏙',title:'Critical Urban Hotspots',text:`Cities at Severe/Critical tier include <strong>${highCityList}</strong>. Residents face chronic NO₂ exposure likely exceeding WHO 2021 guidelines.`},{icon:'👶',title:'Vulnerable Populations',text:`Children, elderly, and people with respiratory conditions in high-exposure zones face disproportionate health risk.`},{icon:'📉',title:'Wet Season Relief',text:`Monsoon ventilation during JJA reduces NO₂ burden across most cities — a natural seasonal respite.`},{icon:'📡',title:'Data Basis',text:`All estimates use Sentinel-5P TROPOMI NO₂ columns (2020–2024), population-weighted via NASA Gridded Population 2020 at ≥50 ppl/km².`}].map(ins=>`<div class="hi-insight-card"><div class="hi-insight-icon">${ins.icon}</div><div><div class="hi-insight-card-title">${ins.title}</div><div class="hi-insight-card-text">${ins.text}</div></div></div>`).join('');
 }
 function exportHealthCSV(){
   const season=document.getElementById('hi-season')?.value??'Annual';const cityNpwei=getCityNPWEI(season);const djfAll=getCityNPWEI('DJF');const jjaAll=getCityNPWEI('JJA');
