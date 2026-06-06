@@ -179,6 +179,134 @@ body{font-family:var(--font);background:var(--panel2);color:var(--text);min-heig
   font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:.04em;
 }
 
+
+
+
+
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    text-align:center;
+}
+
+.hero-center{
+    position:relative;
+    z-index:5;
+    max-width:1000px;
+    padding:0 20px;
+}
+
+.hero-pill{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    color:#fff;
+    font-size:12px;
+    margin-bottom:28px;
+}
+
+.hero-main-title{
+    font-size:clamp(60px,8vw,110px);
+    line-height:.95;
+    font-weight:800;
+    color:white;
+    margin-bottom:25px;
+    letter-spacing:-0.05em;
+}
+
+.hero-main-title span{
+    background:linear-gradient(
+        90deg,
+        #4f8cff,
+        #53d1ff,
+        #6ee7b7
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-main-sub{
+    color:rgba(255,255,255,.8);
+    font-size:18px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.hero-main-actions{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.glass-btn{
+    padding:16px 28px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.glass-btn:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.15);
+}
+
+.glass-btn.primary{
+    background:rgba(19,86,214,.8);
+}
+
+.hero-stats{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+
+    width:min(1100px,90%);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:25px;
+}
+
+.hero-stat-value{
+    color:white;
+    font-size:28px;
+    font-weight:800;
+}
+
+.hero-stat-label{
+    color:rgba(255,255,255,.65);
+    font-size:13px;
+    margin-top:5px;
+}
+
+
+
+
+
+
+   
+
 /* KPI STRIP */
 .kpi-strip{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 32px;}
 .kpi-strip-inner{
@@ -783,40 +911,76 @@ tbody td{padding:7px 10px;font-size:13px;}
 <div id="page-landing" class="page active">
 
   <!-- HERO -->
-  <section class="hero">
+ <section class="hero">
 
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="web_data/Cinematic aerial view of a large city covered by atmospheric air pollution. Thick gray smog drifts between skyscrapers and industrial zones. Vehicle exhaust rises from busy highways, factory smokestacks.mp4" type="video/mp4">
-    </video>
+  <video autoplay muted loop playsinline class="hero-video">
+      <source src="web_data/no2-background.mp4" type="video/mp4">
+  </video>
 
-    <div class="hero-overlay"></div>
+  <div class="hero-overlay"></div>
 
-    <div class="hero-inner">
-      <div class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        NO₂ Exposure Platform · AtmosTech Lab, KNUST.
+  <div class="hero-center">
+
+      <div class="hero-pill">
+          BETA 1.0 • West Africa NO₂ Intelligence Platform
       </div>
-      <h1 class="hero-title">
-        Understanding<br><span>NO₂ Population</span><br>Exposure in West Africa
+
+      <h1 class="hero-main-title">
+          West Africa's<br>
+          <span>NO₂ Exposure</span><br>
+          Intelligence Platform
       </h1>
-      <p class="hero-sub">
-        Satellite-derived, population-weighted exposure data across 27 urban centres in 15 countries —
-        tracking air quality risk from 2020 to 2024 to inform policy, health planning, and public awareness.
+
+      <p class="hero-main-sub">
+          Satellite-derived population-weighted NO₂ exposure intelligence
+          across 27 urban centres in 15 West African countries.
+          Powered by Sentinel-5P TROPOMI and NASA Population Data.
       </p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="showMainPage('dashboard',null)">📊 Explore Dashboard ↗</button>
-        <button class="btn-outline" onclick="showDashTab('page-map',null)">🗺 Open Interactive Map</button>
+
+      <div class="hero-main-actions">
+          <button class="glass-btn primary"
+            onclick="showMainPage('dashboard',null)">
+            View Insights
+          </button>
+
+          <button class="glass-btn"
+            onclick="showDashTab('page-map',null)">
+            Explore Map
+          </button>
+
+          <button class="glass-btn"
+            onclick="downloadExcel()">
+            Browse Data
+          </button>
       </div>
-      <div class="hero-badges">
-        <div class="hero-badge">🛰 Sentinel-5P TROPOMI</div>
-        <div class="hero-badge">👥 NASA Gridded Population 2020</div>
-        <div class="hero-badge">🏙 27 Cities Tracked</div>
-        <div class="hero-badge">🌍 15 Countries</div>
-        <div class="hero-badge">📅 2020–2024 Dataset</div>
-        <div class="hero-badge">🏛 Open Access Research</div>
+
+  </div>
+
+  <div class="hero-stats">
+
+      <div class="hero-stat">
+          <div class="hero-stat-value">27</div>
+          <div class="hero-stat-label">Cities</div>
       </div>
-    </div>
-  </section>
+
+      <div class="hero-stat">
+          <div class="hero-stat-value">15</div>
+          <div class="hero-stat-label">Countries</div>
+      </div>
+
+      <div class="hero-stat">
+          <div class="hero-stat-value">2020–2024</div>
+          <div class="hero-stat-label">Observations</div>
+      </div>
+
+      <div class="hero-stat">
+          <div class="hero-stat-value">NO₂</div>
+          <div class="hero-stat-label">Intelligence</div>
+      </div>
+
+  </div>
+
+</section>
 
   <!-- KPI STRIP -->
   <div class="kpi-strip">
